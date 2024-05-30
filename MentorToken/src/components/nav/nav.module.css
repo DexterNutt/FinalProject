@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.navbar {
+  font-family: "Manrope", sans-serif;
+  display: flex;
+  flex-direction: row;
+  width: 100%; /* Assuming a full-width navbar */
+  max-width: 1440px; /* Maximum width */
+  height: 115px;
+  padding: 32px 100px;
+  gap: 0px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  line-height: 19.2px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 38px;
+}
+
+.link {
+  text-decoration: none;
+  color: #232323;
+}
+
+.active {
+  color: #696cff;
+}
+
+.title {
+  font-size: 27.42px;
+  font-weight: 600;
+  line-height: 37.46px;
+  letter-spacing: -0.5px;
+  color: #696cff;
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.login span {
+  padding-right: 24px;
+}
+
+.login button {
+  padding: 16px 24px;
+  border-radius: 9px;
+  background-color: #696cff;
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.login button:hover {
+  background-color: #575ed8;
+}
