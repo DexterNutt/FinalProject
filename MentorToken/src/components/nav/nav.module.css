@@ -17,6 +17,19 @@
   text-align: left;
 }
 
+.name {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+  font-size: 27.42px;
+  font-weight: 600;
+  line-height: 37.46px;
+  letter-spacing: -0.5px;
+  color: #696cff;
+}
+
+/* LINKS  */
 .navbar ul {
   list-style-type: none;
   display: flex;
@@ -33,13 +46,7 @@
   color: #696cff;
 }
 
-.title {
-  font-size: 27.42px;
-  font-weight: 600;
-  line-height: 37.46px;
-  letter-spacing: -0.5px;
-  color: #696cff;
-}
+/* LINKS END */
 
 .login {
   display: flex;
@@ -61,8 +68,31 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  width: 168px;
+  height: 51px;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .login button:hover {
   background-color: #575ed8;
+}
+
+.login button::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -80px;
+  height: 100px;
+  width: 70px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(20deg);
+  transition: left 0.5s ease;
+}
+
+.login button:hover::before {
+  left: 190px;
 }

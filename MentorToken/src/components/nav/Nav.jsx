@@ -47,8 +47,9 @@ export const Nav = () => {
 
   return (
     <div className={styles.navbar}>
-      <div className={styles.title}>
-        <span>{logo} Mentor Token</span>
+      <div className={styles.name}>
+        {logo}
+        <span> Mentor Token</span>
       </div>
 
       <ul className={styles.nav}>
