@@ -1,0 +1,27 @@
+.partners {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 80px;
+}
+
+.partnersContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  width: 80%;
+}
+
+.logoItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 5.5rem;
+  padding: 24px, 10px, 24px, 10px;
+  gap: 10px;
+}
+
+.logo {
+  max-width: 100%;
+  height: 40px;
+}
