@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Hero.module.css";
 
 export const Hero = () => {
   const arrowRight = (
@@ -12,26 +13,26 @@ export const Hero = () => {
       <path
         d="M10.8223 4.94727L15.3748 9.49977L10.8223 14.0523"
         stroke="white"
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M2.625 9.5H15.2475"
         stroke="white"
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
 
   return (
-    <div className="hero">
-      <div className="heroContainer">
-        <div>
+    <div className={styles.hero}>
+      <div className={styles.heroContainer}>
+        <div className={styles.heroItems}>
           <h1>Grow your StartUp! Monitoring and Evaluating now is easy!</h1>
           <p>
             Welcome to Mentor Token, where we redefine the dynamics of start-up
@@ -39,14 +40,16 @@ export const Hero = () => {
             mentorship, ensuring that mentors are not just engaged but motivated
             to drive the success of the ventures they support.
           </p>
+          <div className={styles.buttonContainer}>
+            <button>
+              {arrowRight}
+              Get Started
+            </button>
+            <span>Get in Touch</span>
+          </div>
         </div>
-        <button>
-          {arrowRight}
-          Get Started
-        </button>
-        <span>Get in Touch</span>
+        <img src="/laptop.webp" alt="laptop" />
       </div>
-      <img src="/laptop.webp" alt="laptop" />
     </div>
   );
 };

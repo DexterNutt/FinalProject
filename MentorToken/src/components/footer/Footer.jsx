@@ -67,7 +67,7 @@ export const Footer = () => {
   );
 
   return (
-    <div id={styles.footer}>
+    <div className={styles.footer}>
       <div className={styles.footerContainer}>
         <div className={`${styles.footerSection} ${styles.logo}`}>
           <div className={styles.logoContainer}>
