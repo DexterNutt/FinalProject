@@ -15,11 +15,11 @@
 .footerContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 3.1rem;
 }
 
 .footerSection {
-  margin: 20px 0;
+  margin: 0;
 }
 
 .logoContainer {
@@ -45,6 +45,11 @@
 .footerSection a {
   color: #ffffff;
   text-decoration: none;
+}
+
+.footerSection a:hover {
+  color: #888888;
+  transition: ease 0.5s;
 }
 
 .footerSection ul {
@@ -78,7 +83,7 @@
   width: 70px;
   background: rgba(255, 255, 255, 0.3);
   transform: rotate(20deg);
-  transition: left 0.3s ease;
+  transition: left 0.7s ease;
 }
 
 .socialLinks a:hover::before {

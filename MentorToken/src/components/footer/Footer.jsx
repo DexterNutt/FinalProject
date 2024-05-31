@@ -91,8 +91,14 @@ export const Footer = () => {
         </div>
         <div className={`${styles.footerSection} ${styles.contact}`}>
           <h3>Contact</h3>
-          <p>info@mentortoken.com</p>
-          <p>+ (389) 123 456 789</p>
+          <ul>
+            <li>
+              <a href="#">info@mentortoken.com</a>
+            </li>
+            <li>
+              <a href="#">+ (389) 123 456 789</a>
+            </li>
+          </ul>
         </div>
         <div className={`${styles.footerSection} ${styles.follow}`}>
           <h3>Follow Us</h3>
