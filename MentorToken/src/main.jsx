@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Nav } from "./components/nav/Nav.jsx";
 import { About } from "./components/pages/About.jsx";
 import { Contact } from "./components/pages/Contact.jsx";
-import { Home } from "./components/pages/Home.jsx";
+import { Home } from "./components/home/Home.jsx";
 import { Footer } from "./components/footer/Footer.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
