@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+#footer {
+  background-color: #232323;
+  color: #ffffff;
+  padding: 40px;
+  font-family: "Manrope", sans-serif;
+  width: 100%;
+  max-width: 90rem;
+  left: -2px;
+  padding: 5rem 6.25rem 9.6825rem 6.25rem;
+  gap: 10px;
+}
+
+.footerContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.footerSection {
+  margin: 20px 0;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoContainer span {
+  font-size: 27.42px;
+  font-weight: 600;
+  line-height: 37.46px;
+  letter-spacing: -0.5px;
+  color: #696cff;
+}
+
+.footerSection h3 {
+  margin-bottom: 10px;
+}
+
+.footerSection p,
+.footerSection ul,
+.footerSection a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footerSection ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footerSection ul li {
+  margin-bottom: 10px;
+}
+
+.socialLinks a {
+  margin-right: 10px;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.socialLinks a::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -80px;
+  height: 100px;
+  width: 70px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(20deg);
+  transition: left 0.3s ease;
+}
+
+.socialLinks a:hover::before {
+  left: 50px;
+}
+
+.socialLinks a svg {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.2s;
+}
+
+.socialLinks a:hover svg {
+  transform: scale(1.1);
+}
+
+.copyright {
+  grid-column: span 4;
+  text-align: left;
+  margin-top: 20px;
+  border-top: 1px solid #888888;
+  padding-top: 20px;
+  font-size: 14px;
+}

@@ -4,8 +4,8 @@
   font-family: "Manrope", sans-serif;
   display: flex;
   flex-direction: row;
-  width: 100%; /* Assuming a full-width navbar */
-  max-width: 1440px; /* Maximum width */
+  width: 100%;
+  max-width: 90rem;
   height: 115px;
   padding: 32px 100px;
   gap: 0px;
