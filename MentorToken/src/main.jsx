@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Home } from "./pages/Home.jsx";
+import { About } from "./pages/About.jsx";
+import { Contact } from "./pages/Contact.jsx";
 import { Nav } from "./components/nav/Nav.jsx";
-import { About } from "./components/pages/About.jsx";
-import { Contact } from "./components/pages/Contact.jsx";
-import { Home } from "./components/home/Home.jsx";
 import { Footer } from "./components/footer/Footer.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
