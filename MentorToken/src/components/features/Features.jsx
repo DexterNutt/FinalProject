@@ -1,36 +1,52 @@
 import React from "react";
+import styles from "./Features.module.css";
 
 export const Features = () => {
   const features = [
     {
       id: 1,
-      vector: "url(./public/vectors/radix-icons_rocket.png)",
+      vector: "/vectors/radix-icons_rocket.png",
+      alt: "icon_rocket",
       title: "Goal Setting",
       text: `Set clear and achievable goals for your startup's success.`,
     },
     {
       id: 2,
-      vector: "url(./public/vectors/clarity_analytics-line.png)",
+      vector: "/vectors/clarity_analytics-line.png",
+      alt: "icon-line",
       title: "Performance Tracking",
       text: `Monitor mentor performance in real-time and track progress.`,
     },
     {
       id: 3,
-      vector: "url(./public/vectors/fluent_reward-20-regular)",
+      vector: "/vectors/fluent_reward-20-regular",
+      alt: "icon-reward",
       title: "Goal Setting",
       text: `Motivate mentors with a secure and rewarding token-based reward system.`,
     },
     {
       id: 4,
-      vector: "url(./public/vectors/fluent_library-20-regular.png)",
+      vector: "/vectors/fluent_library-20-regular.png",
+      alt: "icon-library",
       title: "Knowledge Library",
       text: `Access a comprehensive knowledge library to equip mentors with the skills, and motivation`,
     },
   ];
+
   return (
-    <div className="features">
-      <div className="featuresTop"></div>
-      <div className="featuresBottom">{}</div>
+    <div className={styles.features}>
+      <div className={styles.featuresTop}></div>
+      <div className={styles.featuresBottom}>
+        {features.map((feature, i) => {
+          return (
+            <div key={i} className={styles.featureItem}>
+              <img src={feature.vector} alt={feature.alt} />
+              <h3>{feature.title}</h3>
+              <p>{feature.text}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
