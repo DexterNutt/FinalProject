@@ -19,7 +19,7 @@ export const Features = () => {
     },
     {
       id: 3,
-      vector: "/vectors/fluent_reward-20-regular",
+      vector: "/vectors/fluent_reward-20-regular.png",
       alt: "icon-reward",
       title: "Goal Setting",
       text: `Motivate mentors with a secure and rewarding token-based reward system.`,
@@ -35,17 +35,27 @@ export const Features = () => {
 
   return (
     <div className={styles.features}>
-      <div className={styles.featuresTop}></div>
-      <div className={styles.featuresBottom}>
-        {features.map((feature, i) => {
-          return (
-            <div key={i} className={styles.featureItem}>
-              <img src={feature.vector} alt={feature.alt} />
-              <h3>{feature.title}</h3>
-              <p>{feature.text}</p>
-            </div>
-          );
-        })}
+      <img src="/rocket.webp" alt="rocketship" id={styles.rocketShip} />
+      <div className={styles.featuresContainer}>
+        <div className={styles.featuresTop}>
+          <h2>FEATURES</h2>
+          <p>
+            Boost Your Startup's Journey: <br />
+            Discover Mentor Token's Robust <br />
+            Features
+          </p>
+        </div>
+        <div className={styles.cardsContainer}>
+          {features.map((feature, i) => {
+            return (
+              <div key={i} className={styles.featureCard}>
+                <img src={feature.vector} alt={feature.alt} />
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
