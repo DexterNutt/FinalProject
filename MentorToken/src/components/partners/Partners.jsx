@@ -25,6 +25,12 @@ export const Partners = () => {
           );
         })}
       </div>
+      <div className={styles.text}>
+        <p>
+          More than 25+ Startups around the
+          <br /> world trusted Mentor Token.
+        </p>
+      </div>
     </div>
   );
 };
