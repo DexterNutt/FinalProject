@@ -110,21 +110,27 @@ export const Team = () => {
               <h3>{member.position}</h3>
               <p>{member.text}</p>
               <div className={styles.socials}>
-                <img
-                  src="/vectors/socials/facebook.svg"
-                  alt="logo facebook"
-                  className={styles.logo}
-                />
-                <img
-                  src="/vectors/socials/github.svg"
-                  alt="logo github"
-                  className={styles.logo}
-                />
-                <img
-                  src="/vectors/socials/linkedin.svg"
-                  alt="logo linkedin"
-                  className={styles.logo}
-                />
+                <a href="#">
+                  <img
+                    src="/vectors/socials/facebook.svg"
+                    alt="logo facebook"
+                    className={styles.logo}
+                  />
+                </a>
+                <a href="#">
+                  <img
+                    src="/vectors/socials/github.svg"
+                    alt="logo github"
+                    className={styles.logo}
+                  />
+                </a>
+                <a href="#">
+                  <img
+                    src="/vectors/socials/linkedin.svg"
+                    alt="logo linkedin"
+                    className={styles.logo}
+                  />
+                </a>
               </div>
             </div>
           );
