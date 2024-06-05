@@ -1,5 +1,10 @@
 import React from "react";
+import { Team } from "../components/team/Team";
 
 export const About = () => {
-  return <h1>About</h1>;
+  return (
+    <>
+      <Team />
+    </>
+  );
 };
