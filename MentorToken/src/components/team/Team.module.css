@@ -1,6 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "inter", sans-serif;
+}
+
+.introContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75vw;
+  height: 37vh;
+  border-radius: 10px;
+  margin-bottom: 48px;
+}
+
+.introContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/background.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.3;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.introContainer h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 72px;
+  text-align: center;
+  color: #222222;
+}
+
+.introContainer p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  text-align: center;
+  color: #222222;
+}
+
 .introContainer button {
   padding: 16px 24px;
-  border-radius: 9px;
+  border-radius: 0.5625rem;
   background-color: #696cff;
   color: #fff;
   font-family: "Manrope", sans-serif;
@@ -24,8 +78,8 @@
 .introContainer button::before {
   content: "";
   position: absolute;
-  top: -30px;
-  left: -80px;
+  top: -1.875rem;
+  left: -5rem;
   height: 100px;
   width: 70px;
   background: rgba(255, 255, 255, 0.3);
@@ -39,4 +93,75 @@
 
 .introContainer button svg {
   margin-right: 0.5rem;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 60vw;
+  height: 82vh;
+  gap: 1.2075rem;
+}
+
+.memberCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc((100% - 3 * 1.2075rem) / 4);
+  height: 38vh;
+  gap: 1.25rem;
+}
+
+.memberCard .avatar {
+  margin: 0;
+  width: 126px;
+  height: 126px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.memberCard h2 {
+  margin: 0;
+  font-size: 21.73px;
+  font-weight: 700;
+  line-height: 33.8px;
+  text-align: center;
+  color: #222222;
+}
+
+.memberCard h3 {
+  margin: 0;
+  font-size: 16.9px;
+  font-weight: 500;
+  line-height: 30.18px;
+  text-align: center;
+  color: #696cff;
+}
+
+.memberCard p {
+  margin: 0;
+  font-size: 16.9px;
+  font-weight: 400;
+  line-height: 30.18px;
+  text-align: center;
+  color: #787a82;
+}
+
+.memberCard .socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 40%;
+}
+
+.socials .logo {
+  width: 20px;
+  height: 20px;
+}
+
+.cardsContainer .memberCard:nth-child(5),
+.cardsContainer .memberCard:nth-child(6) {
+  align-self: flex-start;
 }

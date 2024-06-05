@@ -80,14 +80,16 @@ export const Team = () => {
       text: `Culinary artist, explores diverse flavors, skilled in cooking`,
     },
   ];
+
   return (
-    <div className="team">
-      <div className="teamIntro">
-        <div className="introContainer">
+    <div className={styles.intro}>
+      <div className={styles.teamIntro}>
+        <div className={styles.introContainer}>
           <h1 id="title">Meet our team members</h1>
           <p>
             We Focus on the details of everything we do. All to help businesses
-            around the world Focus on what's most important to them.
+            around the world <br />
+            Focus on what's most important to them.
           </p>
           <button>
             {arrowRight}
@@ -95,15 +97,19 @@ export const Team = () => {
           </button>
         </div>
       </div>
-      <div className="teamCards">
+      <div className={styles.cardsContainer}>
         {teamMembers.map((member, i) => {
           return (
             <div key={i} className={styles.memberCard}>
-              <img src={member.img} alt={member.alt} />
-              <h3>{member.name}</h3>
-              <h2>{member.position}</h2>
+              <img
+                className={styles.avatar}
+                src={member.img}
+                alt={member.alt}
+              />
+              <h2>{member.name}</h2>
+              <h3>{member.position}</h3>
               <p>{member.text}</p>
-              <div id={styles.socials}>
+              <div className={styles.socials}>
                 <img
                   src="/vectors/socials/facebook.svg"
                   alt="logo facebook"
