@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 .message {
   font-family: "Manrope", sans-serif;
-  margin: 3.5rem 0rem;
+  padding: 0rem, 5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,6 +14,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 90%;
   gap: 2rem;
   padding: 2rem;
@@ -34,6 +37,11 @@
   opacity: 0.3;
   z-index: -1;
   border-radius: 10px;
+}
+
+.text {
+  width: 78%;
+  padding: 10px;
 }
 
 .text h1 {
@@ -58,14 +66,88 @@
   text-align: left;
 }
 
-input,
-textarea,
-button {
-  font-family: "Manrope", sans-serif;
+.contactUsForm {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 10px;
+  height: fit-content;
+}
+
+.contactUsForm input,
+.contactUsForm textarea {
+  background-color: transparent;
+  border: 1.1px solid #696cff;
+  border-radius: 9px;
+  font-family: "Inter", sans-serif;
   color: #566a7f;
   font-size: 15.41px;
   font-weight: 300;
   line-height: 23.92px;
   letter-spacing: 0.02em;
   text-align: left;
+  border-radius: 9px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.contactUsForm input {
+  width: 45%;
+  height: 52.84px;
+  padding: 8.81px 26.42px 8.81px 26.42px;
+  gap: 13.21px;
+}
+
+.contactUsForm textarea {
+  height: 187px;
+  top: 85px;
+  padding: 8.81px 26.42px 8.81px 26.42px;
+  gap: 13.21px;
+}
+
+.contactUsForm button {
+  padding: 16px 24px;
+  border-radius: 9px;
+  background-color: #696cff;
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  width: 220px;
+  height: 51px;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  left: 84%;
+}
+
+.contactUsForm button:hover {
+  background-color: #575ed8;
+}
+
+.contactUsForm button::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -80px;
+  height: 100px;
+  width: 70px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(20deg);
+  transition: left 0.5s ease;
+}
+
+.contactUsForm button:hover::before {
+  left: 300px;
 }

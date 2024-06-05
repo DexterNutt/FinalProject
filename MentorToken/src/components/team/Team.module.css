@@ -6,8 +6,7 @@
   align-items: center;
   justify-content: center;
   font-family: "inter", sans-serif;
-  margin: 4.5rem 0rem;
-  gap: 3rem;
+  padding: 0rem, 5rem;
 }
 
 .introContainer {

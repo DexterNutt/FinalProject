@@ -21,11 +21,14 @@ export const Message = () => {
           </p>
           <span>Let’s create something amazing together!</span>
         </div>
-        <form onSubmit={handleSubmit}>
-          <input type="text" id="name" placeholder="Full Name" />
-          <input type="email" id="email" placeholder="Email address " />
-          <br />
+        <form class={styles.contactUsForm} onSubmit={handleSubmit}>
+          <div className={styles.inputContainer}>
+            <input type="text" id="name" placeholder="Full Name" />
+            <input type="email" id="email" placeholder="Email address " />
+          </div>
+
           <textarea name="text" id="text" placeholder="Your message"></textarea>
+
           <button type="submit">SEND MESSAGE</button>
         </form>
       </div>

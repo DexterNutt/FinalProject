@@ -4,16 +4,14 @@
   font-family: "Manrope", sans-serif;
   display: flex;
   flex-direction: row;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-left: 6.2rem;
-  padding-right: 6.2rem;
+  padding-top: 2rem, 6.2rem;
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
   line-height: 19.2px;
   letter-spacing: -0.03em;
   text-align: left;
+  margin-bottom: 3.5vh;
 }
 
 .name {

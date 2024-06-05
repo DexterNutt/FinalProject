@@ -3,12 +3,12 @@
 .hero {
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  padding: 0rem, 5rem;
   position: relative;
   z-index: 1;
-  padding: 5rem;
   gap: 72px;
   border-radius: 20px;
+  margin-bottom: 2rem;
 }
 
 .heroContainer {
