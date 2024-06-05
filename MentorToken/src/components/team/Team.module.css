@@ -151,11 +151,15 @@
   color: #787a82;
 }
 
-.memberCard .socials {
+.socials {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 40%;
+}
+
+.socials a:hover {
+  animation: shaking 0.5s;
 }
 
 .socials .logo {
@@ -166,4 +170,22 @@
 .cardsContainer .memberCard:nth-child(5),
 .cardsContainer .memberCard:nth-child(6) {
   align-self: flex-start;
+}
+
+@keyframes shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
