@@ -1,5 +1,10 @@
 import React from "react";
+import { Message } from "../components/message/Message";
 
 export const Contact = () => {
-  return <h1>Contact</h1>;
+  return (
+    <>
+      <Message />
+    </>
+  );
 };
