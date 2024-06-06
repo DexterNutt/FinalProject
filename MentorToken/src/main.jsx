@@ -6,6 +6,7 @@ import { Contact } from "./pages/Contact.jsx";
 import { Nav } from "./components/nav/Nav.jsx";
 import { Footer } from "./components/footer/Footer.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./main.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

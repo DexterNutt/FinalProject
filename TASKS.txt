@@ -1,0 +1,6 @@
+1. tab icon(use the vector)
+2. Hover on navbar menu
+3. Lazy load (check React)
+4. Fix first avatar
+5. APP JSX needs CSS! DONE 
+6. Send code to mentor
