@@ -4,16 +4,26 @@ const bcrypt = require("bcryptjs");
 
 exports.register = async (req, res) => {
   try {
+    console.log("Received registration request:", req.body);
+
     const newUser = await User.create({
       username: req.body.username,
-      password: req.body.password,
       email: req.body.email,
+      password: req.body.password,
       role: req.body.role,
     });
+
+    console.log("User created successfully:", newUser);
+
     res.status(201).json({
       status: "success",
+      data: {
+        user: newUser,
+      },
     });
   } catch (error) {
+    console.error("Error registering user:", error);
+
     res.status(500).send("Internal server issue");
   }
 };
