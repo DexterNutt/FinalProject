@@ -24,17 +24,20 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
+    const { email, password } = req.body;
+
     if (!email || !password) {
       return res.status(400).send("Please provide email and password");
     }
-    const user = await User.findOne({ email: req.body.email });
+
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).send("Invalid email or password");
     }
 
-    const isPasswordValid = bcrypt.compareSync(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
 
-    if (isPasswordValid) {
+    if (!isPasswordValid) {
       return res.status(400).send("Invalid email or password");
     }
 
@@ -48,8 +51,9 @@ exports.login = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES }
     );
 
-    res.status(201).json({ status: "success", token });
+    res.status(200).json({ status: "success", token });
   } catch (error) {
+    console.error("Error during login:", error);
     res.status(500).send("Internal server issue");
   }
 };
