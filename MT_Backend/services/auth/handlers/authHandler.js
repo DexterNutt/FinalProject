@@ -4,16 +4,12 @@ const bcrypt = require("bcryptjs");
 
 exports.register = async (req, res) => {
   try {
-    console.log("Received registration request:", req.body);
-
     const newUser = await User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
       role: req.body.role,
     });
-
-    console.log("User created successfully:", newUser);
 
     res.status(201).json({
       status: "success",
@@ -22,8 +18,6 @@ exports.register = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error("Error registering user:", error);
-
     res.status(500).send("Internal server issue");
   }
 };
@@ -56,6 +50,6 @@ exports.login = async (req, res) => {
 
     res.status(201).json({ status: "success", token });
   } catch (error) {
-    res.status(500).send("Server problem");
+    res.status(500).send("Internal server issue");
   }
 };
