@@ -53,7 +53,6 @@ exports.login = async (req, res) => {
 
     res.status(200).json({ status: "success", token });
   } catch (error) {
-    console.error("Error during login:", error);
     res.status(500).send("Internal server issue");
   }
 };
