@@ -1,0 +1,59 @@
+/* LoginForm.module.css */
+.LoginFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 60%;
+  z-index: 0;
+  background-color: #fff;
+  border-top-left-radius: 7%;
+  border-bottom-left-radius: 7%;
+}
+
+.LoginFormContainer img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.LoginFormContainer .text {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.LoginFormContainer .text h3 {
+  margin-bottom: 10px;
+}
+
+.LoginFormContainer .form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.LoginFormContainer .form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.LoginFormContainer .form button {
+  padding: 10px;
+  background-color: #696cff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.LoginFormContainer .registerLink {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.LoginFormContainer .registerLink a {
+  color: #696cff;
+  text-decoration: none;
+}
