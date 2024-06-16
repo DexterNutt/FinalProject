@@ -9,6 +9,7 @@
   overflow: hidden;
   background-image: url("/login-background.webp"),
     linear-gradient(147.1deg, #696cff 35.1%, #9574ff 77.5%);
+  padding-left: 40px;
 }
 
 .loginContainer .left {
@@ -78,7 +79,12 @@
 }
 
 .loginContainer .logo p {
-  font-size: 1rem;
+  font-family: Manrope;
+  font-size: 27.42px;
+  font-weight: 600;
+  line-height: 37.46px;
+  letter-spacing: -0.5041325688362122px;
+  text-align: left;
 }
 
 .loginContainer .link {

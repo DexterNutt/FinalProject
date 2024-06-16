@@ -57,13 +57,3 @@
   color: #696cff;
   text-decoration: none;
 }
-
-fieldset {
-  border-radius: 5px;
-  width: max-content;
-  border: 1px solid #d4d4d5;
-}
-
-legend {
-  font-size: 12px;
-}
