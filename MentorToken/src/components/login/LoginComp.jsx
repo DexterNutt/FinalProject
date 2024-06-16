@@ -27,8 +27,8 @@ export const LoginComp = () => {
             </div>
             <div className={styles.link}>mentortoken.com</div>
           </div>
-          <LoginForm />
         </div>
+        <LoginForm />
       </div>
     </>
   );
