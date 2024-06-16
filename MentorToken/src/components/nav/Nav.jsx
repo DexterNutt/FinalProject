@@ -86,7 +86,11 @@ export const Nav = () => {
       </ul>
 
       <div className={styles.login}>
-        <NavLink to="/login">Login</NavLink>
+        <span>
+          <NavLink to="/login" className={styles.login}>
+            Login
+          </NavLink>
+        </span>
         <button>
           {arrowRight}
           Get Started

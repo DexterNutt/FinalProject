@@ -51,6 +51,17 @@
 
 .login span {
   padding-right: 24px;
+  font-family: Manrope;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.login span a {
+  text-decoration: none;
+  color: #232323;
 }
 
 .login button {
