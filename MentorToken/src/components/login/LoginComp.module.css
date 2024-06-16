@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.loginContainer {
+  position: relative;
+  display: flex;
+  font-family: Manrope, sans-serif;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-image: url("/login-background.webp"),
+    linear-gradient(147.1deg, #696cff 35.1%, #9574ff 77.5%);
+}
+
+.loginContainer .left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  color: white;
+  width: 50%;
+  z-index: 1;
+}
+
+.loginContainer .left h1 {
+  font-family: Manrope;
+  font-size: 88.63px;
+  font-weight: 700;
+  line-height: 89px;
+  text-align: left;
+}
+
+.loginContainer .left span {
+  margin-bottom: 20px;
+}
+
+.loginContainer .left img {
+  max-width: 100%;
+  height: auto;
+}
+
+.loginContainer .logoContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.loginContainer .logo {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.loginContainer .logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.loginContainer .logo p {
+  font-size: 1rem;
+}
+
+.loginContainer .link {
+  font-size: 0.9rem;
+}
+
+.loginContainer .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 50%;
+  z-index: 1;
+  background-color: #fff;
+  border-top-left-radius: 7%;
+  border-bottom-left-radius: 7%;
+}
+
+.loginContainer .right img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.loginContainer .text {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.loginContainer .text h3 {
+  margin-bottom: 10px;
+}
+
+.loginContainer .form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginContainer .form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.loginContainer .form button {
+  padding: 10px;
+  background-color: #696cff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.loginContainer .registerLink {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.loginContainer .registerLink a {
+  color: #696cff;
+  text-decoration: none;
+}

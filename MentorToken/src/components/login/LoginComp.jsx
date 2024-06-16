@@ -13,7 +13,7 @@ export const LoginComp = () => {
           <img src="" alt="" />
           <div className={styles.logoContainer}>
             <div className={styles.logo}>
-              <img src="/logo.svg" alt="logo" />
+              <img src="/logo-white.svg" alt="logo" />
               <p>Mentor Token</p>
             </div>
             <div className={styles.link}>mentortoken.com</div>
