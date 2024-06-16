@@ -5,6 +5,7 @@ import { About } from "./pages/About.jsx";
 import { Contact } from "./pages/Contact.jsx";
 import { Nav } from "./components/nav/Nav.jsx";
 import { Footer } from "./components/footer/Footer.jsx";
+import { Login } from "./components/login/Login.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./main.css";
 
@@ -18,6 +19,7 @@ root.render(
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
     <Footer />
   </Router>
