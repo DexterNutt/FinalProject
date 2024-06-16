@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 import { Home } from "./pages/Home.jsx";
 import { About } from "./pages/About.jsx";
 import { Contact } from "./pages/Contact.jsx";
+import { Login } from "./pages/Login.jsx";
 import { Nav } from "./components/nav/Nav.jsx";
 import { Footer } from "./components/footer/Footer.jsx";
-import { Login } from "./components/login/Login.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./main.css";
 

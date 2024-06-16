@@ -1,10 +1,10 @@
 import React from "react";
-import { Login } from "../components/login/Login";
+import { LoginComp } from "../components/login/LoginComp";
 
-export const About = () => {
+export const Login = () => {
   return (
     <>
-      <Login />
+      <LoginComp />
     </>
   );
 };
