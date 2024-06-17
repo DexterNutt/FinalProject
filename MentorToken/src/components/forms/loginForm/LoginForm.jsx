@@ -14,16 +14,13 @@ export const LoginForm = () => {
 
         <div className={styles.form}>
           <form action="submit">
-            <fieldset>
-              <legend>Email</legend>
-              <input
-                className={styles.input}
-                type="email"
-                name="email"
-                id=""
-                placeholder="mentortoken@mail.com"
-              />
-            </fieldset>
+            <input
+              className={styles.input}
+              type="email"
+              name="email"
+              id=""
+              placeholder="mentortoken@mail.com"
+            />
 
             <input
               legend="email"
@@ -33,6 +30,7 @@ export const LoginForm = () => {
               id=""
               placeholder="Password"
             />
+
             <button
               className={styles.button}
               onClick={(e) => e.preventDefault()}
