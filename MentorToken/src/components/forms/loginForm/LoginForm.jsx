@@ -1,17 +1,16 @@
 import React from "react";
 import { Box, TextField, Button } from "@mui/material";
-import styles from "./LoginForm.module.css"; // Import CSS module
+import styles from "./LoginForm.module.css";
 
 export const LoginForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
   };
 
   return (
     <Box className={styles.LoginForm} sx={{ height: "100vh" }}>
       <Box className={styles.LoginFormContainer}>
-        <img src="/logo.svg" alt="Logo" />{" "}
+        <img src="/logo.svg" alt="Logo" />
         <div className={styles.text}>
           <h3 className={styles.heading}>Log in to Mentor Token</h3>
           <span>Enter your email and password to login</span>
@@ -34,8 +33,8 @@ export const LoginForm = () => {
             sx={{
               width: "100%",
               "& .MuiInputLabel-root": {
-                fontSize: "12px", // Adjust the font size of the label
-                textAlign: "center", // Center align the label text
+                fontSize: "12px",
+                textAlign: "center",
               },
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
@@ -73,8 +72,8 @@ export const LoginForm = () => {
             sx={{
               width: "100%",
               "& .MuiInputLabel-root": {
-                fontSize: "12px", // Adjust the font size of the label
-                textAlign: "center", // Center align the label text
+                fontSize: "12px",
+                textAlign: "center",
               },
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
@@ -131,6 +130,7 @@ export const LoginForm = () => {
               "&:hover": {
                 backgroundColor: "#575ed8",
               },
+              textTransform: "none",
             }}
           >
             Log in
@@ -138,7 +138,7 @@ export const LoginForm = () => {
         </Box>
         <div className={styles.registerLinkContainer}>
           <div className={styles.registerLink}>
-            Don't have an account?
+            <span> Don't have an account?</span>
             <a href="/register" className={styles.registerLinkText}>
               Register
             </a>

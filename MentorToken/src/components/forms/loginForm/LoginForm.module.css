@@ -84,35 +84,6 @@
   text-align: left;
 }
 
-.button {
-  padding: 16px 24px;
-  border-radius: 9px;
-  background-color: #696cff;
-  color: #fff;
-  font-family: "Manrope", sans-serif;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  width: 106%;
-  height: 51px;
-  gap: 16px;
-  position: relative;
-  overflow: hidden;
-  transition: background-color 0.3s ease;
-  z-index: 1;
-  margin-top: 5rem;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 89px;
-  text-align: center;
-  justify-content: center;
-}
-
-.button:hover {
-  background-color: #575ed8;
-}
-
 .button::before {
   content: "";
   position: absolute;
@@ -132,15 +103,16 @@
 .registerLinkContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100%;
 }
 
 .registerLink {
-  margin-top: 20px;
-  text-align: center;
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .registerLink span {
