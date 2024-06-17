@@ -4,22 +4,26 @@ import { useDispatch } from "react-redux";
 import styles from "./LoginForm.module.css";
 import { logInToApp } from "./duck/operations";
 import { useNavigate, Link } from "react-router-dom";
+import { api } from "../../../config/properties";
 
 export const LoginForm = () => {
-  const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  async function logIn() {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      dispatch(logInToApp(loginData.username, loginData.password));
+      const response = await dispatch(logInToApp(loginData));
+      if (response.status === "success") {
+        navigate("/"); // Redirect on successful login
+      } else {
+        alert("Login failed. Please try again."); // Handle login failure
+      }
     } catch (error) {
-      alert(error);
+      console.error("Login error:", error);
+      alert("Login failed. Please try again."); // Handle login failure
     }
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
   };
 
   return (
@@ -44,6 +48,10 @@ export const LoginForm = () => {
             label="Email Address"
             name="email"
             autoComplete="email"
+            value={loginData.username}
+            onChange={(e) =>
+              setLoginData({ ...loginData, email: e.target.value })
+            }
             autoFocus
             sx={{
               width: "100%",
@@ -74,10 +82,6 @@ export const LoginForm = () => {
                 },
               },
             }}
-            value={loginData.username}
-            onChange={(e) => {
-              setLoginData({ ...loginData, username: e.target.value });
-            }}
           />
           <TextField
             margin="normal"
@@ -88,6 +92,10 @@ export const LoginForm = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={loginData.password}
+            onChange={(e) =>
+              setLoginData({ ...loginData, password: e.target.value })
+            }
             sx={{
               width: "100%",
               "& .MuiInputLabel-root": {
@@ -116,10 +124,6 @@ export const LoginForm = () => {
                   fontWeight: 400,
                 },
               },
-            }}
-            value={loginData.password}
-            onChange={(e) => {
-              setLoginData({ ...loginData, password: e.target.value });
             }}
           />
           <Button
@@ -155,7 +159,6 @@ export const LoginForm = () => {
               },
               textTransform: "none",
             }}
-            onClick={logIn}
           >
             Log in
           </Button>

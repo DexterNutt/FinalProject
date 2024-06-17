@@ -1,9 +1,9 @@
 import { logInSuccess, logInFailed, logOutUser } from "./actions";
 import { LogInUser } from "../../../../api/authApi";
 
-export const logInToApp = (username, password) => {
+export const logInToApp = (email, password) => {
   return (dispatch) => {
-    return LogInUser(username, password)
+    return LogInUser(email, password)
       .then((res) => {
         dispatch(logInSuccess(res.data));
         return res.data;

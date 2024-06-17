@@ -1,13 +1,13 @@
 import { api } from "../config/properties";
 import axios from "axios";
 
-export const LogInUser = async (username, password) => {
+export const LogInUser = async (email, password) => {
   const header = {
     "Content-Type": "application/json",
     Accept: "application/json",
   };
   const data = {
-    username: username,
+    email: email,
     password: password,
   };
   try {
@@ -21,12 +21,12 @@ export const LogInUser = async (username, password) => {
   }
 };
 
-export const registerUser = async (username, password) => {
+export const registerUser = async (email, password) => {
   const header = {
     "Content-Type": "application/json",
     Accept: "application/json",
   };
-  const data = { username: username, password: password };
+  const data = { username: email, password: password };
   try {
     const json = await axios.post(`${api.localRoute}/register`, {
       headers: header,
