@@ -71,6 +71,7 @@ export const LoginForm = () => {
             id="password"
             autoComplete="current-password"
             sx={{
+              width: "100%",
               "& .MuiInputLabel-root": {
                 fontSize: "12px", // Adjust the font size of the label
                 textAlign: "center", // Center align the label text
@@ -114,7 +115,7 @@ export const LoginForm = () => {
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
-              width: "106%",
+              width: "100%",
               height: "51px",
               gap: "16px",
               position: "relative",
@@ -127,9 +128,12 @@ export const LoginForm = () => {
               justifyContent: "center",
               marginTop: "5rem",
               zIndex: 1,
+              "&:hover": {
+                backgroundColor: "#575ed8",
+              },
             }}
           >
-            Login
+            Log in
           </Button>
         </Box>
         <div className={styles.registerLinkContainer}>
