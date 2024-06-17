@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useDispatch } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import styles from "./LoginForm.module.css";
 
 export const LoginForm = () => {
+  const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const dispatch = useDispatch();
+  async function logIn() {
+    try {
+      dispatch(logInToApp(loginData.username, loginData.password));
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -59,6 +69,10 @@ export const LoginForm = () => {
                 },
               },
             }}
+            value={loginData.username}
+            onChange={(e) => {
+              setLoginData({ ...loginData, username: e.target.value });
+            }}
           />
           <TextField
             margin="normal"
@@ -98,6 +112,10 @@ export const LoginForm = () => {
                 },
               },
             }}
+            value={loginData.password}
+            onChange={(e) => {
+              setLoginData({ ...loginData, password: e.target.value });
+            }}
           />
           <Button
             type="submit"
@@ -132,6 +150,7 @@ export const LoginForm = () => {
               },
               textTransform: "none",
             }}
+            onClick={logIn}
           >
             Log in
           </Button>
