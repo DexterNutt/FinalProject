@@ -2,7 +2,7 @@ import { LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT_USER } from "./constants";
 import {
   removeUserStorage,
   setUserStorage,
-} from "../../../config/StorageFunctions";
+} from "../../../../config/StorageFunctions";
 
 const initialState = {
   token: null,

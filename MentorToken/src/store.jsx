@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import { authReducer } from "./components/auth/duck";
+import { authReducer } from "./components/auth/loginForm/duck";
 
 const reducer = {
   authReducer: authReducer,
