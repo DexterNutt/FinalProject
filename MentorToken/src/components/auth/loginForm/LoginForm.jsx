@@ -14,15 +14,17 @@ export const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await dispatch(logInToApp(loginData));
+      const response = await dispatch(
+        logInToApp(loginData.email, loginData.password)
+      );
       if (response.status === "success") {
-        navigate("/"); // Redirect on successful login
+        navigate("/");
       } else {
-        alert("Login failed. Please try again."); // Handle login failure
+        alert("Login failed. Please try again.");
       }
     } catch (error) {
       console.error("Login error:", error);
-      alert("Login failed. Please try again."); // Handle login failure
+      alert("Login failed. Please try again.");
     }
   };
 
