@@ -12,11 +12,11 @@ const authProxy = proxy("http://localhost:9000", {
   },
 });
 
-app.use("/api/v1/auth/", authProxy);
+app.use("/api/v1/auth", authProxy);
 
-app.listen(9002, (err) => {
+app.listen(9000, (err) => {
   if (err) {
     return console.log(err);
   }
-  console.log("Server initiated on port 9002");
+  console.log("Server initiated on port 9000");
 });

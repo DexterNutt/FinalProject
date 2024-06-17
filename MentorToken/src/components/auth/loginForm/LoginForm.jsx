@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import styles from "./LoginForm.module.css";
+import { logInToApp } from "./duck/operations";
+import { useNavigate, Link } from "react-router-dom";
 
 export const LoginForm = () => {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   async function logIn() {
     try {
       dispatch(logInToApp(loginData.username, loginData.password));
