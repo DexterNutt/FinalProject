@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./LoginComp.module.css";
-import { LoginForm } from "../auth/loginForm/LoginForm";
 
 export const LoginComp = () => {
   return (
@@ -28,7 +27,6 @@ export const LoginComp = () => {
             <div className={styles.link}>mentortoken.com</div>
           </div>
         </div>
-        <LoginForm />
       </div>
     </>
   );

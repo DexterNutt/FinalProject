@@ -5,13 +5,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 100%;
   height: 100%;
   z-index: 0;
   background-color: #fff;
-  border-top-left-radius: 7%;
-  border-bottom-left-radius: 7%;
   font-family: Manrope, sans-serif;
+  border-bottom-left-radius: 7%;
+  border-top-left-radius: 7%;
 }
 
 .LoginFormContainer {
