@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-image: url("/login-background.webp"),
+    linear-gradient(147.1deg, #696cff 35.1%, #9574ff 77.5%);
+  padding-left: 2.5rem;
+}

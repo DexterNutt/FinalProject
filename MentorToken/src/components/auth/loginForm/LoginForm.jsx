@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import styles from "./LoginForm.module.css";
 import { logInToApp } from "./duck/operations";
 import { useNavigate, Link } from "react-router-dom";
-import { api } from "../../../config/properties";
 
 export const LoginForm = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });

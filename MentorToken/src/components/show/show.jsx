@@ -8,8 +8,8 @@ export const Show = ({ children }) => {
   useEffect(() => {
     console.log("This is the location: ", location);
     if (
-      location.pathname === "/login"
-      //   location.pathname === "/register" ||
+      location.pathname === "/login" ||
+      location.pathname === "/register"
       //   location.pathname === "/startup" ||
       //   location.pathname === "/mentor"
     ) {
