@@ -1,3 +1,4 @@
+1. Fix button to have weak/unavailable state (Register Comp)
 3. Lazy load (check React)
 4. Fix first avatar
 6. Send code to mentor
