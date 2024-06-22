@@ -12,3 +12,13 @@
   overflow: hidden;
   height: 100%;
 }
+
+.rocket {
+  position: absolute;
+  z-index: 1;
+}
+
+.right {
+  position: absolute;
+  z-index: 0;
+}
