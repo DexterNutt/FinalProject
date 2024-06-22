@@ -8,6 +8,7 @@
   width: 100%;
   overflow: hidden;
   z-index: 1;
+  margin-right: -40px;
 }
 
 .loginContainer .left {
@@ -46,11 +47,10 @@
 
 .loginContainer .left #rocket {
   position: absolute;
-  width: 900px;
-  top: 18rem;
+  height: 63rem;
+  top: 11rem;
   rotate: -5deg;
-  z-index: 3;
-  right: -200px;
+  right: -29rem;
 }
 
 .loginContainer .logoContainer {

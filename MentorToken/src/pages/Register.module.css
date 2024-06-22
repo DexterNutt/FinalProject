@@ -6,6 +6,7 @@
   background-image: url("/login-background.webp"),
     linear-gradient(147.1deg, #696cff 35.1%, #9574ff 77.5%);
   overflow: hidden;
+  padding-left: 2.5rem;
 }
 
 .noOverflow {

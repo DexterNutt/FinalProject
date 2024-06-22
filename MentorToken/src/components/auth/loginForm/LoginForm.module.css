@@ -12,6 +12,7 @@
   font-family: Manrope, sans-serif;
   border-bottom-left-radius: 7%;
   border-top-left-radius: 7%;
+  margin-left: -100px;
 }
 
 .LoginFormContainer {
