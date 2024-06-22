@@ -13,7 +13,7 @@ export const Login = () => {
 
   return (
     <div className={styles.wrapper}>
-      <RocketComp className={styles.left} />
+      <RocketComp className={styles.rocket} />
       <LoginForm className={styles.right} />
     </div>
   );
