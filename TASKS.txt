@@ -1,4 +1,3 @@
-2. Hover on navbar menu
 3. Lazy load (check React)
 4. Fix first avatar
 6. Send code to mentor
