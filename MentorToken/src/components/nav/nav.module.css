@@ -25,7 +25,6 @@
   color: #696cff;
 }
 
-/* LINKS  */
 .navbar ul {
   list-style-type: none;
   display: flex;
@@ -36,12 +35,16 @@
 .link {
   text-decoration: none;
   color: #232323;
+  transition: color 0.3s ease-in-out;
+}
+
+.link:hover {
+  color: #696cff;
 }
 
 .active {
   color: #696cff;
 }
-/* LINKS END */
 
 .login {
   display: flex;
