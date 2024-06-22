@@ -1,5 +1,5 @@
 import React from "react";
-import { RocketComp } from "../components/login/RocketComp";
+import { RocketComp } from "../components/rocket/RocketComp";
 import { LoginForm } from "../components/auth/loginForm/LoginForm";
 import styles from "./Login.module.css";
 

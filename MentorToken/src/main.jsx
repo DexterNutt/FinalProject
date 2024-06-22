@@ -10,13 +10,16 @@ import { Footer } from "./components/footer/Footer.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./main.css";
 import store from "./store.jsx";
+import { Show } from "./components/show/show.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={store}>
     <Router>
-      <Nav />
+      <Show>
+        <Nav />
+      </Show>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -24,7 +27,9 @@ root.render(
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-      <Footer />
+      <Show>
+        <Footer />
+      </Show>
     </Router>
   </Provider>
 );
