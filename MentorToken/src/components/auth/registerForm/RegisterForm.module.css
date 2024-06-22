@@ -166,7 +166,6 @@
   text-align: left;
   color: #696cff;
 }
-
 .passwordFeedback {
   margin-top: 10px;
   gap: 9px;
@@ -187,19 +186,23 @@
   color: rgba(170, 180, 191, 0.5);
   display: flex;
   align-items: center;
+  transition: color 0.3s ease;
+}
+
+.passwordFeedback li::before {
+  content: url("/vectors/check.svg");
+  margin-right: 8px;
+  filter: grayscale(100%) opacity(25%);
+  transition: filter 0.3s ease;
 }
 
 .passwordFeedback li.satisfied {
   color: #6c63ff;
 }
 
-.passwordFeedback li::before {
-  content: url("/vectors/check.svg");
-  margin-right: 8px;
-}
-
 .passwordFeedback li.satisfied::before {
-  filter: grayscale(100%) opacity(25%);
+  filter: none;
+  color: #6c63ff;
 }
 
 .passwordFeedback li.weak::before {
