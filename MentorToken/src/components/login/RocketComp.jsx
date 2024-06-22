@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./LoginComp.module.css";
+import styles from "./RocketComp.module.css";
 
-export const LoginComp = () => {
+export const RocketComp = () => {
   return (
     <>
       <div className={styles.loginContainer}>
