@@ -169,6 +169,12 @@
 
 .passwordFeedback {
   margin-top: 10px;
+  gap: 9px;
+  font-family: Manrope, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 12px;
+  text-align: left;
 }
 
 .passwordFeedback ul {
@@ -184,32 +190,27 @@
 }
 
 .passwordFeedback li.satisfied {
-  color: #6c63ff; /* Color for met criteria */
+  color: #6c63ff;
 }
 
 .passwordFeedback li::before {
-  content: "✔"; /* Checkmark before each criteria */
+  content: url("/vectors/check.svg");
   margin-right: 8px;
-  color: transparent; /* Hide checkmark initially */
 }
 
 .passwordFeedback li.satisfied::before {
-  color: #6c63ff; /* Show green checkmark when criteria are met */
+  filter: grayscale(100%) opacity(25%);
 }
 
-.passwordStrength {
-  font-weight: bold;
-}
-
-.passwordStrength.weak {
+.passwordFeedback li.weak::before {
   color: #aab4bf;
 }
 
-.passwordStrength.moderate {
+.passwordFeedback li.moderate::before {
   color: #d3d3ff;
 }
 
-.passwordStrength.strong {
+.passwordFeedback li.strong::before {
   color: #6c63ff;
 }
 

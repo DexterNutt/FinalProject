@@ -9,11 +9,9 @@ export const RegisterForm = () => {
   const [passwordStrength, setPasswordStrength] = useState("Weak");
   const [passwordCriteria, setPasswordCriteria] = useState({
     length: false,
-    uppercase: false,
-    lowercase: false,
-    digit: false,
-    specialChar: false,
+    digitOrSpecialChar: false,
     noPersonalInfo: false,
+    passwordStrength: false,
   });
 
   const handleButtonClick = (accountType) => {
@@ -34,36 +32,28 @@ export const RegisterForm = () => {
   const validatePassword = (password, email) => {
     const criteria = {
       length: password.length >= 8,
-      uppercase: /[A-Z]/.test(password),
-      lowercase: /[a-z]/.test(password),
-      digit: /[0-9]/.test(password),
-      specialChar: /[!@#$%^&*]/.test(password),
+      digitOrSpecialChar: /[0-9!@#$%^&*]/.test(password),
       noPersonalInfo:
         !password.includes(email) && !password.includes(email.split("@")[0]),
+      passwordStrength: false,
     };
-
-    setPasswordCriteria(criteria);
 
     const satisfiedCriteria = Object.values(criteria).filter(Boolean).length;
 
     let strength = "Weak";
-    if (satisfiedCriteria >= 5) {
+    if (satisfiedCriteria >= 3) {
       strength = "Strong";
-    } else if (satisfiedCriteria >= 3) {
+      criteria.passwordStrength = true;
+    } else if (satisfiedCriteria >= 2) {
       strength = "Moderate";
     }
 
     setPasswordStrength(strength);
+    setPasswordCriteria(criteria);
   };
 
   const getCriteriaClass = (isSatisfied) => {
     return isSatisfied ? styles.satisfied : "";
-  };
-
-  const getPasswordStrengthClass = () => {
-    if (passwordStrength === "Strong") return styles.strong;
-    if (passwordStrength === "Moderate") return styles.moderate;
-    return styles.weak;
   };
 
   return (
@@ -183,33 +173,28 @@ export const RegisterForm = () => {
               }}
             />
             <Box className={styles.passwordFeedback}>
-              <p
-                className={`${
-                  styles.passwordStrength
-                } ${getPasswordStrengthClass()}`}
-              >
-                Password Strength: {passwordStrength}
-              </p>
               <ul>
-                <li className={getCriteriaClass(passwordCriteria.length)}>
-                  At least 8 characters
-                </li>
-                <li className={getCriteriaClass(passwordCriteria.uppercase)}>
-                  At least one uppercase letter (A-Z)
-                </li>
-                <li className={getCriteriaClass(passwordCriteria.lowercase)}>
-                  At least one lowercase letter (a-z)
-                </li>
-                <li className={getCriteriaClass(passwordCriteria.digit)}>
-                  At least one digit (0-9)
-                </li>
-                <li className={getCriteriaClass(passwordCriteria.specialChar)}>
-                  At least one special character (e.g., !, @, #, $, %, ^, &)
+                <li
+                  className={getCriteriaClass(
+                    passwordCriteria.passwordStrength
+                  )}
+                >
+                  Password Strength: {passwordStrength}
                 </li>
                 <li
                   className={getCriteriaClass(passwordCriteria.noPersonalInfo)}
                 >
                   Cannot contain your name or email address
+                </li>
+                <li className={getCriteriaClass(passwordCriteria.length)}>
+                  At least 8 characters
+                </li>
+                <li
+                  className={getCriteriaClass(
+                    passwordCriteria.digitOrSpecialChar
+                  )}
+                >
+                  Contains a number or symbol
                 </li>
               </ul>
             </Box>
