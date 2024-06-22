@@ -9,3 +9,9 @@
     linear-gradient(147.1deg, #696cff 35.1%, #9574ff 77.5%);
   padding-left: 2.5rem;
 }
+
+.noOverflow {
+  overflow: hidden;
+  height: 100%; /* Ensures the body takes the full height of the viewport */
+  margin: 0; /* Removes any default margin */
+}
