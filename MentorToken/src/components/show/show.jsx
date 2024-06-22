@@ -6,7 +6,6 @@ export const Show = ({ children }) => {
   const [showNavBar, setShowNavBar] = useState(true);
 
   useEffect(() => {
-    console.log("This is the location: ", location);
     if (
       location.pathname === "/login" ||
       location.pathname === "/register"
