@@ -15,8 +15,8 @@ export const RegisterUser = () => {
   return (
     <div className={styles.wrapper}>
       <RocketComp className={styles.rocket} />
-      {/* <RegisterStartup className={styles.right} /> */}
-      <RegisterMentor className={styles.right} />
+      <RegisterStartup className={styles.right} />
+      {/* <RegisterMentor className={styles.right} /> */}
     </div>
   );
 };
