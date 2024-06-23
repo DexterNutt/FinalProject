@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
-import styles from "./RegisterForm.module.css";
+import styles from "./RegisterMentor.module.css";
 
-export const RegisterForm = () => {
+export const RegisterMentor = () => {
   const [selectedAccountType, setSelectedAccountType] = useState("startup");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
