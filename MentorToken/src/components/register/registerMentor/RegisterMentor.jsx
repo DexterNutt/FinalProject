@@ -9,14 +9,14 @@ import {
 import styles from "./RegisterMentor.module.css";
 
 export const RegisterMentor = () => {
+  const [mentorName, setMentorName] = useState("");
   const [startupName, setStartupName] = useState("");
-  const [startupRepresentative, setStartupRepresentative] = useState("");
 
   const handleNameChange = (e) => {
-    setStartupName(e.target.value);
+    setMentorName(e.target.value);
   };
-  const handleRepChange = (e) => {
-    setStartupRepresentative(e.target.value);
+  const handleStartupNameChange = (e) => {
+    setStartupName(e.target.value);
   };
 
   return (
@@ -25,16 +25,16 @@ export const RegisterMentor = () => {
         <Box className={styles.rightContainer}>
           <Box className={styles.registerRightTop}>
             <img className={styles.logo} src="/logo.svg" alt="logo" />
-            <h2>SETUP STARTUP ACCOUNT</h2>
+            <h2>SETUP MENTOR ACCOUNT</h2>
           </Box>
 
-          <div className={styles.imageContainer}>
-            <img
-              className={styles.briefcase}
-              src="/startup-img.webp"
-              alt="briefcase"
-            />
-            <img className={styles.camera} src="/photo-img.webp" alt="camera" />
+          <div className={styles.photoContainer}>
+            <div className={styles.mentorPhoto}>
+              <img src="/user.png" alt="" />
+            </div>
+            <div className={styles.camera}>
+              <img src="/photo-img.webp" alt="" />
+            </div>
           </div>
 
           <Box
@@ -49,11 +49,11 @@ export const RegisterMentor = () => {
               margin="normal"
               required
               fullWidth
-              id="Startup Name"
-              label="Startup Name"
-              name="Startup Name"
-              placeholder="My Startup Name"
-              value={startupName}
+              id="Mentor Name"
+              label="Mentor Name"
+              name="Mentor Name"
+              placeholder="Name and surname"
+              value={mentorName}
               onChange={handleNameChange}
               autoFocus
               sx={{
@@ -91,96 +91,13 @@ export const RegisterMentor = () => {
               margin="normal"
               required
               fullWidth
-              name="Legal Representative"
-              label="Legal Representative"
+              name="Startup Name"
+              label="Startup Name"
               type="representative"
-              id="legalRepresentative"
-              placeholder="Name and Surname"
-              value={startupRepresentative}
-              onChange={handleRepChange}
-              sx={{
-                width: "100%",
-                "& .MuiInputLabel-root": {
-                  fontSize: "12px",
-                  textAlign: "center",
-                },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#d3d3ff",
-                    borderRadius: "9px",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#696cff",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#696cff",
-                  },
-                  "& input": {
-                    color: "#aab4bf",
-                    fontSize: "17px",
-                    fontWeight: 500,
-                    padding: "12px",
-                  },
-                  "&.Mui-focused input": {
-                    color: "#566a7f",
-                    fontWeight: 400,
-                  },
-                },
-              }}
-            />
-
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="address"
-              label="Registered Business Address"
-              placeholder="Registered Business Address"
-              type="address"
-              id="startupAddress"
-              value={startupAddress}
-              onChange={handleAddressChange}
-              sx={{
-                width: "100%",
-                "& .MuiInputLabel-root": {
-                  fontSize: "12px",
-                  textAlign: "center",
-                },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#d3d3ff",
-                    borderRadius: "9px",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#696cff",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#696cff",
-                  },
-                  "& input": {
-                    color: "#aab4bf",
-                    fontSize: "17px",
-                    fontWeight: 500,
-                    padding: "12px",
-                  },
-                  "&.Mui-focused input": {
-                    color: "#566a7f",
-                    fontWeight: 400,
-                  },
-                },
-              }}
-            />
-
-            <TextField
-              margin="normal"
-              fullWidth
-              name="inviteMentor"
-              label="Invite Mentors via email"
-              placeholder="Enter email address to invite mentor"
-              type="inviteMentor"
-              id="inviteMentor"
-              value={inviteMentor}
-              onChange={handleInviteMentorChange}
+              id="startupName"
+              placeholder="Startup name"
+              value={startupName}
+              onChange={handleStartupNameChange}
               sx={{
                 width: "100%",
                 "& .MuiInputLabel-root": {
