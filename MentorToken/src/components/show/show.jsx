@@ -8,8 +8,8 @@ export const Show = ({ children }) => {
   useEffect(() => {
     if (
       location.pathname === "/login" ||
-      location.pathname === "/register"
-      //   location.pathname === "/startup" ||
+      location.pathname === "/register" ||
+      location.pathname === "/register/startup"
       //   location.pathname === "/mentor"
     ) {
       setShowNavBar(false);

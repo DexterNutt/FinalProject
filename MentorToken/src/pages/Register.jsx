@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RocketComp } from "../components/rocket/RocketComp";
 import { RegisterForm } from "../components/register/registerForm/RegisterForm";
 import styles from "./Register.module.css";
 
 export const Register = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     document.body.classList.add(styles.noOverflow);
     return () => {
       document.body.classList.remove(styles.noOverflow);
