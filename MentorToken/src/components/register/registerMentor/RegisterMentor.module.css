@@ -51,30 +51,40 @@
   margin: 0;
 }
 
-.imageContainer {
+.photoContainer {
+  height: 121.76px;
+  width: 121.76px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 450px;
+  background-color: #f5f5f9;
+  border-radius: 50%;
+  border: 3px solid #696cff;
   margin-bottom: 20px;
+  align-self: center;
 }
 
-.imageContainer .briefcase {
-  height: 121.76px;
-  width: 121.76px;
-  background-size: cover;
-  z-index: 1;
-}
-
-.imageContainer .camera {
+.photoContainer .camera {
   position: absolute;
   z-index: 2;
-  height: 110px;
-  width: 110px;
-  top: -20px;
-  right: 115px;
+  height: 50px;
+  width: 50px;
+  top: -70px;
+  left: 15px;
+}
+
+.mentorPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 49.87px;
+  height: 49.87px;
+  object-fit: cover;
 }
 
 .form {
