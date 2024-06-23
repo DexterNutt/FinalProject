@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: #fff;
+  font-family: "Manrope", sans-serif;
+  border-bottom-left-radius: 7%;
+  border-top-left-radius: 7%;
+  margin-left: -100px;
+}
+
+.registerRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.registerRight img {
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-bottom: 20px;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.registerRightTop {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.registerRightTop h2 {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 89px;
+  text-align: left;
+  color: #566a7f;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  max-width: 100%;
+  margin-bottom: 80px;
+  background-color: #f5f5f9;
+  height: 50px;
+}
+
+.accountButton {
+  width: 49%;
+  border-radius: 8px;
+  padding: 8px 20px;
+  height: 38px;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #566a7f;
+  border: none;
+  cursor: pointer;
+}
+
+.accountButton.selected {
+  background-color: #696cff;
+  color: #ffffff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+}
+
+.inputField {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1.25rem;
+  border: 2px solid #d3d3ff;
+  border-radius: 9px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #aab4bf;
+}
+
+.inputField:focus {
+  border: 2px solid #696cff;
+  color: #566a7f;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.registerButton {
+  width: 100%;
+  height: 60px;
+  border-radius: 9px;
+  background: #696cff;
+  font-family: "Manrope", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.registerButton::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -80px;
+  height: 100px;
+  width: 70px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(20deg);
+  transition: left 0.5s ease;
+}
+
+.registerButton:hover::before {
+  left: 500px;
+}
+
+.registerButton:hover {
+  background-color: #5456c4;
+}
+
+.rightSpanBottom {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: #566a7f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightSpanRegister {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: #696cff;
+}
+.passwordFeedback {
+  margin-top: 10px;
+  gap: 9px;
+  font-family: Manrope, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 12px;
+  text-align: left;
+}
+
+.passwordFeedback ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.passwordFeedback li {
+  color: rgba(170, 180, 191, 0.5);
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.passwordFeedback li::before {
+  content: url("/vectors/check.svg");
+  margin-right: 8px;
+  filter: grayscale(100%) opacity(25%);
+  transition: filter 0.3s ease;
+}
+
+.passwordFeedback li.satisfied {
+  color: #6c63ff;
+}
+
+.passwordFeedback li.satisfied::before {
+  filter: none;
+  color: #6c63ff;
+}
+
+.passwordFeedback li.weak::before {
+  color: #aab4bf;
+}
+
+.passwordFeedback li.moderate::before {
+  color: #d3d3ff;
+}
+
+.passwordFeedback li.strong::before {
+  color: #6c63ff;
+}
+
+.loginLinkContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.loginLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.loginLink span {
+  color: #666;
+  font-size: 14px;
+}
+
+.loginLinkText {
+  color: #6c63ff;
+  text-decoration: none;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.loginLinkText:hover {
+  text-decoration: underline;
+}

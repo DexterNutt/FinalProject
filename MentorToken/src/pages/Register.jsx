@@ -1,6 +1,6 @@
 import React from "react";
 import { RocketComp } from "../components/rocket/RocketComp";
-import { RegisterForm } from "../components/auth/registerForm/RegisterForm";
+import { RegisterForm } from "../components/register/registerForm/RegisterForm";
 import styles from "./Register.module.css";
 
 export const Register = () => {
