@@ -1,59 +1,22 @@
 import React, { useState } from "react";
-import { Box, TextField, Button } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  Checkbox,
+  FormControlLabel,
+} from "@mui/material";
 import styles from "./RegisterMentor.module.css";
 
 export const RegisterMentor = () => {
-  const [selectedAccountType, setSelectedAccountType] = useState("startup");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordStrength, setPasswordStrength] = useState("Weak");
-  const [passwordCriteria, setPasswordCriteria] = useState({
-    length: false,
-    digitOrSpecialChar: false,
-    noPersonalInfo: false,
-    passwordStrength: false,
-  });
+  const [startupName, setStartupName] = useState("");
+  const [startupRepresentative, setStartupRepresentative] = useState("");
 
-  const handleButtonClick = (accountType) => {
-    setSelectedAccountType(accountType);
+  const handleNameChange = (e) => {
+    setStartupName(e.target.value);
   };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    validatePassword(password, e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    const newPassword = e.target.value;
-    setPassword(newPassword);
-    validatePassword(newPassword, email);
-  };
-
-  const validatePassword = (password, email) => {
-    const criteria = {
-      length: password.length >= 8,
-      digitOrSpecialChar: /[0-9!@#$%^&*]/.test(password),
-      noPersonalInfo:
-        !password.includes(email) && !password.includes(email.split("@")[0]),
-      passwordStrength: false,
-    };
-
-    const satisfiedCriteria = Object.values(criteria).filter(Boolean).length;
-
-    let strength = "Weak";
-    if (satisfiedCriteria >= 3) {
-      strength = "Strong";
-      criteria.passwordStrength = true;
-    } else if (satisfiedCriteria >= 2) {
-      strength = "Moderate";
-    }
-
-    setPasswordStrength(strength);
-    setPasswordCriteria(criteria);
-  };
-
-  const getCriteriaClass = (isSatisfied) => {
-    return isSatisfied ? styles.satisfied : "";
+  const handleRepChange = (e) => {
+    setStartupRepresentative(e.target.value);
   };
 
   return (
@@ -61,33 +24,24 @@ export const RegisterMentor = () => {
       <Box className={styles.registerRight}>
         <Box className={styles.rightContainer}>
           <Box className={styles.registerRightTop}>
-            <img src="/logo.svg" alt="logo" />
-            <h2>CHOOSE ACCOUNT TYPE</h2>
+            <img className={styles.logo} src="/logo.svg" alt="logo" />
+            <h2>SETUP STARTUP ACCOUNT</h2>
           </Box>
-          <Box className={styles.buttonContainer}>
-            <Button
-              className={`${styles.accountButton} ${
-                selectedAccountType === "startup" ? styles.selected : ""
-              }`}
-              onClick={() => handleButtonClick("startup")}
-            >
-              Startup
-            </Button>
-            <Button
-              className={`${styles.accountButton} ${
-                selectedAccountType === "mentor" ? styles.selected : ""
-              }`}
-              onClick={() => handleButtonClick("mentor")}
-            >
-              Mentor
-            </Button>
-          </Box>
+
+          <div className={styles.imageContainer}>
+            <img
+              className={styles.briefcase}
+              src="/startup-img.webp"
+              alt="briefcase"
+            />
+            <img className={styles.camera} src="/photo-img.webp" alt="camera" />
+          </div>
+
           <Box
             component="form"
             noValidate
             onSubmit={(e) => {
               e.preventDefault();
-              // handle form submission
             }}
             className={styles.form}
           >
@@ -95,12 +49,12 @@ export const RegisterMentor = () => {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              value={email}
-              onChange={handleEmailChange}
+              id="Startup Name"
+              label="Startup Name"
+              name="Startup Name"
+              placeholder="My Startup Name"
+              value={startupName}
+              onChange={handleNameChange}
               autoFocus
               sx={{
                 width: "100%",
@@ -132,17 +86,18 @@ export const RegisterMentor = () => {
                 },
               }}
             />
+
             <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={handlePasswordChange}
+              name="Legal Representative"
+              label="Legal Representative"
+              type="representative"
+              id="legalRepresentative"
+              placeholder="Name and Surname"
+              value={startupRepresentative}
+              onChange={handleRepChange}
               sx={{
                 width: "100%",
                 "& .MuiInputLabel-root": {
@@ -173,32 +128,90 @@ export const RegisterMentor = () => {
                 },
               }}
             />
-            <Box className={styles.passwordFeedback}>
-              <ul>
-                <li
-                  className={getCriteriaClass(
-                    passwordCriteria.passwordStrength
-                  )}
-                >
-                  Password Strength: {passwordStrength}
-                </li>
-                <li
-                  className={getCriteriaClass(passwordCriteria.noPersonalInfo)}
-                >
-                  Cannot contain your name or email address
-                </li>
-                <li className={getCriteriaClass(passwordCriteria.length)}>
-                  At least 8 characters
-                </li>
-                <li
-                  className={getCriteriaClass(
-                    passwordCriteria.digitOrSpecialChar
-                  )}
-                >
-                  Contains a number or symbol
-                </li>
-              </ul>
-            </Box>
+
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="address"
+              label="Registered Business Address"
+              placeholder="Registered Business Address"
+              type="address"
+              id="startupAddress"
+              value={startupAddress}
+              onChange={handleAddressChange}
+              sx={{
+                width: "100%",
+                "& .MuiInputLabel-root": {
+                  fontSize: "12px",
+                  textAlign: "center",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#d3d3ff",
+                    borderRadius: "9px",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#696cff",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#696cff",
+                  },
+                  "& input": {
+                    color: "#aab4bf",
+                    fontSize: "17px",
+                    fontWeight: 500,
+                    padding: "12px",
+                  },
+                  "&.Mui-focused input": {
+                    color: "#566a7f",
+                    fontWeight: 400,
+                  },
+                },
+              }}
+            />
+
+            <TextField
+              margin="normal"
+              fullWidth
+              name="inviteMentor"
+              label="Invite Mentors via email"
+              placeholder="Enter email address to invite mentor"
+              type="inviteMentor"
+              id="inviteMentor"
+              value={inviteMentor}
+              onChange={handleInviteMentorChange}
+              sx={{
+                width: "100%",
+                "& .MuiInputLabel-root": {
+                  fontSize: "12px",
+                  textAlign: "center",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#d3d3ff",
+                    borderRadius: "9px",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#696cff",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#696cff",
+                  },
+                  "& input": {
+                    color: "#aab4bf",
+                    fontSize: "17px",
+                    fontWeight: 500,
+                    padding: "12px",
+                  },
+                  "&.Mui-focused input": {
+                    color: "#566a7f",
+                    fontWeight: 400,
+                  },
+                },
+              }}
+            />
+
             <Button
               type="submit"
               fullWidth
@@ -225,7 +238,7 @@ export const RegisterMentor = () => {
                 lineHeight: "51px",
                 textAlign: "center",
                 justifyContent: "center",
-                marginTop: "5rem",
+                marginTop: "2rem",
                 zIndex: 1,
                 "&:hover": {
                   backgroundColor: "#575ed8",
@@ -233,17 +246,32 @@ export const RegisterMentor = () => {
                 textTransform: "none",
               }}
             >
-              Continue
+              Register
             </Button>
-          </Box>
-          <div className={styles.loginLinkContainer}>
-            <div className={styles.loginLink}>
-              <span>Already Have an account?</span>
-              <a href="/login" className={styles.loginLinkText}>
-                Login
-              </a>
+            <div className={styles.termsAndConditions}>
+              <div className={styles.text}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      className={styles.checkbox}
+                      sx={{
+                        color: "#696cff",
+                        "&.Mui-checked": {
+                          color: "#696cff",
+                        },
+                      }}
+                    />
+                  }
+                />
+                <span>
+                  By signing up to create an account I accept Company’s{" "}
+                  <a href="#" className={styles.loginLinkText}>
+                    Terms of use & Privacy Policy.
+                  </a>
+                </span>
+              </div>
             </div>
-          </div>
+          </Box>
         </Box>
       </Box>
     </Box>
