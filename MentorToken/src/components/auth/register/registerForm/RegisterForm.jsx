@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import styles from "./RegisterForm.module.css";
+import { RegisterMentor } from "../registerMentor/RegisterMentor";
+import { RegisterStartup } from "../registerStartup/RegisterStartup";
+import { registerToApp } from "./duck/operations";
+import { useDispatch } from "react-redux";
 
 export const RegisterForm = () => {
-  const [selectedAccountType, setSelectedAccountType] = useState("startup");
+  const [role, setRole] = useState("startup");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState("Weak");
@@ -13,9 +17,12 @@ export const RegisterForm = () => {
     noPersonalInfo: false,
     passwordStrength: false,
   });
+  const [step, setStep] = useState(1);
+  const [mentorData, setMentorData] = useState({});
+  const [startupData, setStartupData] = useState({});
 
-  const handleButtonClick = (accountType) => {
-    setSelectedAccountType(accountType);
+  const handleButtonClick = (role) => {
+    setRole(role);
   };
 
   const handleEmailChange = (e) => {
@@ -56,38 +63,92 @@ export const RegisterForm = () => {
     return isSatisfied ? styles.satisfied : "";
   };
 
+  const handleContinue = () => {
+    if (passwordStrength !== "Weak") {
+      setStep(2);
+    } else {
+      alert("Password strength is too weak!");
+    }
+  };
+
+  const handleSubmit = async () => {
+    console.log("Submitted data:", {
+      email,
+      password,
+      role,
+      mentorData,
+      startupData,
+    });
+
+    try {
+      const response = await dispatch(
+        registerToApp(
+          email,
+          password,
+          role,
+          mentorData.name,
+          startupData.startupName,
+          startupData.representative
+        )
+      );
+      if (response.status === "success") {
+        navigate("/");
+      } else {
+        alert("Register failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Register error:", error);
+      alert("Register failed. Please try again.");
+    }
+  };
+
+  const handleMentorSubmit = (data) => {
+    setMentorData(data);
+    handleSubmit(); // Example: Submitting after mentor registration
+  };
+
+  const handleStartupSubmit = (data) => {
+    setStartupData(data);
+    handleSubmit(); // Example: Submitting after startup registration
+  };
+
   return (
     <Box className={styles.registerContainer}>
       <Box className={styles.registerRight}>
-        <Box className={styles.rightContainer}>
-          <Box className={styles.registerRightTop}>
-            <img src="/logo.svg" alt="logo" />
-            <h2>CHOOSE ACCOUNT TYPE</h2>
+        {step === 1 && (
+          <Box className={styles.rightContainer}>
+            <Box className={styles.registerRightTop}>
+              <img src="/logo.svg" alt="logo" />
+              <h2>CHOOSE ACCOUNT TYPE</h2>
+            </Box>
+            <Box className={styles.buttonContainer}>
+              <Button
+                className={`${styles.accountButton} ${
+                  role === "startup" ? styles.selected : ""
+                }`}
+                onClick={() => handleButtonClick("startup")}
+              >
+                Startup
+              </Button>
+              <Button
+                className={`${styles.accountButton} ${
+                  role === "mentor" ? styles.selected : ""
+                }`}
+                onClick={() => handleButtonClick("mentor")}
+              >
+                Mentor
+              </Button>
+            </Box>
           </Box>
-          <Box className={styles.buttonContainer}>
-            <Button
-              className={`${styles.accountButton} ${
-                selectedAccountType === "startup" ? styles.selected : ""
-              }`}
-              onClick={() => handleButtonClick("startup")}
-            >
-              Startup
-            </Button>
-            <Button
-              className={`${styles.accountButton} ${
-                selectedAccountType === "mentor" ? styles.selected : ""
-              }`}
-              onClick={() => handleButtonClick("mentor")}
-            >
-              Mentor
-            </Button>
-          </Box>
+        )}
+
+        {step === 1 && (
           <Box
             component="form"
             noValidate
             onSubmit={(e) => {
               e.preventDefault();
-              // handle form submission
+              handleContinue();
             }}
             className={styles.form}
           >
@@ -236,6 +297,17 @@ export const RegisterForm = () => {
               Continue
             </Button>
           </Box>
+        )}
+
+        {step === 2 && role === "mentor" && (
+          <RegisterMentor onNext={handleMentorSubmit} />
+        )}
+
+        {step === 2 && role === "startup" && (
+          <RegisterStartup onNext={handleStartupSubmit} />
+        )}
+
+        {step === 1 && (
           <div className={styles.loginLinkContainer}>
             <div className={styles.loginLink}>
               <span>Already Have an account?</span>
@@ -244,7 +316,7 @@ export const RegisterForm = () => {
               </a>
             </div>
           </div>
-        </Box>
+        )}
       </Box>
     </Box>
   );

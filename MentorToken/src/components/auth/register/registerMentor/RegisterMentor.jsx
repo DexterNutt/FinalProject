@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import styles from "./RegisterMentor.module.css";
 
-export const RegisterMentor = () => {
+export const RegisterMentor = ({ onNext }) => {
   const [mentorName, setMentorName] = useState("");
   const [startupName, setStartupName] = useState("");
 
@@ -19,6 +19,11 @@ export const RegisterMentor = () => {
     setStartupName(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Validate mentorName if needed
+    onNext({ mentorName });
+  };
   return (
     <Box className={styles.registerContainer}>
       <Box className={styles.registerRight}>
@@ -40,9 +45,7 @@ export const RegisterMentor = () => {
           <Box
             component="form"
             noValidate
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
+            onSubmit={handleSubmit}
             className={styles.form}
           >
             <TextField

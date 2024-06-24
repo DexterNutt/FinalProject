@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import styles from "./RegisterStartup.module.css";
 
-export const RegisterStartup = () => {
+export const RegisterStartup = ({ onNext }) => {
   const [startupName, setStartupName] = useState("");
   const [startupRepresentative, setStartupRepresentative] = useState("");
   const [startupAddress, setStartupAddress] = useState("");
@@ -27,13 +27,16 @@ export const RegisterStartup = () => {
     setInviteMentor(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(startupName);
-    try {
-      const res = await dispatch(registerToApp());
-    } catch (error) {}
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    onNext({
+      startupName,
+      startupRepresentative,
+      startupAddress,
+      inviteMentor,
+    });
+  };
   return (
     <Box className={styles.registerContainer}>
       <Box className={styles.registerRight}>
@@ -55,9 +58,7 @@ export const RegisterStartup = () => {
           <Box
             component="form"
             noValidate
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
+            onSubmit={handleSubmit}
             className={styles.form}
           >
             <TextField
