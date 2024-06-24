@@ -1,5 +1,5 @@
 import { registerSuccess, registerFailed } from "./actions";
-import { registerUser } from "../../../../api/authApi";
+import { registerUser } from "../../../../../api/authApi";
 
 export const registerToApp = (
   email,
