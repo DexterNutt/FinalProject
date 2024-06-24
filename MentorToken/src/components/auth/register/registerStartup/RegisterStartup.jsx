@@ -27,6 +27,13 @@ export const RegisterStartup = () => {
     setInviteMentor(e.target.value);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault(startupName);
+    try {
+      const res = await dispatch(registerToApp());
+    } catch (error) {}
+  };
+
   return (
     <Box className={styles.registerContainer}>
       <Box className={styles.registerRight}>
