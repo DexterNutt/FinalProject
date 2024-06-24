@@ -19,7 +19,9 @@ export const RegisterForm = () => {
     passwordStrength: false,
   });
   const [step, setStep] = useState(1);
-  const [mentorData, setMentorName] = useState(undefined);
+  const [mentorData, setMentorData] = useState({
+    mentorName: "",
+  });
   const [startupData, setStartupData] = useState({});
 
   const dispatch = useDispatch();
@@ -75,13 +77,25 @@ export const RegisterForm = () => {
     }
   };
 
+  const handleMentorSubmit = (data) => {
+    setMentorData(data);
+    handleSubmit();
+  };
+
+  const handleStartupSubmit = (data) => {
+    setStartupData(data);
+    handleSubmit();
+  };
+
   const handleSubmit = async () => {
     console.log("Submitted data:", {
       email,
       password,
       role,
-      mentorData,
-      startupData,
+      mentorName: mentorData.mentorName,
+      startupName: startupData.startupName,
+      representative: startupData.representative,
+      address: startupData.address,
     });
 
     try {
@@ -105,16 +119,6 @@ export const RegisterForm = () => {
       console.error("Register error:", error);
       alert("Register failed. Please try again.");
     }
-  };
-
-  const handleMentorSubmit = (data) => {
-    setMentorName(data);
-    handleSubmit();
-  };
-
-  const handleStartupSubmit = (data) => {
-    setStartupData(data);
-    handleSubmit();
   };
 
   return (
