@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { RegisterStartup } from "../../components/register/registerStartup/RegisterStartup";
-import { RegisterMentor } from "../../components/register/registerMentor/RegisterMentor";
+import { RegisterStartup } from "../../components/auth/register/registerStartup/RegisterStartup";
+import { RegisterMentor } from "../../components/auth/register/registerMentor/RegisterMentor";
 import { RocketComp } from "../../components/rocket/RocketComp";
 import styles from "./RegisterUser.module.css";
 
