@@ -5,6 +5,7 @@ import { RegisterMentor } from "../registerMentor/RegisterMentor";
 import { RegisterStartup } from "../registerStartup/RegisterStartup";
 import { registerToApp } from "./duck/operations";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {
   const [role, setRole] = useState("startup");
@@ -18,8 +19,11 @@ export const RegisterForm = () => {
     passwordStrength: false,
   });
   const [step, setStep] = useState(1);
-  const [mentorData, setMentorData] = useState({});
+  const [mentorData, setMentorName] = useState(undefined);
   const [startupData, setStartupData] = useState({});
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleButtonClick = (role) => {
     setRole(role);
@@ -86,9 +90,10 @@ export const RegisterForm = () => {
           email,
           password,
           role,
-          mentorData.name,
+          mentorData.mentorName,
           startupData.startupName,
-          startupData.representative
+          startupData.representative,
+          startupData.address
         )
       );
       if (response.status === "success") {
@@ -103,13 +108,13 @@ export const RegisterForm = () => {
   };
 
   const handleMentorSubmit = (data) => {
-    setMentorData(data);
-    handleSubmit(); // Example: Submitting after mentor registration
+    setMentorName(data);
+    handleSubmit();
   };
 
   const handleStartupSubmit = (data) => {
     setStartupData(data);
-    handleSubmit(); // Example: Submitting after startup registration
+    handleSubmit();
   };
 
   return (
