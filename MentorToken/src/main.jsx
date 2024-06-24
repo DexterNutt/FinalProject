@@ -8,7 +8,6 @@ import { Contact } from "./pages/Contact.jsx";
 import { Login } from "./pages/login/Login.jsx";
 import { Nav } from "./components/nav/Nav.jsx";
 import { Footer } from "./components/footer/Footer.jsx";
-// import { RegisterUser } from "./pages/registerUser/RegisterUser.jsx";
 import { Register } from "./pages/register/Register.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./main.css";
@@ -29,8 +28,6 @@ root.render(
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/register/startup" element={<RegisterUser />} /> */}
-        {/* <Route path="/register/mentor" element={<RegisterUser />} /> */}
       </Routes>
       <Show>
         <Footer />
