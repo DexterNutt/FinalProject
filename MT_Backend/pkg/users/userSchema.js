@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema({
   },
   startupName: {
     type: String,
+    required: function () {
+      return this.role === "startup";
+    },
   },
   representative: {
     type: String,
