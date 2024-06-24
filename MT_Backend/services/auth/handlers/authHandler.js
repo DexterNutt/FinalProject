@@ -1,15 +1,31 @@
-const User = require("../../../pkg/users/userSchema");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const User = require("../../../pkg/users/userSchema");
 
 exports.register = async (req, res) => {
   try {
-    const newUser = await User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-      role: req.body.role,
+    const {
+      email,
+      password,
+      role,
+      mentorName,
+      startupName,
+      representative,
+      address,
+    } = req.body;
+
+    const newUser = new User({
+      email,
+      password,
+      role,
+      mentorName: role === "mentor" ? mentorName : undefined,
+      startupName: role === "startup" ? startupName : undefined,
+      representative: role === "startup" ? representative : undefined,
+      address: role === "startup" ? address : undefined,
     });
+    console.log(newUser);
+
+    await newUser.save();
 
     res.status(201).json({
       status: "success",
@@ -18,6 +34,7 @@ exports.register = async (req, res) => {
       },
     });
   } catch (error) {
+    console.error(error);
     res.status(500).send("Internal server issue");
   }
 };
