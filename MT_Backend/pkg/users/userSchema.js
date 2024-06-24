@@ -2,22 +2,57 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: [true, "Username is required"],
-  },
   email: {
     type: String,
     required: [true, "Email is required"],
   },
   password: {
     type: String,
-    minlength: [4, "Password must be at least 4 characters long"],
     required: [true, "Password is required"],
   },
   role: {
     type: String,
-    required: [true, "please select Mentor or Startup"],
+    enum: ["mentor", "startup"],
+    required: [true, "Role is required"],
+  },
+  phone: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
+  mentorName: {
+    type: String,
+    required: function () {
+      return this.role === "mentor";
+    },
+  },
+  skills: {
+    type: [String],
+  },
+  acceptedJobs: {
+    type: [String],
+  },
+  startupName: {
+    type: String,
+  },
+  representative: {
+    type: String,
+    required: function () {
+      return this.role === "startup";
+    },
+  },
+  address: {
+    type: String,
+    required: function () {
+      return this.role === "startup";
+    },
+  },
+  mentors: {
+    type: [String],
+  },
+  jobsPosted: {
+    type: [String],
   },
 });
 
