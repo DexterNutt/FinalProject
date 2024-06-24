@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { RocketComp } from "../components/rocket/RocketComp";
-import { LoginForm } from "../components/auth/loginForm/LoginForm";
-import styles from "./Login.module.css";
+import { RocketComp } from "../../components/rocket/RocketComp";
+import { RegisterForm } from "../../components/register/registerForm/RegisterForm";
+import styles from "./Register.module.css";
 
-export const Login = () => {
+export const Register = () => {
   useEffect(() => {
     document.body.classList.add(styles.noOverflow);
     return () => {
@@ -14,7 +14,7 @@ export const Login = () => {
   return (
     <div className={styles.wrapper}>
       <RocketComp className={styles.rocket} />
-      <LoginForm className={styles.right} />
+      <RegisterForm className={styles.right} />
     </div>
   );
 };
