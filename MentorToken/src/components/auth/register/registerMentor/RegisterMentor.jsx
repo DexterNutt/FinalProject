@@ -10,18 +10,17 @@ import styles from "./RegisterMentor.module.css";
 
 export const RegisterMentor = ({ onNext }) => {
   const [mentorName, setMentorName] = useState("");
-  const [startupName, setStartupName] = useState("");
+  // const [skills, setSkills] = useState("");
 
   const handleNameChange = (e) => {
     setMentorName(e.target.value);
   };
-  const handleStartupNameChange = (e) => {
-    setStartupName(e.target.value);
-  };
+  // const handleSkillsChange = (e) => {
+  //   setSkills(e.target.value);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Validate mentorName if needed
     onNext({ mentorName });
   };
   return (
@@ -90,17 +89,17 @@ export const RegisterMentor = ({ onNext }) => {
               }}
             />
 
-            <TextField
+            {/* <TextField
               margin="normal"
               required
               fullWidth
-              name="Startup Name"
-              label="Startup Name"
-              type="representative"
-              id="startupName"
-              placeholder="Startup name"
-              value={startupName}
-              onChange={handleStartupNameChange}
+              name="skills"
+              label="Skills"
+              type="skills"
+              id="skills"
+              placeholder="Your Skills"
+              value={skills}
+              onChange={handleSkillsChange}
               sx={{
                 width: "100%",
                 "& .MuiInputLabel-root": {
@@ -130,7 +129,7 @@ export const RegisterMentor = ({ onNext }) => {
                   },
                 },
               }}
-            />
+            /> */}
 
             <Button
               type="submit"
@@ -184,7 +183,7 @@ export const RegisterMentor = ({ onNext }) => {
                   }
                 />
                 <span>
-                  By signing up to create an account I accept Company’s{" "}
+                  By signing up to create an account I accept Company
                   <a href="#" className={styles.loginLinkText}>
                     Terms of use & Privacy Policy.
                   </a>
