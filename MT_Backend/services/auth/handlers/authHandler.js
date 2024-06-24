@@ -14,6 +14,12 @@ exports.register = async (req, res) => {
       address,
     } = req.body;
 
+    if (!email || !password || !role) {
+      return res
+        .status(400)
+        .json({ error: "Email, password, and role are required." });
+    }
+
     const newUser = new User({
       email,
       password,
@@ -23,19 +29,33 @@ exports.register = async (req, res) => {
       representative: role === "startup" ? representative : undefined,
       address: role === "startup" ? address : undefined,
     });
-    console.log(newUser);
 
     await newUser.save();
 
+    const token = jwt.sign(
+      {
+        id: newUser._id,
+        email: newUser.email,
+        role: newUser.role,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES }
+    );
+
     res.status(201).json({
       status: "success",
+      token,
       data: {
-        user: newUser,
+        user: {
+          id: newUser._id,
+          email: newUser.email,
+          role: newUser.role,
+        },
       },
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Internal server issue");
+    res.status(500).send("Internal server error");
   }
 };
 
@@ -70,6 +90,6 @@ exports.login = async (req, res) => {
 
     res.status(200).json({ status: "success", token });
   } catch (error) {
-    res.status(500).send("Internal server issue");
+    res.status(500).send("Internal server error");
   }
 };
