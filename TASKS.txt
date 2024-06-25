@@ -1,4 +1,5 @@
-2. Upload pic
-3. Lazy load (check React)
-6. Send code to mentor
-7. Blisk.io 
+1. Find a way to add PIC to DB
+2. Lazy load (check React)
+3. Send code to mentor
+4. Blisk.io -> за mobile View
+5. upload to netlify
