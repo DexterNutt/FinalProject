@@ -23,7 +23,13 @@ export const RegisterForm = () => {
   const [mentorData, setMentorData] = useState({
     mentorName: "",
   });
-  const [startupData, setStartupData] = useState({});
+
+  const [startupData, setStartupData] = useState({
+    startupName: "",
+    representative: "",
+    address: "",
+    inviteMentor: "",
+  });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -85,8 +91,9 @@ export const RegisterForm = () => {
   };
 
   const handleStartupSubmit = (data) => {
+    console.log("Received Data:", data);
     setStartupData(data);
-    handleSubmit();
+    handleSubmit(data);
   };
 
   const handleSubmit = async (data) => {
@@ -109,18 +116,15 @@ export const RegisterForm = () => {
           password,
           role,
           data.mentorName || mentorData.mentorName,
-          data.startupName || startupData.startupName,
-          data.representative || startupData.representative,
-          data.address || startupData.address
+          data.startupData.startupName || startupData.startupName,
+          data.startupData.representative || startupData.representative,
+          data.startupData.address || startupData.address
         )
       );
       if (response.status === "success") {
         navigate("/");
       } else {
-        alert(
-          "You tried to register the name:",
-          data.mentorName || mentorData.mentorName
-        );
+        alert("You tried to register:", data.startupData.startupName);
       }
     } catch (error) {
       console.error("Register error:", error);
