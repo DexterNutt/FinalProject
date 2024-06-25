@@ -1,5 +1,6 @@
 1. Fix button to have weak/unavailable state (Register Comp)
 2. Upload pic
 3. Lazy load (check React)
+4. Setup register button (GEt started to lead to Register)
 6. Send code to mentor
 7. Blisk.io 
