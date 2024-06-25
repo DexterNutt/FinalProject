@@ -79,8 +79,9 @@ export const RegisterForm = () => {
   };
 
   const handleMentorSubmit = (data) => {
+    console.log("Received Data:", data);
     setMentorData(data);
-    handleSubmit();
+    handleSubmit(data);
   };
 
   const handleStartupSubmit = (data) => {
@@ -88,16 +89,18 @@ export const RegisterForm = () => {
     handleSubmit();
   };
 
-  const handleSubmit = async () => {
-    console.log("Submitted data:", {
+  const handleSubmit = async (data) => {
+    const submissionData = {
       email,
       password,
       role,
-      mentorName: mentorData.mentorName,
-      startupName: startupData.startupName,
-      representative: startupData.representative,
-      address: startupData.address,
-    });
+      mentorName: data.mentorName || mentorData.mentorName,
+      startupName: data.startupName || startupData.startupName,
+      representative: data.representative || startupData.representative,
+      address: data.address || startupData.address,
+    };
+
+    console.log("Submitting Data:", submissionData);
 
     try {
       const response = await dispatch(
@@ -105,16 +108,19 @@ export const RegisterForm = () => {
           email,
           password,
           role,
-          mentorData.mentorName,
-          startupData.startupName,
-          startupData.representative,
-          startupData.address
+          data.mentorName || mentorData.mentorName,
+          data.startupName || startupData.startupName,
+          data.representative || startupData.representative,
+          data.address || startupData.address
         )
       );
       if (response.status === "success") {
         navigate("/");
       } else {
-        alert("Register failed. Please try again.");
+        alert(
+          "You tried to register the name:",
+          data.mentorName || mentorData.mentorName
+        );
       }
     } catch (error) {
       console.error("Register error:", error);

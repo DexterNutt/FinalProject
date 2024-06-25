@@ -9,19 +9,22 @@ import {
 import styles from "./RegisterMentor.module.css";
 import { formButtonStyles, inputFieldStyles } from "../../../../formStyles";
 
+// const [skills, setSkills] = useState("");
+
+// const handleNameChange = (e) => {
+//   setMentorName(e.target.value);
+// };
+
+// const handleSkillsChange = (e) => {
+//   setSkills(e.target.value);
+// };
+
 export const RegisterMentor = ({ onNext }) => {
   const [mentorName, setMentorName] = useState("");
-  // const [skills, setSkills] = useState("");
-
-  const handleNameChange = (e) => {
-    setMentorName(e.target.value);
-  };
-  // const handleSkillsChange = (e) => {
-  //   setSkills(e.target.value);
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Submitting:", mentorName);
     onNext({ mentorName });
   };
 
@@ -56,7 +59,10 @@ export const RegisterMentor = ({ onNext }) => {
           name="Mentor Name"
           placeholder="Name and surname"
           value={mentorName}
-          onChange={handleNameChange}
+          onChange={(e) => {
+            console.log("Input Change:", e.target.value);
+            setMentorName(e.target.value);
+          }}
           autoFocus
           sx={inputFieldStyles}
         />
