@@ -10,32 +10,26 @@ import styles from "./RegisterStartup.module.css";
 import { formButtonStyles, inputFieldStyles } from "../../../../formStyles";
 
 export const RegisterStartup = ({ onNext }) => {
-  const [startupName, setStartupName] = useState("");
-  const [startupRepresentative, setStartupRepresentative] = useState("");
-  const [startupAddress, setStartupAddress] = useState("");
-  const [inviteMentor, setInviteMentor] = useState("");
+  const [startupData, setStartupData] = useState({
+    startupName: "",
+    representative: "",
+    address: "",
+    inviteMentor: "",
+  });
 
-  const handleNameChange = (e) => {
-    setStartupName(e.target.value);
-  };
-  const handleRepChange = (e) => {
-    setStartupRepresentative(e.target.value);
-  };
-  const handleAddressChange = (e) => {
-    setStartupAddress(e.target.value);
-  };
-  const handleInviteMentorChange = (e) => {
-    setInviteMentor(e.target.value);
+  const handleDataChange = (e) => {
+    const { name, value } = e.target;
+    setStartupData((data) => ({
+      ...data,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log("Submitting:");
     onNext({
-      startupName,
-      startupRepresentative,
-      startupAddress,
-      inviteMentor,
+      startupData,
     });
   };
   return (
@@ -64,12 +58,12 @@ export const RegisterStartup = ({ onNext }) => {
           margin="normal"
           required
           fullWidth
-          id="Startup Name"
+          id="startupName"
           label="Startup Name"
-          name="Startup Name"
+          name="startupName"
           placeholder="My Startup Name"
-          value={startupName}
-          onChange={handleNameChange}
+          value={startupData.startupName}
+          onChange={handleDataChange}
           autoFocus
           sx={inputFieldStyles}
         />
@@ -78,13 +72,12 @@ export const RegisterStartup = ({ onNext }) => {
           margin="normal"
           required
           fullWidth
-          name="Legal Representative"
+          name="representative"
           label="Legal Representative"
-          type="representative"
           id="legalRepresentative"
           placeholder="Name and Surname"
-          value={startupRepresentative}
-          onChange={handleRepChange}
+          value={startupData.representative}
+          onChange={handleDataChange}
           sx={inputFieldStyles}
         />
 
@@ -94,11 +87,10 @@ export const RegisterStartup = ({ onNext }) => {
           fullWidth
           name="address"
           label="Registered Business Address"
-          placeholder="Registered Business Address"
-          type="address"
           id="startupAddress"
-          value={startupAddress}
-          onChange={handleAddressChange}
+          placeholder="Registered Business Address"
+          value={startupData.address}
+          onChange={handleDataChange}
           sx={inputFieldStyles}
         />
 
@@ -107,11 +99,10 @@ export const RegisterStartup = ({ onNext }) => {
           fullWidth
           name="inviteMentor"
           label="Invite Mentors via email"
-          placeholder="Enter email address to invite mentor"
-          type="inviteMentor"
           id="inviteMentor"
-          value={inviteMentor}
-          onChange={handleInviteMentorChange}
+          placeholder="Enter email address to invite mentor"
+          value={startupData.inviteMentor}
+          onChange={handleDataChange}
           sx={inputFieldStyles}
         />
 
