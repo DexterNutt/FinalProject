@@ -28,10 +28,9 @@ export const RegisterStartup = ({ onNext }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitting:");
-    onNext({
-      startupData,
-    });
+    onNext(startupData);
   };
+
   return (
     <Box className={styles.registerRight}>
       <Box className={styles.registerRightTop}>
@@ -87,7 +86,7 @@ export const RegisterStartup = ({ onNext }) => {
           fullWidth
           name="address"
           label="Registered Business Address"
-          id="startupAddress"
+          id="address"
           placeholder="Registered Business Address"
           value={startupData.address}
           onChange={handleDataChange}

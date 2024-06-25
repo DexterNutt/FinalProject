@@ -84,16 +84,16 @@ export const RegisterForm = () => {
     }
   };
 
-  const handleMentorSubmit = (data) => {
-    console.log("Received Data:", data);
-    setMentorData(data);
-    handleSubmit(data);
+  const handleMentorSubmit = (registerMentorData) => {
+    console.log("Received Data:", registerMentorData);
+    setMentorData(registerMentorData);
+    handleSubmit(registerMentorData);
   };
 
-  const handleStartupSubmit = (data) => {
-    console.log("Received Data:", data);
-    setStartupData(data);
-    handleSubmit(data);
+  const handleStartupSubmit = (registerStartupData) => {
+    console.log("Received Data:", registerStartupData);
+    setStartupData(registerStartupData);
+    handleSubmit(registerStartupData);
   };
 
   const handleSubmit = async (data) => {
@@ -115,16 +115,22 @@ export const RegisterForm = () => {
           email,
           password,
           role,
-          data.mentorName || mentorData.mentorName,
-          data.startupData.startupName || startupData.startupName,
-          data.startupData.representative || startupData.representative,
-          data.startupData.address || startupData.address
+          submissionData.mentorName,
+          submissionData.startupName,
+          submissionData.address,
+          submissionData.representative
         )
       );
       if (response.status === "success") {
         navigate("/");
       } else {
-        alert("You tried to register:", data.startupData.startupName);
+        alert(
+          `You tried to register: ${
+            role === "mentor"
+              ? submissionData.mentorName
+              : submissionData.address
+          }`
+        );
       }
     } catch (error) {
       console.error("Register error:", error);
@@ -224,15 +230,31 @@ export const RegisterForm = () => {
                 </li>
               </ul>
             </Box>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              className={styles.registerButton}
-              sx={formButtonStyles}
-            >
-              Continue
-            </Button>
+
+            {passwordCriteria.length &&
+            passwordCriteria.digitOrSpecialChar &&
+            passwordCriteria.noPersonalInfo ? (
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                className={styles.registerButton}
+                sx={formButtonStyles}
+              >
+                Continue
+              </Button>
+            ) : (
+              <Button
+                disabled
+                type="submit"
+                fullWidth
+                variant="contained"
+                className={styles.registerButton}
+                sx={formButtonStyles}
+              >
+                Continue
+              </Button>
+            )}
           </Box>
         )}
 

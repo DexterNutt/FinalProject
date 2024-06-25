@@ -7,8 +7,8 @@ export const registerToApp = (
   role,
   mentorName,
   startupName,
-  representative,
-  address
+  address,
+  representative
 ) => {
   return (dispatch) => {
     return registerUser(
@@ -17,8 +17,8 @@ export const registerToApp = (
       role,
       mentorName,
       startupName,
-      representative,
-      address
+      address,
+      representative
     )
       .then((res) => {
         dispatch(registerSuccess(res.data));

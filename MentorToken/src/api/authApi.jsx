@@ -31,9 +31,19 @@ export const registerUser = async (
   role,
   mentorName,
   startupName,
-  representative,
-  address
+  address,
+  representative
 ) => {
+  console.log("Register User Params: ", {
+    email,
+    password,
+    role,
+    mentorName,
+    startupName,
+    address,
+    representative,
+  });
+
   const header = {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -52,6 +62,8 @@ export const registerUser = async (
     data.representative = representative;
     data.address = address;
   }
+
+  console.log("POST REQUEST:", data);
 
   try {
     const json = await axios.post(
