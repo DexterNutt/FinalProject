@@ -7,6 +7,7 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import styles from "./RegisterMentor.module.css";
+import { formButtonStyles, inputFieldStyles } from "../../../../formStyles";
 
 export const RegisterMentor = ({ onNext }) => {
   const [mentorName, setMentorName] = useState("");
@@ -23,6 +24,7 @@ export const RegisterMentor = ({ onNext }) => {
     e.preventDefault();
     onNext({ mentorName });
   };
+
   return (
     <Box className={styles.registerContainer}>
       <Box className={styles.registerRight}>
@@ -58,35 +60,7 @@ export const RegisterMentor = ({ onNext }) => {
               value={mentorName}
               onChange={handleNameChange}
               autoFocus
-              sx={{
-                width: "100%",
-                "& .MuiInputLabel-root": {
-                  fontSize: "12px",
-                  textAlign: "center",
-                },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#d3d3ff",
-                    borderRadius: "9px",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#696cff",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#696cff",
-                  },
-                  "& input": {
-                    color: "#aab4bf",
-                    fontSize: "17px",
-                    fontWeight: 500,
-                    padding: "12px",
-                  },
-                  "&.Mui-focused input": {
-                    color: "#566a7f",
-                    fontWeight: 400,
-                  },
-                },
-              }}
+              sx={inputFieldStyles}
             />
 
             {/* <TextField
@@ -100,35 +74,7 @@ export const RegisterMentor = ({ onNext }) => {
               placeholder="Your Skills"
               value={skills}
               onChange={handleSkillsChange}
-              sx={{
-                width: "100%",
-                "& .MuiInputLabel-root": {
-                  fontSize: "12px",
-                  textAlign: "center",
-                },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#d3d3ff",
-                    borderRadius: "9px",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#696cff",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#696cff",
-                  },
-                  "& input": {
-                    color: "#aab4bf",
-                    fontSize: "17px",
-                    fontWeight: 500,
-                    padding: "12px",
-                  },
-                  "&.Mui-focused input": {
-                    color: "#566a7f",
-                    fontWeight: 400,
-                  },
-                },
-              }}
+              sx={inputFieldStyles}
             /> */}
 
             <Button
@@ -136,34 +82,7 @@ export const RegisterMentor = ({ onNext }) => {
               fullWidth
               variant="contained"
               className={styles.registerButton}
-              sx={{
-                padding: "16px 24px",
-                borderRadius: "9px",
-                backgroundColor: "#696cff",
-                color: "#fff",
-                fontFamily: '"Manrope", sans-serif',
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                width: "100%",
-                height: "51px",
-                gap: "16px",
-                position: "relative",
-                overflow: "hidden",
-                transition: "background-color 0.3s ease",
-                fontSize: "20px",
-                fontWeight: 700,
-                lineHeight: "51px",
-                textAlign: "center",
-                justifyContent: "center",
-                marginTop: "2rem",
-                zIndex: 1,
-                "&:hover": {
-                  backgroundColor: "#575ed8",
-                },
-                textTransform: "none",
-              }}
+              sx={formButtonStyles}
             >
               Register
             </Button>
