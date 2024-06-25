@@ -16,6 +16,20 @@ export const RegisterStartup = ({ onNext }) => {
     address: "",
     inviteMentor: "",
   });
+  const [photo, setPhoto] = useState("/work.png");
+  const [isDefaultPhoto, setIsDefaultPhoto] = useState(true);
+
+  const handlePhotoUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setPhoto(e.target.result);
+        setIsDefaultPhoto(false);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleDataChange = (e) => {
     const { name, value } = e.target;
@@ -39,13 +53,39 @@ export const RegisterStartup = ({ onNext }) => {
       </Box>
 
       <div className={styles.photoContainer}>
+        <div className={styles.mentorPhoto}>
+          <img
+            src={photo}
+            alt="work icon"
+            style={{
+              objectFit: isDefaultPhoto ? "contain" : "cover",
+              width: isDefaultPhoto ? "40%" : "100%",
+              height: isDefaultPhoto ? "40%" : "100%",
+            }}
+          />
+          <div className={styles.camera}>
+            <label htmlFor="photoUpload">
+              <img src="/photo-img.webp" alt="camera" />
+            </label>
+            <input
+              type="file"
+              id="photoUpload"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handlePhotoUpload}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* <div className={styles.photoContainer}>
         <div className={styles.workPhoto}>
           <img src="/work.png" alt="work photo" />
           <div className={styles.camera}>
             <img src="/photo-img.webp" alt="camera" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <Box
         component="form"

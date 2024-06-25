@@ -21,11 +21,26 @@ import { formButtonStyles, inputFieldStyles } from "../../../styles/formStyles";
 
 export const RegisterMentor = ({ onNext }) => {
   const [mentorName, setMentorName] = useState("");
+  const [photo, setPhoto] = useState("/user.png");
+  const [isDefaultPhoto, setIsDefaultPhoto] = useState(true);
+
+  const handlePhotoUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setPhoto(e.target.result);
+        setIsDefaultPhoto(false);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitting:", mentorName);
-    onNext({ mentorName });
+    console.log("Submitting:", photo);
+    onNext({ mentorName, photo });
   };
 
   return (
@@ -34,16 +49,31 @@ export const RegisterMentor = ({ onNext }) => {
         <img className={styles.logo} src="/logo.svg" alt="logo" />
         <h2>SETUP MENTOR ACCOUNT</h2>
       </Box>
-
       <div className={styles.photoContainer}>
         <div className={styles.mentorPhoto}>
-          <img src="/user.png" alt="user icon" />
+          <img
+            src={photo}
+            alt="user icon"
+            style={{
+              objectFit: isDefaultPhoto ? "contain" : "cover",
+              width: isDefaultPhoto ? "40%" : "100%",
+              height: isDefaultPhoto ? "40%" : "100%",
+            }}
+          />
           <div className={styles.camera}>
-            <img src="/photo-img.webp" alt="camera" />
+            <label htmlFor="photoUpload">
+              <img src="/photo-img.webp" alt="camera" />
+            </label>
+            <input
+              type="file"
+              id="photoUpload"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handlePhotoUpload}
+            />
           </div>
         </div>
       </div>
-
       <Box
         component="form"
         noValidate
