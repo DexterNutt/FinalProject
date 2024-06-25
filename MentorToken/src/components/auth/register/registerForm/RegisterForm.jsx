@@ -128,7 +128,7 @@ export const RegisterForm = () => {
         {step === 1 && (
           <Box className={styles.rightContainer}>
             <Box className={styles.registerRightTop}>
-              <img src="/logo.svg" alt="logo" />
+              <img className={styles.logo} src="/logo.svg" alt="logo" />
               <h2>CHOOSE ACCOUNT TYPE</h2>
             </Box>
             <Box className={styles.buttonContainer}>

@@ -26,44 +26,42 @@ export const RegisterMentor = ({ onNext }) => {
   };
 
   return (
-    <Box className={styles.registerContainer}>
-      <Box className={styles.registerRight}>
-        <Box className={styles.rightContainer}>
-          <Box className={styles.registerRightTop}>
-            <img className={styles.logo} src="/logo.svg" alt="logo" />
-            <h2>SETUP MENTOR ACCOUNT</h2>
-          </Box>
+    <Box className={styles.registerRight}>
+      <Box className={styles.registerRightTop}>
+        <img className={styles.logo} src="/logo.svg" alt="logo" />
+        <h2>SETUP MENTOR ACCOUNT</h2>
+      </Box>
 
-          <div className={styles.photoContainer}>
-            <div className={styles.mentorPhoto}>
-              <img src="/user.png" alt="" />
-            </div>
-            <div className={styles.camera}>
-              <img src="/photo-img.webp" alt="" />
-            </div>
+      <div className={styles.photoContainer}>
+        <div className={styles.mentorPhoto}>
+          <img src="/user.png" alt="user icon" />
+          <div className={styles.camera}>
+            <img src="/photo-img.webp" alt="camera" />
           </div>
+        </div>
+      </div>
 
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            className={styles.form}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="Mentor Name"
-              label="Mentor Name"
-              name="Mentor Name"
-              placeholder="Name and surname"
-              value={mentorName}
-              onChange={handleNameChange}
-              autoFocus
-              sx={inputFieldStyles}
-            />
+      <Box
+        component="form"
+        noValidate
+        onSubmit={handleSubmit}
+        className={styles.form}
+      >
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="Mentor Name"
+          label="Mentor Name"
+          name="Mentor Name"
+          placeholder="Name and surname"
+          value={mentorName}
+          onChange={handleNameChange}
+          autoFocus
+          sx={inputFieldStyles}
+        />
 
-            {/* <TextField
+        {/* <TextField
               margin="normal"
               required
               fullWidth
@@ -77,40 +75,38 @@ export const RegisterMentor = ({ onNext }) => {
               sx={inputFieldStyles}
             /> */}
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              className={styles.registerButton}
-              sx={formButtonStyles}
-            >
-              Register
-            </Button>
-            <div className={styles.termsAndConditions}>
-              <div className={styles.text}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      className={styles.checkbox}
-                      sx={{
-                        color: "#696cff",
-                        "&.Mui-checked": {
-                          color: "#696cff",
-                        },
-                      }}
-                    />
-                  }
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          className={styles.registerButton}
+          sx={formButtonStyles}
+        >
+          Register
+        </Button>
+        <div className={styles.termsAndConditions}>
+          <div className={styles.text}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  className={styles.checkbox}
+                  sx={{
+                    color: "#696cff",
+                    "&.Mui-checked": {
+                      color: "#696cff",
+                    },
+                  }}
                 />
-                <span>
-                  By signing up to create an account I accept Company
-                  <a href="#" className={styles.loginLinkText}>
-                    Terms of use & Privacy Policy.
-                  </a>
-                </span>
-              </div>
-            </div>
-          </Box>
-        </Box>
+              }
+            />
+            <span>
+              By signing up to create an account I accept Company
+              <a href="#" className={styles.loginLinkText}>
+                Terms of use & Privacy Policy.
+              </a>
+            </span>
+          </div>
+        </div>
       </Box>
     </Box>
   );
