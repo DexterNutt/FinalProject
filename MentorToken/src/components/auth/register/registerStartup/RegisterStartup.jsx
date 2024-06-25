@@ -7,7 +7,7 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import styles from "./RegisterStartup.module.css";
-import { formButtonStyles, inputFieldStyles } from "../../../../formStyles";
+import { formButtonStyles, inputFieldStyles } from "../../../styles/formStyles";
 
 export const RegisterStartup = ({ onNext }) => {
   const [startupData, setStartupData] = useState({

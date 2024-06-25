@@ -7,7 +7,7 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import styles from "./RegisterMentor.module.css";
-import { formButtonStyles, inputFieldStyles } from "../../../../formStyles";
+import { formButtonStyles, inputFieldStyles } from "../../../styles/formStyles";
 
 // const [skills, setSkills] = useState("");
 

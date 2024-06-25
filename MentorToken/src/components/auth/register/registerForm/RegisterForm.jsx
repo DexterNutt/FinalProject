@@ -6,7 +6,7 @@ import { RegisterStartup } from "../registerStartup/RegisterStartup";
 import { registerToApp } from "./duck/operations";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { formButtonStyles, inputFieldStyles } from "../../../../formStyles";
+import { formButtonStyles, inputFieldStyles } from "../../../styles/formStyles";
 
 export const RegisterForm = () => {
   const [role, setRole] = useState("startup");
