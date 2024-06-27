@@ -3,3 +3,4 @@
 3. Send code to mentor
 4. Blisk.io -> за mobile View
 5. upload to netlify
+6. Multer! -> за слики
