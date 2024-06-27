@@ -4,3 +4,7 @@
 4. Blisk.io -> за mobile View
 5. upload to netlify
 6. Multer! -> за слики
+7. Start scrypt*
+8. Add dates to all Schemas
+9. Don't use MuI
+10. Export the svgs from the landing page
