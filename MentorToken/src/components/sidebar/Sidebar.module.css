@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.sidebar {
+  font-family: Manrope, sans-serif;
+  width: 15vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 2px 6px 0px #435971;
+  position: relative;
+  padding: 3.5rem 0.5rem;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+  padding-left: 1.2vw;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo p {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 35.52px;
+  letter-spacing: -0.47802212834358215px;
+  text-align: left;
+  color: #566a7f;
+}
+
+.hideMenu {
+  position: absolute;
+  top: 8.2vh;
+  right: -17px;
+  cursor: pointer;
+}
+
+.hideMenu img {
+  width: 40px;
+  height: 40px;
+}
+
+.LinksContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  height: 40px;
+  padding: 8px 24px 8px 16px;
+  gap: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.link:hover {
+  background-color: #e7e7ff;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.text span {
+  font-size: 16px;
+  color: #646b7e;
+}
+
+.logout {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  bottom: 8vh;
+  left: 2vw;
+}
+
+.logout .text span {
+  cursor: pointer;
+  color: #696cff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+
+.active {
+  background-color: #e7e7ff;
+}
+
+.active span {
+  color: #696cff;
+}
+
+.active img {
+  filter: invert(92%) sepia(11%) saturate(5037%) hue-rotate(239deg)
+    brightness(99%) contrast(100%);
+}
