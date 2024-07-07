@@ -10,7 +10,8 @@ export const Show = ({ children }) => {
       location.pathname === "/login" ||
       location.pathname === "/register" ||
       location.pathname === "/register/startup" ||
-      location.pathname === "/register/mentor"
+      location.pathname === "/register/mentor" ||
+      location.pathname === "/test"
     ) {
       setShowNavBar(false);
     } else {
