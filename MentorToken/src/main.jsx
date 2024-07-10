@@ -9,7 +9,7 @@ import { Login } from "./pages/login/Login.jsx";
 import { Nav } from "./components/nav/Nav.jsx";
 import { Footer } from "./components/footer/Footer.jsx";
 import { Register } from "./pages/register/Register.jsx";
-import { TestPage } from "./pages/TestPage.jsx";
+import { TestPage } from "./pages/test/TestPage.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./main.css";
 import store from "./store.jsx";
