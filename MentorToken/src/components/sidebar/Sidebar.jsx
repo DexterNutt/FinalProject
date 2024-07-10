@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./Sidebar.module.css";
 
 export const Sidebar = () => {
   const [activeItem, setActiveItem] = useState(0);
   const [visibility, setVisibility] = useState(true);
   const [arrowRotation, setArrowRotation] = useState(false);
+  const indicatorRef = useRef(null);
 
   const handleItemClick = (item) => {
     setActiveItem(item === activeItem ? activeItem : item);
@@ -14,6 +15,17 @@ export const Sidebar = () => {
     setVisibility(!visibility);
     setArrowRotation(!arrowRotation);
   };
+
+  useEffect(() => {
+    const indicator = indicatorRef.current;
+    const activeLink = document.querySelector(
+      `.${styles.link}.${styles.active}`
+    );
+    if (indicator && activeLink) {
+      indicator.style.top = `${activeLink.offsetTop}px`;
+      indicator.style.height = `${activeLink.offsetHeight}px`;
+    }
+  }, [activeItem, visibility]);
 
   return (
     <div className={`${styles.sidebar} ${!visibility ? styles.hidden : ""}`}>
@@ -65,6 +77,7 @@ export const Sidebar = () => {
             <span>Job Feed</span>
           </div>
         </div>
+        <div ref={indicatorRef} className={styles.activeIndicator}></div>
       </div>
       <div className={styles.logout}>
         <div className={styles.icon}>

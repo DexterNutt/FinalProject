@@ -133,3 +133,12 @@
   filter: invert(92%) sepia(11%) saturate(5037%) hue-rotate(239deg)
     brightness(99%) contrast(100%);
 }
+
+.activeIndicator {
+  position: absolute;
+  right: -8px;
+  width: 4px;
+  background-color: #696cff;
+  border-radius: 2px;
+  transition: top 0.3s ease, height 0.3s ease;
+}
