@@ -3,19 +3,33 @@ import styles from "./Sidebar.module.css";
 
 export const Sidebar = () => {
   const [activeItem, setActiveItem] = useState(0);
+  const [visibility, setVisibility] = useState(true);
+  const [arrowRotation, setArrowRotation] = useState(false);
 
   const handleItemClick = (item) => {
     setActiveItem(item === activeItem ? activeItem : item);
   };
 
+  const handleSidebarVisibility = () => {
+    setVisibility(!visibility);
+    setArrowRotation(!arrowRotation);
+  };
+
   return (
-    <div className={styles.sidebar}>
+    <div className={`${styles.sidebar} ${!visibility ? styles.hidden : ""}`}>
       <div className={styles.logo}>
         <img src="/logo.svg" alt="logo" />
         <p>Mentor Token</p>
       </div>
-      <div className={styles.hideMenu}>
-        <img src="/vectors/dashboard/hideIcon.svg" alt="arrow left" />
+      <div
+        className={`${styles.hideMenu} ${!visibility ? styles.menuHidden : ""}`}
+        onClick={handleSidebarVisibility}
+      >
+        <img
+          src="/vectors/dashboard/hideIcon.svg"
+          alt="arrow left"
+          className={arrowRotation ? styles.arrowRotation : ""}
+        />
       </div>
       <div className={styles.LinksContainer}>
         <div

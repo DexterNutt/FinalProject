@@ -12,6 +12,11 @@
   position: relative;
   padding: 3.5rem 0.5rem;
   box-sizing: border-box;
+  transition: transform 0.5s ease-in-out;
+}
+
+.hidden {
+  transform: translateX(-100%);
 }
 
 .logo {
@@ -42,11 +47,21 @@
   top: 8.2vh;
   right: -17px;
   cursor: pointer;
+  transition: right 0.3s ease-in-out;
+}
+
+.menuHidden {
+  right: -48px;
 }
 
 .hideMenu img {
   width: 40px;
   height: 40px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.arrowRotation {
+  transform: rotate(180deg);
 }
 
 .LinksContainer {
