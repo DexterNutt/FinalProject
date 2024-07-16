@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap");
+
+.searchBar {
+  font-family: DM Sans, sans-serif;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 35px;
+}
+
+.searchBar i {
+  color: #707070;
+  margin-right: 10px;
+}
+
+.searchBar input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  color: #b9b8bc;
+}
