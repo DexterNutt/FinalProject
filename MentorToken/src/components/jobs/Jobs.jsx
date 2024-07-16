@@ -1,9 +1,12 @@
 import React, { useState, useRef } from "react";
+import { SearchBar } from "../search/Search";
+import { UserProfile } from "../userProfile/UserProfile";
+import { Sidebar } from "../sidebar/Sidebar";
 import { JobList } from "./jobList/JobList";
 import { JobsIndicator } from "./jobsIndicator/JobsIndicator";
 import { PendingJobs } from "./pendingJobs/PendingJobs";
-import styles from "./Jobs.module.css";
 import { ApplicationsSent } from "./applicationsSent/ApplicationsSent";
+import styles from "./Jobs.module.css";
 
 export const Jobs = () => {
   const [activeItem, setActiveItem] = useState(0);
@@ -23,19 +26,32 @@ export const Jobs = () => {
   };
 
   return (
-    <>
-      <div className={styles.assignedJobs}>
-        <JobsIndicator
-          activeItem={activeItem}
-          setActiveItem={setActiveItem}
-          indicatorRef={indicatorRef}
-        />
-        <JobList activeTab={getActiveTab()} />
+    <div className={styles.container}>
+      <Sidebar className={styles.sidebar} />
+      <div className={styles.content}>
+        <div className={styles.header}>
+          <SearchBar />
+          <UserProfile />
+        </div>
+        <div className={styles.body}>
+          <div className={styles.assignedJobs}>
+            <JobsIndicator
+              activeItem={activeItem}
+              setActiveItem={setActiveItem}
+              indicatorRef={indicatorRef}
+            />
+            <JobList activeTab={getActiveTab()} />
+          </div>
+          <div className={styles.upcomingJobs}>
+            <div className={styles.pendingJobs}>
+              <PendingJobs />
+            </div>
+            <div className={styles.applicationsSent}>
+              <ApplicationsSent />
+            </div>
+          </div>
+        </div>
       </div>
-      <div className={styles.pendingJobs}>
-        <PendingJobs />
-        <ApplicationsSent />
-      </div>
-    </>
+    </div>
   );
 };
