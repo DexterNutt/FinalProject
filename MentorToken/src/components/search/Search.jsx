@@ -1,11 +1,10 @@
 import React from "react";
-import styles from "./SearchBar.module.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import styles from "./Search.module.css";
 
 export const SearchBar = () => {
   return (
     <div className={styles.searchBar}>
-      <i className="fas fa-search"></i>
+      <img src="./vectors/magn-glass.svg" />
       <input type="text" placeholder="Search" />
     </div>
   );

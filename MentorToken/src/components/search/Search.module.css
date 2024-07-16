@@ -7,13 +7,15 @@
   background-color: #ffffff;
   padding: 10px 20px;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   border-radius: 35px;
 }
 
-.searchBar i {
+.searchBar img {
   color: #707070;
   margin-right: 10px;
+  height: 24px;
+  width: 24px;
 }
 
 .searchBar input {
