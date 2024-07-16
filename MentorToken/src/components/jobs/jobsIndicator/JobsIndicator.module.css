@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.jobsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: left;
+  color: #404d61;
+}
+
+.LinksContainer {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+.LinksContainer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  border-bottom: 1px solid #d3d3ff;
+}
+
+.link {
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #566a7f;
+}
+
+.active .text span {
+  color: #696cff;
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -1px;
+  height: 2px;
+  background-color: #696cff;
+  transition: left 0.3s ease, width 0.3s ease;
+}
