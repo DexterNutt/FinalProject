@@ -4,6 +4,7 @@
   font-family: Manrope, sans-serif;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .profileImage {
@@ -12,6 +13,11 @@
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
 }
 
 .userName {
@@ -23,5 +29,5 @@
 .userRole {
   font-size: 15px;
   font-weight: 500;
-  background: #b9b8bc;
+  color: #b9b8bc;
 }

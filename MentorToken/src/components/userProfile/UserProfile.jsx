@@ -9,8 +9,10 @@ export const UserProfile = () => {
         alt="User Profile"
         className={styles.profileImage}
       />
-      <span className={styles.userName}>Kirra Press</span>
-      <span className={styles.userRole}>Mentor</span>
+      <div className={styles.userInfo}>
+        <span className={styles.userName}>Kirra Press</span>
+        <span className={styles.userRole}>Mentor</span>
+      </div>
     </div>
   );
 };
