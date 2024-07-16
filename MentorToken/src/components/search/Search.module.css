@@ -4,11 +4,13 @@
   font-family: DM Sans, sans-serif;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #ffffff;
-  padding: 10px 20px;
+  padding: 10px;
   width: 100%;
-  max-width: 500px;
+  max-width: 450px;
   border-radius: 35px;
+  height: 30px;
 }
 
 .searchBar img {
