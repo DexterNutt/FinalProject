@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./MentorStats.module.css";
 import { MentorProfile } from "../mentorProfile/MentorProfile";
+import { MentorDetails } from "../mentorDetails/MentorDetails";
 
 export const MentorStats = () => {
   return (
@@ -10,6 +11,7 @@ export const MentorStats = () => {
       </div>
       <div className={styles.profileContainer}>
         <MentorProfile />
+        <MentorDetails />
       </div>
     </>
   );
