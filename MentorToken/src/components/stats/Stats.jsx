@@ -4,6 +4,7 @@ import { UserProfile } from "../userProfile/UserProfile";
 import { Sidebar } from "../sidebar/Sidebar";
 import { MentorStats } from "./mentorStats/MentorStats";
 import styles from "./Stats.module.css";
+import { MentorChart } from "./mentorStats/mentorChart/MentorChart";
 
 export const Stats = () => {
   return (
@@ -17,6 +18,7 @@ export const Stats = () => {
         <div className={styles.body}>
           <MentorStats />
         </div>
+        <MentorChart />
       </div>
     </div>
   );

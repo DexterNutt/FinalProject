@@ -4,43 +4,36 @@ import {
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
+  ReferenceLine,
   ResponsiveContainer,
 } from "recharts";
 
 const data = [
-  { name: "Nov", value: 0 },
-  { name: "Dec", value: 0 },
-  { name: "Jan", value: 1 },
-  { name: "Feb", value: 1 },
-  { name: "Mar", value: 3 },
-  { name: "Apr", value: 4 },
-  { name: "May", value: 5 },
-  { name: "Jun", value: 5 },
-  { name: "Jul", value: 4 },
-  { name: "Aug", value: 3 },
-  { name: "Sep", value: 2 },
-  { name: "Oct", value: 2 },
+  { name: "Nov", value: 1000 },
+  { name: "Dec", value: 1000 },
+  { name: "Jan", value: 3000 },
+  { name: "Feb", value: 3000 },
+  { name: "Mar", value: 3000 },
+  { name: "Apr", value: 5000 },
+  { name: "May", value: 7000 },
+  { name: "Jun", value: 7000 },
+  { name: "Jul", value: 4500 },
+  { name: "Aug", value: 4500 },
+  { name: "Sep", value: 3000 },
+  { name: "Oct", value: 3000 },
 ];
 
-export const LineChartComponent = () => {
+export const Chart = () => {
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width="100%" height={300}>
       <LineChart
         data={data}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Line
-          type="monotone"
-          dataKey="value"
-          stroke="#8884d8"
-          strokeWidth={2}
-        />
+        <ReferenceLine y={5000} stroke="#EEEAFC" />
+        <XAxis dataKey="name" tick={{ fill: "#CBC6D7" }} />
+        <YAxis ticks={[0, 5000]} tick={{ fill: "#CBC6D7" }} />
+        <Line type="monotone" dataKey="value" stroke="#696CFF" />
       </LineChart>
     </ResponsiveContainer>
   );

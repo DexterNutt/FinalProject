@@ -1,0 +1,12 @@
+.custom-tooltip {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-tooltip .label {
+  color: #334e68;
+  font-weight: 600;
+}
