@@ -4,7 +4,7 @@
 .detailsContainer {
   display: flex;
   flex-direction: column;
-  max-width: 800px;
+  width: 780px;
   height: 280px;
   border-radius: 21px;
   background-color: #ffffff;
@@ -36,7 +36,7 @@
   font-size: 15px;
   font-weight: 500;
   line-height: 18.15px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   color: #000000;
 }
 
@@ -45,4 +45,5 @@
   font-weight: 400;
   line-height: 14.52px;
   color: #566a7f;
+  width: 642px;
 }
