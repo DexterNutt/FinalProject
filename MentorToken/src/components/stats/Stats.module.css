@@ -25,3 +25,10 @@
   justify-content: space-around;
   gap: 50px;
 }
+
+.stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
