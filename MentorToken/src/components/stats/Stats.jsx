@@ -3,6 +3,7 @@ import { SearchBar } from "../search/Search";
 import { UserProfile } from "../userProfile/UserProfile";
 import { Sidebar } from "../sidebar/Sidebar";
 import styles from "./Stats.module.css";
+import { MentorStats } from "./mentorStats/MentorStats";
 
 export const Stats = () => {
   return (
@@ -13,7 +14,9 @@ export const Stats = () => {
           <SearchBar />
           <UserProfile />
         </div>
-        <div className={styles.body}></div>
+        <div className={styles.body}>
+          <MentorStats />
+        </div>
       </div>
     </div>
   );
