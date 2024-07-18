@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import { SearchBar } from "../search/Search";
 import { UserProfile } from "../userProfile/UserProfile";
 import { Sidebar } from "../sidebar/Sidebar";
-import styles from "./Stats.module.css";
 import { MentorStats } from "./mentorStats/MentorStats";
+import styles from "./Stats.module.css";
 
 export const Stats = () => {
   return (

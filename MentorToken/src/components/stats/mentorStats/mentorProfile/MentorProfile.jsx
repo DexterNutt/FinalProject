@@ -1,16 +1,7 @@
 import React from "react";
 import styles from "./MentorProfile.module.css";
 
-export const MentorProfile = () => {
-  const mentorData = {
-    picture: "/avatars/7.webp",
-    name: "Keira Press",
-    title: "Sales Representative",
-    email: "mentoremail@mail.com",
-    phone: "+389 77 663 234",
-    skills: ["Sales", "Management", "Problem-solving"],
-  };
-
+export const MentorProfile = ({ mentorData }) => {
   return (
     <>
       <div className={styles.profileContainer}>
