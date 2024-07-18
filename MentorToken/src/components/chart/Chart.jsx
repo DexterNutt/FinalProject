@@ -31,8 +31,12 @@ export const Chart = () => {
         margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
       >
         <ReferenceLine y={5000} stroke="#EEEAFC" />
-        <XAxis dataKey="name" tick={{ fill: "#CBC6D7" }} />
-        <YAxis ticks={[0, 5000]} tick={{ fill: "#CBC6D7" }} />
+        <XAxis dataKey="name" tick={{ fill: "#CBC6D7" }} fontFamily="Roboto" />
+        <YAxis
+          ticks={[0, 5000]}
+          tick={{ fill: "#CBC6D7" }}
+          fontFamily="Roboto"
+        />
         <Line type="monotone" dataKey="value" stroke="#696CFF" />
       </LineChart>
     </ResponsiveContainer>
