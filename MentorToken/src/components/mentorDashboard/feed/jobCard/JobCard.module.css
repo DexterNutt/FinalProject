@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins&display=swap");
+
+.JobCard {
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 250px;
+  height: 290px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.companyHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.companyLogo {
+  border-radius: 40%;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+}
+
+.companyName {
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: left;
+  width: 110px;
+  height: 44px;
+  color: #566a7f;
+}
+
+.jobTitle {
+  font-family: Manrope, sans-serif;
+  width: 199px;
+  height: 30px;
+  font-size: 14.75px;
+  font-weight: 600;
+  line-height: 20.15px;
+  text-align: left;
+  color: #566a7f;
+}
+
+.jobDescription {
+  font-family: Manrope;
+  font-size: 12.75px;
+  font-weight: 400;
+  line-height: 17.42px;
+  text-align: left;
+  width: 206px;
+  height: 90px;
+  color: #757d8a;
+  padding-bottom: 0;
+}
+
+.viewMoreButton {
+  background-color: #696cff;
+  padding: 8px;
+  gap: 2.71px;
+  border-radius: 6px;
+  border: 0;
+  color: #ffffff;
+  width: 90px;
+}
