@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
-import { SearchBar } from "../search/Search";
-import { UserProfile } from "../userProfile/UserProfile";
-import { Sidebar } from "../sidebar/Sidebar";
+import { SearchBar } from "../../search/Search";
+import { UserProfile } from "../../userProfile/UserProfile";
 import { JobList } from "./jobList/JobList";
 import { JobsIndicator } from "./jobsIndicator/JobsIndicator";
 import { PendingJobs } from "./pendingJobs/PendingJobs";
@@ -27,7 +26,6 @@ export const Jobs = () => {
 
   return (
     <div className={styles.container}>
-      <Sidebar className={styles.sidebar} />
       <div className={styles.content}>
         <div className={styles.header}>
           <SearchBar />

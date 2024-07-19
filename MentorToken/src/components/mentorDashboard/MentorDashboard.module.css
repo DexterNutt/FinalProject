@@ -1,0 +1,12 @@
+.body {
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  transition: 0.3s ease;
+}
+
+.content.expanded {
+  margin-left: 0;
+}

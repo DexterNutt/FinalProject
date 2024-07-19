@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MentorChart.module.css";
-import { Chart } from "../../../chart/Chart";
+import { Chart } from "../../../../chart/Chart";
 
 export const MentorChart = () => {
   return (

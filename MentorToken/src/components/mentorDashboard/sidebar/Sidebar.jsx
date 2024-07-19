@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Sidebar.module.css";
 
-export const Sidebar = () => {
-  const [activeItem, setActiveItem] = useState(0);
-  const [visibility, setVisibility] = useState(true);
+export const Sidebar = ({
+  activeItem,
+  setActiveItem,
+  visibility,
+  setVisibility,
+}) => {
   const [arrowRotation, setArrowRotation] = useState(false);
   const indicatorRef = useRef(null);
 
