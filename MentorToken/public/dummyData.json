@@ -1,0 +1,71 @@
+{
+  "tasks": [
+    { "task": "Develop frontend UI components", "status": "In Progress" },
+    { "task": "Design database schema", "status": "Done" },
+    { "task": "Implement user authentication", "status": "In Progress" },
+    { "task": "Optimize backend APIs", "status": "In Progress" },
+    { "task": "Write unit tests", "status": "Rejected" },
+    { "task": "Create admin dashboard", "status": "Done" },
+    { "task": "Integrate payment gateway", "status": "In Progress" },
+    { "task": "Refactor codebase", "status": "Done" },
+    { "task": "Deploy application to production", "status": "In Progress" },
+    { "task": "Conduct performance testing", "status": "In Progress" }
+  ],
+
+  "jobs": [
+    {
+      "companyLogo": "/startup_logos/1.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
+    },
+    {
+      "companyLogo": "/startup_logos/2.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
+    },
+    {
+      "companyLogo": "/startup_logos/1.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
+    },
+    {
+      "companyLogo": "/startup_logos/3.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
+    },
+    {
+      "companyLogo": "/startup_logos/4.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
+    },
+    {
+      "companyLogo": "/startup_logos/5.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
+    },
+    {
+      "companyLogo": "/startup_logos/6.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
+    },
+    {
+      "companyLogo": "/startup_logos/7.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
+    },
+    {
+      "companyLogo": "/startup_logos/8.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
+    }
+  ]
+}
