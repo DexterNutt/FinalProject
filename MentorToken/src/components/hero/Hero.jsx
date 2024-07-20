@@ -36,6 +36,10 @@ export const Hero = () => {
     navigate("/register");
   };
 
+  const goToContact = () => {
+    navigate("/contact");
+  };
+
   return (
     <div className={styles.hero}>
       <div className={styles.heroContainer}>
@@ -52,7 +56,7 @@ export const Hero = () => {
               {arrowRight}
               Get Started
             </button>
-            <span>Get in Touch</span>
+            <span onClick={goToContact}>Get in Touch</span>
           </div>
         </div>
         <img src="/laptop.webp" alt="laptop" />
