@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Sidebar } from "./sidebar/Sidebar";
 import { Jobs } from "./jobs/Jobs";
 import { Stats } from "./stats/Stats";
-import { JobList } from "./feed/jobList/JobList";
+import { Feed } from "./feed/Feed";
 import styles from "./MentorDashboard.module.css";
 
 export const MentorDashboard = () => {
@@ -22,7 +22,7 @@ export const MentorDashboard = () => {
       >
         {activeItem === 0 && <Jobs />}
         {activeItem === 1 && <Stats />}
-        {activeItem === 2 && <JobList />}
+        {activeItem === 2 && <Feed />}
       </div>
     </div>
   );
