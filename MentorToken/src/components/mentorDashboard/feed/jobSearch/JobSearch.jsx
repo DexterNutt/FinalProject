@@ -29,14 +29,19 @@ export const JobSearch = () => {
         </div>
         <div className={styles.right}>
           <div className={styles.filters}>
-            <button>
-              <i className="icon-filters"></i> Filters
-            </button>
+            <img
+              src="/vectors/dashboard/sort-az.svg"
+              alt="sort AZ"
+              className={styles.icon}
+            />
+            <span>Filters</span>
           </div>
           <div className={styles.renderList}>
-            <button>
-              <i className="icon-list"></i>
-            </button>
+            <img
+              src={`/vectors/dashboard/layout-grid.svg`}
+              alt="Menu Squares"
+              className={styles.icon}
+            />
           </div>
         </div>
       </div>
