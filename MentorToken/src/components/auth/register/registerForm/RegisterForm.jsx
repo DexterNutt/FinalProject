@@ -122,7 +122,7 @@ export const RegisterForm = () => {
         )
       );
       if (response.status === "success") {
-        navigate("/");
+        navigate("/mentor/dashboard");
       } else {
         alert(
           `You tried to register: ${

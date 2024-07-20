@@ -18,7 +18,7 @@ export const LoginForm = () => {
         logInToApp(loginData.email, loginData.password)
       );
       if (response.status === "success") {
-        navigate("/");
+        navigate("/mentor/dashboard");
       } else {
         alert("Login failed. Please try again.");
       }
