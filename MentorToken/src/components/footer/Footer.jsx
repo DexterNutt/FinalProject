@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 
 export const Footer = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const linkedinLogo = (
     <svg
       width="36"
@@ -51,6 +55,13 @@ export const Footer = () => {
     </svg>
   );
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className={styles.footer}>
       <div className={styles.footerContainer}>
@@ -67,10 +78,14 @@ export const Footer = () => {
           <h3>Pages</h3>
           <ul>
             <li>
-              <Link to="/home">Home</Link>
+              <Link to="/home" onClick={scrollToTop}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/contact">Contact US</Link>
+              <Link to="/contact" onClick={scrollToTop}>
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>

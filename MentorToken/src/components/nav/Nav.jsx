@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.css";
+import { useNavigate } from "react-router-dom";
 
 export const Nav = () => {
+  const navigate = useNavigate();
+
   const arrowRight = (
     <svg
       width="18"
@@ -29,6 +32,10 @@ export const Nav = () => {
       />
     </svg>
   );
+
+  const goToRegister = () => {
+    navigate("/register");
+  };
 
   return (
     <div className={styles.navbar}>
@@ -74,7 +81,7 @@ export const Nav = () => {
         <span>
           <NavLink to="/login">Login</NavLink>
         </span>
-        <button>
+        <button onClick={goToRegister}>
           {arrowRight}
           Get Started
         </button>

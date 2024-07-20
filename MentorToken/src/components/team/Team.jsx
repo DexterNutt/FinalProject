@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Team.module.css";
+import { useNavigate } from "react-router-dom";
 
 export const Team = () => {
   const arrowRight = (
@@ -28,6 +29,11 @@ export const Team = () => {
       />
     </svg>
   );
+
+  const navigate = useNavigate();
+  const goToRegister = () => {
+    navigate("/register");
+  };
 
   const teamMembers = [
     {
@@ -91,7 +97,7 @@ export const Team = () => {
             around the world <br />
             Focus on what's most important to them.
           </p>
-          <button>
+          <button onClick={goToRegister}>
             {arrowRight}
             Get Started
           </button>

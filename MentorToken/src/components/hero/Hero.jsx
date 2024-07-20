@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Hero.module.css";
+import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
   const arrowRight = (
@@ -29,6 +30,12 @@ export const Hero = () => {
     </svg>
   );
 
+  const navigate = useNavigate();
+
+  const goToRegister = () => {
+    navigate("/register");
+  };
+
   return (
     <div className={styles.hero}>
       <div className={styles.heroContainer}>
@@ -41,7 +48,7 @@ export const Hero = () => {
             to drive the success of the ventures they support.
           </p>
           <div className={styles.buttonContainer}>
-            <button>
+            <button onClick={goToRegister}>
               {arrowRight}
               Get Started
             </button>
