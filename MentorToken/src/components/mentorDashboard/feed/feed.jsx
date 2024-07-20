@@ -3,6 +3,7 @@ import { JobList } from "./jobList/JobList";
 import { SearchBar } from "../../search/Search";
 import { UserProfile } from "../../userProfile/UserProfile";
 import styles from "./Feed.module.css";
+import { JobSearch } from "./jobSearch/JobSearch.jsx";
 
 export const Feed = () => {
   return (
@@ -13,6 +14,7 @@ export const Feed = () => {
           <UserProfile />
         </div>
         <div className={styles.body}>
+          <JobSearch />
           <JobList />
         </div>
       </div>

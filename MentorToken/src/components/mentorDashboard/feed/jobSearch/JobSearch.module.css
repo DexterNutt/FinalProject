@@ -1,0 +1,65 @@
+.jobsSearchContainer {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.searchTabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  gap: 20px;
+}
+
+.sortBy,
+.category {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sortBy label,
+.category label {
+  margin-right: 10px;
+  color: #555;
+}
+
+.right {
+  gap: 10px;
+}
+
+.filters button,
+.renderList button {
+  background: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.icon-filters,
+.icon-list {
+  background: blue; /* You can replace this with actual icons */
+  width: 16px;
+  height: 16px;
+  display: block;
+}
