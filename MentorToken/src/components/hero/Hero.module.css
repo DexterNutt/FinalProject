@@ -131,3 +131,12 @@
   width: 935px;
   height: 701.25px;
 }
+
+.buttonContainer span {
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.buttonContainer span:hover {
+  color: #696cff;
+}

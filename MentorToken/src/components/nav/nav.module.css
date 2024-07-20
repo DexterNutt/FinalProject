@@ -65,6 +65,11 @@
 .login span a {
   text-decoration: none;
   color: #232323;
+  transition: color 0.3s ease-in-out;
+}
+
+.login span a:hover {
+  color: #696cff;
 }
 
 .login button {
