@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Sidebar.module.css";
 import { useNavigate } from "react-router-dom";
+import { removeUserStorage } from "../../../config/StorageFunctions";
 
 export const Sidebar = ({
   activeItem,
@@ -11,7 +12,6 @@ export const Sidebar = ({
   const [arrowRotation, setArrowRotation] = useState(false);
   const indicatorRef = useRef(null);
   const navigate = useNavigate();
-  const { logout } = useContext(AuthContext);
 
   const handleItemClick = (item) => {
     setActiveItem(item === activeItem ? activeItem : item);
@@ -23,7 +23,7 @@ export const Sidebar = ({
   };
 
   const handleLogout = async () => {
-    await logout();
+    removeUserStorage();
     navigate("/login");
   };
 
@@ -94,7 +94,9 @@ export const Sidebar = ({
         <div className={styles.icon}>
           <img src="/vectors/dashboard/logout.svg" alt="logout arrow" />
         </div>
-        <button className={styles.text}>Logout</button>
+        <button className={styles.text} onClick={handleLogout}>
+          Logout
+        </button>
       </div>
     </div>
   );
