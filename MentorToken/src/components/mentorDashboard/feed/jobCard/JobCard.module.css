@@ -64,4 +64,10 @@
   border: 0;
   color: #ffffff;
   width: 90px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.viewMoreButton:hover {
+  background-color: #575ed8;
 }
