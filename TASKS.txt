@@ -6,3 +6,4 @@
 6. Start script*
 7. Add dates to all Schemas
 8. Export the svgs from the landing page
+9. Change redux to useContext for authentication
