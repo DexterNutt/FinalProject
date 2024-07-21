@@ -112,7 +112,9 @@
   left: 2vw;
 }
 
-.logout .text span {
+.logout .text {
+  background: none;
+  border: 0;
   cursor: pointer;
   color: #696cff;
   font-size: 16px;

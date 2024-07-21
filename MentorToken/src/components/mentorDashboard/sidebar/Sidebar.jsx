@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Sidebar.module.css";
+import { useNavigate } from "react-router-dom";
 
 export const Sidebar = ({
   activeItem,
@@ -9,6 +10,8 @@ export const Sidebar = ({
 }) => {
   const [arrowRotation, setArrowRotation] = useState(false);
   const indicatorRef = useRef(null);
+  const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
 
   const handleItemClick = (item) => {
     setActiveItem(item === activeItem ? activeItem : item);
@@ -17,6 +20,11 @@ export const Sidebar = ({
   const handleSidebarVisibility = () => {
     setVisibility(!visibility);
     setArrowRotation(!arrowRotation);
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -86,9 +94,7 @@ export const Sidebar = ({
         <div className={styles.icon}>
           <img src="/vectors/dashboard/logout.svg" alt="logout arrow" />
         </div>
-        <div className={styles.text}>
-          <span>Logout</span>
-        </div>
+        <button className={styles.text}>Logout</button>
       </div>
     </div>
   );
