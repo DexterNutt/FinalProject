@@ -1,7 +1,6 @@
 1. Find a way to add PIC to DB > Multer! -> за слики
 2. Lazy load (check React)
 3. Blisk.io -> за mobile View
-4. upload to netlify
-5. Add dates to all Schemas
-6. Export the svgs from the landing page
-7. Change redux to useContext for authentication
+4. Add dates to all Schemas
+5. Export the svgs from the landing page
+6. Change redux to useContext for authentication
