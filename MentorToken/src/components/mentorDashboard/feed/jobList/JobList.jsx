@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import data from "../../../../dummyData.json";
 import styles from "./JobList.module.css";
 import { JobCard } from "../jobCard/JobCard";
