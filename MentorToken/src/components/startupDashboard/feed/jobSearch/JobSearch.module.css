@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:wght@400;500&display=swap");
+
+.title h1 {
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #404d61;
+}
+
+.searchTabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sortBy {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.sortBy label,
+.category label {
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  color: #566a7f;
+  margin-right: 10px;
+}
+
+.sortBy select {
+  border: none;
+  background: none;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  width: fit-content;
+  color: #aab4bf;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 35px;
+  background-image: url("/vectors/dashboard/caret-down.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  cursor: pointer;
+}
+
+.category select {
+  border: none;
+  background: none;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #aab4bf;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 30px;
+  background-image: url("/vectors/dashboard/caret-down.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  cursor: pointer;
+}
+
+.filters img {
+  color: #566a7f;
+  width: 24px;
+  height: 24px;
+}
+.renderList img {
+  width: 36px;
+  height: 36px;
+}
+
+.filters {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #566a7f;
+}
+
+.renderList {
+  background: #ffffff;
+  width: 54px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
