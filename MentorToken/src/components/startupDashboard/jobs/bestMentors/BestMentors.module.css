@@ -28,7 +28,7 @@
   align-items: center;
   background-color: white;
   width: 600px;
-  height: 120px;
+  height: 100px;
   padding: 0 35px;
   box-sizing: border-box;
   border-radius: 15px;
@@ -55,12 +55,6 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  font-family: "Manrope", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 21.86px;
-  text-align: left;
-  color: #8b8795;
 }
 
 .bestMentorLeft img {
@@ -69,6 +63,14 @@
   border-radius: 50%;
   border: 2px solid #e9ecef;
   object-fit: cover;
+}
+
+.mentorName {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #8b8795;
+  text-align: left;
 }
 
 .bestMentorCenter {
@@ -81,13 +83,20 @@
 }
 
 .achievedJobs {
-  font-size: 24px;
-  font-weight: bold;
-  color: #6f42c1;
+  font-family: Manrope;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 27.32px;
+  text-align: center;
+  color: #696cff;
 }
 
 .bestMentorCenter span {
   font-size: 14px;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16.39px;
   color: #6c757d;
 }
 

@@ -14,14 +14,14 @@ export const BestMentors = () => {
             <div key={index} className={styles.bestMentor}>
               <div className={styles.bestMentorLeft}>
                 <img src={mentor.imageUrl} alt={`${mentor.mentorName}`} />
-                {mentor.mentorName}
+                <div className={styles.mentorName}>{mentor.mentorName}</div>
               </div>
               <div className={styles.bestMentorCenter}>
                 <div className={styles.achievedJobs}>{mentor.achievedJobs}</div>
                 <span>Achieved Jobs</span>
               </div>
               <div className={styles.bestMentorRight}>
-                <img src="/mentor-arrows.svg" alt="Arrow Icon" />
+                <img src="/vectors/dashboard/arrows-up.svg" alt="Arrow Icon" />
               </div>
             </div>
           );
