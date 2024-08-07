@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styles from "./Nav.module.css";
 import { useNavigate } from "react-router-dom";
+import styles from "./Nav.module.css";
 
 export const Nav = () => {
   const navigate = useNavigate();
