@@ -61,5 +61,22 @@
       "jobTitle": "New Job Offer",
       "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
     }
+  ],
+  "best-mentors": [
+    {
+      "mentorName": "Lucie Weber",
+      "achievedJobs": 18,
+      "imageUrl": "/mentors/best-1.png"
+    },
+    {
+      "mentorName": "Crystal Porter",
+      "achievedJobs": 51,
+      "imageUrl": "/mentors/best-2.png"
+    },
+    {
+      "mentorName": "Thomas Rose",
+      "achievedJobs": 22,
+      "imageUrl": "/mentors/best-3.png"
+    }
   ]
 }
