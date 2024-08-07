@@ -66,17 +66,17 @@
     {
       "mentorName": "Lucie Weber",
       "achievedJobs": 18,
-      "imageUrl": "/mentors/best-1.png"
+      "imageUrl": "/avatars/mentors/1.webp"
     },
     {
       "mentorName": "Crystal Porter",
       "achievedJobs": 51,
-      "imageUrl": "/mentors/best-2.png"
+      "imageUrl": "/avatars/mentors/2.webp"
     },
     {
       "mentorName": "Thomas Rose",
       "achievedJobs": 22,
-      "imageUrl": "/mentors/best-3.png"
+      "imageUrl": "/avatars/mentors/3.webp"
     }
   ]
 }
