@@ -4,15 +4,15 @@
 .compContainer {
   display: flex;
   flex-direction: column;
-  max-width: 50%;
+  max-width: 40%;
 }
 
 .title {
-  font-family: Roboto, sans-serif;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 22px;
-  color: #404d61;
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #566a7f;
 }
 
 .chartContainer {
