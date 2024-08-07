@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+.bestMentors {
+  display: flex;
+  flex-direction: column;
+}
+
+.bestMentors p {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: left;
+  color: #404d61;
+  margin-bottom: 20px;
+}
+
+.bestMentorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 70%;
+}
+
+.bestMentor {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  width: 600px;
+  height: 120px;
+  padding: 0 35px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bestMentor:first-child {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.bestMentor:last-child {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.bestMentor:hover {
+  transform: translateY(-5px);
+}
+
+.bestMentorLeft {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21.86px;
+  text-align: left;
+  color: #8b8795;
+}
+
+.bestMentorLeft img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #e9ecef;
+  object-fit: cover;
+}
+
+.bestMentorCenter {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.achievedJobs {
+  font-size: 24px;
+  font-weight: bold;
+  color: #6f42c1;
+}
+
+.bestMentorCenter span {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.bestMentorRight {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.bestMentorRight img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+}

@@ -4,6 +4,7 @@ import { UserProfile } from "../../userProfile/UserProfile";
 import { JobList } from "./jobList/JobList";
 import { JobsIndicator } from "./jobsIndicator/JobsIndicator";
 import { StartupChart } from "./startupChart/StartupChart";
+import { BestMentors } from "./bestMentors/BestMentors";
 
 import styles from "./Jobs.module.css";
 
@@ -41,7 +42,9 @@ export const Jobs = () => {
             <JobList activeTab={getActiveTab()} />
           </div>
           <div className={styles.contentRight}>
-            <div className={styles.mentors}>Best Performing Mentors</div>
+            <div className={styles.mentors}>
+              <BestMentors />
+            </div>
             <div className={styles.statistics}>
               <StartupChart />
             </div>
