@@ -1,7 +1,6 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { SearchBar } from "../../search/Search";
 import { UserProfile } from "../../userProfile/UserProfile";
-import { Sidebar } from "../sidebar/Sidebar";
 import { MentorStats } from "./mentorStats/MentorStats";
 import styles from "./Stats.module.css";
 import { MentorChart } from "./mentorStats/mentorChart/MentorChart";

@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.compContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+}
+
+.title {
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #404d61;
+}
+
+.chartContainer {
+  width: 35rem;
+  height: 22rem;
+  border-radius: 25px;
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 0;
+}
+
+.chartTitle {
+  font-family: Manrope, sans-serif;
+  font-size: 17.08px;
+  font-weight: 600;
+  line-height: 23.33px;
+  text-transform: uppercase;
+  color: #566a7f;
+  margin: 0;
+}
+
+.chartContainer span {
+  font-family: Manrope;
+  font-size: 15.86px;
+  font-weight: 400;
+  line-height: 31.73px;
+  text-align: left;
+  color: #aab4bf;
+}
