@@ -16,8 +16,7 @@
 .modalContent {
   background-color: #ffffff;
   border-radius: 10px;
-  width: 470px;
-  height: 461px;
+  width: 650px; /* Adjusted width to fit mentors section */
   padding: 50px;
   box-sizing: border-box;
   position: relative;
@@ -65,6 +64,92 @@
   color: #757d8a;
   margin-top: 10px;
   max-width: 360px;
+}
+
+.mentorsTitle {
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #566a7f;
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.mentorsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 200px; /* Limit the height for overflow */
+  overflow-y: auto; /* Add scrollbar if necessary */
+}
+
+.mentorCard {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mentorImage {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.mentorInfo {
+  flex-grow: 1;
+  margin-left: 15px;
+}
+
+.mentorName {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.mentorSkills {
+  font-family: Poppins, sans-serif;
+  font-size: 12px;
+  color: #757d8a;
+}
+
+.mentorActions {
+  display: flex;
+  gap: 10px;
+}
+
+.assignButton {
+  background-color: #696cff;
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.rejectButton {
+  background-color: transparent;
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.assignButton:hover {
+  background-color: #575ed8;
+}
+
+.rejectButton:hover {
+  background-color: #ff6b6b;
+  color: white;
 }
 
 .closeButton {
