@@ -26,9 +26,24 @@ export const JobCard = ({ job }) => {
         </div>
         <h3 className={styles.jobTitle}>{job.jobTitle}</h3>
         <p className={styles.jobDescription}>{job.jobDescription}</p>
-        <button className={styles.viewMoreButton} onClick={handleViewMore}>
-          View More
-        </button>
+        <div className={styles.bottom}>
+          <div className={styles.applicantsContainer}>
+            <div className={styles.applicants}>
+              {job.applicants.map((applicant, index) => (
+                <img
+                  key={index}
+                  src={applicant.imageUrl}
+                  alt={`Applicant ${index + 1}`}
+                  className={styles.applicantPic}
+                />
+              ))}
+            </div>
+            <span className={styles.applicantCount}>3+ Applicants</span>
+          </div>
+          <button className={styles.viewMoreButton} onClick={handleViewMore}>
+            View More
+          </button>
+        </div>
       </div>
       {isModalOpen && <JobModal job={job} onClose={handleCloseModal} />}
     </>

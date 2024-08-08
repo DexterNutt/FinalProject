@@ -17,7 +17,7 @@ export const JobList = () => {
           Create New Job
         </button>
       </div>
-      {data.jobs.map((job, index) => (
+      {data.companyJobs.map((job, index) => (
         <JobCard key={index} job={job} />
       ))}
     </div>
