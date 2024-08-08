@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 
 .modalOverlay {
   position: fixed;
@@ -16,8 +18,8 @@
 .modalContent {
   background-color: #ffffff;
   border-radius: 10px;
-  width: 650px; /* Adjusted width to fit mentors section */
-  padding: 50px;
+  min-width: 700px;
+  padding: 30px;
   box-sizing: border-box;
   position: relative;
 }
@@ -79,23 +81,32 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-height: 200px; /* Limit the height for overflow */
-  overflow-y: auto; /* Add scrollbar if necessary */
+  overflow-y: auto;
 }
 
 .mentorCard {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
+  margin-left: 30px;
+  margin-right: 30px;
   border-radius: 10px;
+  width: 660px;
+  height: 100px;
+  border-radius: 15.5px;
   padding: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 10px 12px 32px 0px #cbc6d742;
+}
+
+.mentorCard:last-child {
+  margin-bottom: 30px;
 }
 
 .mentorImage {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 66px;
+  height: 66px;
   object-fit: cover;
 }
 
@@ -105,17 +116,22 @@
 }
 
 .mentorName {
-  font-family: Poppins, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 5px;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18.15px;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 0;
 }
 
 .mentorSkills {
-  font-family: Poppins, sans-serif;
+  font-family: Inters, sans-serif;
   font-size: 12px;
-  color: #757d8a;
+  font-weight: 500;
+  line-height: 14.52px;
+  text-align: left;
+  color: #000000;
 }
 
 .mentorActions {
@@ -124,6 +140,7 @@
 }
 
 .assignButton {
+  font-family: Noto sans, sans-serif;
   background-color: #696cff;
   padding: 8px 15px;
   border-radius: 6px;
@@ -131,16 +148,18 @@
   color: white;
   cursor: pointer;
   font-size: 12px;
+  transition: background-color 0.3s ease;
 }
 
 .rejectButton {
   background-color: transparent;
-  border: 1px solid #ff6b6b;
-  color: #ff6b6b;
+  border: 1.24px solid #f2076a;
+  color: #f2076a;
   padding: 8px 15px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 12px;
+  transition: background-color 0.3s ease;
 }
 
 .assignButton:hover {
@@ -148,7 +167,7 @@
 }
 
 .rejectButton:hover {
-  background-color: #ff6b6b;
+  background-color: #f2076a;
   color: white;
 }
 
@@ -160,19 +179,4 @@
   border: none;
   font-size: 18px;
   cursor: pointer;
-}
-
-.applyButton {
-  background-color: #696cff;
-  padding: 10px 20px;
-  border-radius: 6px;
-  border: 0;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
-}
-
-.applyButton:hover {
-  background-color: #575ed8;
 }
