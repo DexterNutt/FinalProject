@@ -78,5 +78,67 @@
       "achievedJobs": 22,
       "imageUrl": "/avatars/mentors/3.webp"
     }
+  ],
+  "company-jobs": [
+    {
+      "companyLogo": "/startup_logos/1.jpg",
+      "companyName": "TechWave Innovations",
+      "applicants": [
+        {
+          "imageUrl": "/avatars/mentors/1.webp"
+        },
+        {
+          "imageUrl": "/avatars/mentors/2.webp"
+        },
+        {
+          "imageUrl": "/avatars/mentors/3.webp"
+        }
+      ]
+    },
+    {
+      "companyLogo": "/startup_logos/2.jpg",
+      "companyName": "TechWave Innovations",
+      "applicants": [
+        {
+          "imageUrl": "/avatars/mentors/1.webp"
+        },
+        {
+          "imageUrl": "/avatars/mentors/2.webp"
+        },
+        {
+          "imageUrl": "/avatars/mentors/3.webp"
+        }
+      ]
+    },
+    {
+      "companyLogo": "/startup_logos/3.jpg",
+      "companyName": "TechWave Innovations",
+      "applicants": [
+        {
+          "imageUrl": "/avatars/mentors/1.webp"
+        },
+        {
+          "imageUrl": "/avatars/mentors/2.webp"
+        },
+        {
+          "imageUrl": "/avatars/mentors/3.webp"
+        }
+      ]
+    },
+    {
+      "companyLogo": "/startup_logos/4.jpg",
+      "companyName": "TechWave Innovations",
+      "applicants": [
+        {
+          "imageUrl": "/avatars/mentors/1.webp"
+        },
+        {
+          "imageUrl": "/avatars/mentors/2.webp"
+        },
+        {
+          "imageUrl": "/avatars/mentors/3.webp"
+        }
+      ]
+    }
   ]
 }
