@@ -87,13 +87,19 @@
       "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin.",
       "applicants": [
         {
-          "imageUrl": "/avatars/mentors/4.webp"
+          "imageUrl": "/avatars/mentors/4.webp",
+          "mentorName": "Kierra Press",
+          "skills": "Sales | Management | Problem-solving"
         },
         {
-          "imageUrl": "/avatars/mentors/5.webp"
+          "imageUrl": "/avatars/mentors/5.webp",
+          "mentorName": "Alison Vetrovs",
+          "skills": "Sales | Management | Problem-solving"
         },
         {
-          "imageUrl": "/avatars/mentors/6.webp"
+          "imageUrl": "/avatars/mentors/6.webp",
+          "mentorName": "Michael Brown",
+          "skills": "Sales | Management | Problem-solving"
         }
       ]
     },
@@ -104,13 +110,19 @@
       "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin.",
       "applicants": [
         {
-          "imageUrl": "/avatars/mentors/4.webp"
+          "imageUrl": "/avatars/mentors/4.webp",
+          "mentorName": "Kierra Press",
+          "skills": "Sales | Management | Problem-solving"
         },
         {
-          "imageUrl": "/avatars/mentors/5.webp"
+          "imageUrl": "/avatars/mentors/5.webp",
+          "mentorName": "Alison Vetrovs",
+          "skills": "Sales | Management | Problem-solving"
         },
         {
-          "imageUrl": "/avatars/mentors/6.webp"
+          "imageUrl": "/avatars/mentors/6.webp",
+          "mentorName": "Michael Brown",
+          "skills": "Sales | Management | Problem-solving"
         }
       ]
     },
@@ -121,13 +133,19 @@
       "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin.",
       "applicants": [
         {
-          "imageUrl": "/avatars/mentors/4.webp"
+          "imageUrl": "/avatars/mentors/4.webp",
+          "mentorName": "Kierra Press",
+          "skills": "Sales | Management | Problem-solving"
         },
         {
-          "imageUrl": "/avatars/mentors/5.webp"
+          "imageUrl": "/avatars/mentors/5.webp",
+          "mentorName": "Alison Vetrovs",
+          "skills": "Sales | Management | Problem-solving"
         },
         {
-          "imageUrl": "/avatars/mentors/6.webp"
+          "imageUrl": "/avatars/mentors/6.webp",
+          "mentorName": "Michael Brown",
+          "skills": "Sales | Management | Problem-solving"
         }
       ]
     },
@@ -138,13 +156,19 @@
       "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin.",
       "applicants": [
         {
-          "imageUrl": "/avatars/mentors/4.webp"
+          "imageUrl": "/avatars/mentors/4.webp",
+          "mentorName": "Kierra Press",
+          "skills": "Sales | Management | Problem-solving"
         },
         {
-          "imageUrl": "/avatars/mentors/5.webp"
+          "imageUrl": "/avatars/mentors/5.webp",
+          "mentorName": "Alison Vetrovs",
+          "skills": "Sales | Management | Problem-solving"
         },
         {
-          "imageUrl": "/avatars/mentors/6.webp"
+          "imageUrl": "/avatars/mentors/6.webp",
+          "mentorName": "Michael Brown",
+          "skills": "Sales | Management | Problem-solving"
         }
       ]
     }
