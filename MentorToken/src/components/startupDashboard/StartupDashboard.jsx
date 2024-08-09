@@ -3,6 +3,7 @@ import { Sidebar } from "./sidebar/Sidebar";
 import { Jobs } from "./jobs/Jobs";
 import { Feed } from "./feed/Feed";
 import styles from "./StartupDashboard.module.css";
+import { Mentors } from "./mentors/Mentors";
 
 export const StartupDashboard = () => {
   const [activeItem, setActiveItem] = useState(0);
@@ -20,10 +21,8 @@ export const StartupDashboard = () => {
         className={`${styles.content} ${!visibility ? styles.expanded : ""}`}
       >
         {activeItem === 0 && <Jobs />}
+        {activeItem === 1 && <Mentors />}
         {activeItem === 2 && <Feed />}
-        {/*
-        {activeItem === 1 && <Stats />}
-         */}
       </div>
     </div>
   );
