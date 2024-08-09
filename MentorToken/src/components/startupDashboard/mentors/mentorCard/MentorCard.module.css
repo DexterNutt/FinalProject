@@ -1,0 +1,84 @@
+.mentorContainer {
+  display: flex;
+  background-color: #ffffff;
+  width: 750px;
+  height: 160px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-shadow: 10px 12px 32px 0px #cbc6d742;
+}
+
+.mentorImage {
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.mentorImage img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mentorDetails {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.name h3 {
+  margin: 0;
+  margin-right: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.name img {
+  width: 16px;
+  height: 16px;
+}
+
+.average {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.skills {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.about {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.viewMentor button {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.viewMentor button:hover {
+  background-color: #4f46e5;
+}
