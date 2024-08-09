@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { SearchBar } from "../../search/Search";
-import { UserProfile } from "../../userProfile/UserProfile";
+import { StartupProfile } from "../../startupProfile/StartupProfile";
 import { JobList } from "./jobList/JobList";
 import { JobsIndicator } from "./jobsIndicator/JobsIndicator";
 import { StartupChart } from "./startupChart/StartupChart";
@@ -30,7 +30,7 @@ export const Jobs = () => {
       <div className={styles.content}>
         <div className={styles.header}>
           <SearchBar />
-          <UserProfile />
+          <StartupProfile />
         </div>
         <div className={styles.body}>
           <div className={styles.assignedJobs}>

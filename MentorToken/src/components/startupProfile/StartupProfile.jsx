@@ -5,13 +5,14 @@ export const StartupProfile = () => {
   return (
     <div className={styles.userProfile}>
       <img
-        src="/avatars/7.webp"
+        src="/startup_logos/8.jpg"
         alt="User Profile"
         className={styles.profileImage}
       />
       <div className={styles.userInfo}>
-        <span className={styles.userName}>Kirra Press</span>
-        <span className={styles.userRole}>Mentor</span>
+        <span className={styles.userName}>
+          TechWave <br /> Innovations
+        </span>
       </div>
     </div>
   );

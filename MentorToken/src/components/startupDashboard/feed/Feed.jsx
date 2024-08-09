@@ -1,7 +1,7 @@
 import React from "react";
 import { JobList } from "./jobList/JobList";
 import { SearchBar } from "../../search/Search";
-import { UserProfile } from "../../userProfile/UserProfile";
+import { StartupProfile } from "../../startupProfile/StartupProfile";
 import styles from "./Feed.module.css";
 
 export const Feed = () => {
@@ -10,7 +10,7 @@ export const Feed = () => {
       <div className={styles.content}>
         <div className={styles.header}>
           <SearchBar />
-          <UserProfile />
+          <StartupProfile />
         </div>
         <div className={styles.body}>
           <JobList />
