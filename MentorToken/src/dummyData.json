@@ -62,6 +62,7 @@
       "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin."
     }
   ],
+
   "best-mentors": [
     {
       "mentorName": "Lucie Weber",
@@ -79,6 +80,7 @@
       "imageUrl": "/avatars/mentors/3.webp"
     }
   ],
+
   "companyJobs": [
     {
       "companyLogo": "/startup_logos/4.jpg",
@@ -89,17 +91,17 @@
         {
           "imageUrl": "/avatars/mentors/4.webp",
           "mentorName": "Kierra Press",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         },
         {
           "imageUrl": "/avatars/mentors/5.webp",
           "mentorName": "Alison Vetrovs",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         },
         {
           "imageUrl": "/avatars/mentors/6.webp",
           "mentorName": "Michael Brown",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         }
       ]
     },
@@ -112,17 +114,17 @@
         {
           "imageUrl": "/avatars/mentors/4.webp",
           "mentorName": "Kierra Press",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         },
         {
           "imageUrl": "/avatars/mentors/5.webp",
           "mentorName": "Alison Vetrovs",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         },
         {
           "imageUrl": "/avatars/mentors/6.webp",
           "mentorName": "Michael Brown",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         }
       ]
     },
@@ -135,17 +137,17 @@
         {
           "imageUrl": "/avatars/mentors/4.webp",
           "mentorName": "Kierra Press",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         },
         {
           "imageUrl": "/avatars/mentors/5.webp",
           "mentorName": "Alison Vetrovs",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         },
         {
           "imageUrl": "/avatars/mentors/6.webp",
           "mentorName": "Michael Brown",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         }
       ]
     },
@@ -158,19 +160,43 @@
         {
           "imageUrl": "/avatars/mentors/4.webp",
           "mentorName": "Kierra Press",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         },
         {
           "imageUrl": "/avatars/mentors/5.webp",
           "mentorName": "Alison Vetrovs",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         },
         {
           "imageUrl": "/avatars/mentors/6.webp",
           "mentorName": "Michael Brown",
-          "skills": "Sales | Management | Problem-solving"
+          "skills": ["Sales", "Management", "Problem-solving"]
         }
       ]
+    }
+  ],
+
+  "companyMentors": [
+    {
+      "name": "Kierra Press",
+      "skills": ["Sales", "Management", "Problem-solving"],
+      "average": 2.54,
+      "about": "Field sales training. 5+ years in an outside sales position",
+      "imageUrl": "/avatars/mentors/4.webp"
+    },
+    {
+      "name": "Alison Vetrovs",
+      "skills": ["Sales", "Management", "Problem-solving"],
+      "average": 4.92,
+      "about": "The sales representative position is an OR based sales role with uncapped potential.",
+      "imageUrl": "/avatars/mentors/5.webp"
+    },
+    {
+      "name": "Marcus Cardar  ",
+      "skills": ["Liedership", "Management", "Product sales"],
+      "average": 3.56,
+      "about": "Field sales training. 5+ years in an outside sales position.",
+      "imageUrl": "/avatars/mentors/6.webp"
     }
   ]
 }
