@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MentorCard.module.css";
-
+import { StarRating } from "../../../starRating/StarRating";
 export const MentorCard = ({ mentor }) => {
   return (
     <div className={styles.mentorCard}>
@@ -13,9 +13,10 @@ export const MentorCard = ({ mentor }) => {
             <h3>{mentor.name}</h3>
             <img src="/vectors/socials/linkedin.svg" alt="linkedin logo" />
           </div>
-          <span className={styles.average}>
-            {mentor.average} average based on KPI success rate.
-          </span>
+          <div className={styles.average}>
+            <StarRating rating={mentor.average} />
+            <span>{mentor.average} average based on KPI success rate.</span>
+          </div>
           <span className={styles.skills}>
             Skills: {mentor.skills.join(" | ")}
           </span>
