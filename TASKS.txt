@@ -8,3 +8,5 @@ FE:
 3. Export the svgs from the landing page
 4. Change redux to useContext for authentication
 5. Add custom alerts on login and register
+6. Rewrite Mentor/Startup profile to use the database for the logged in mentor
+7. Render the Search and Mentor/Startup profile once (like the sidebar)
