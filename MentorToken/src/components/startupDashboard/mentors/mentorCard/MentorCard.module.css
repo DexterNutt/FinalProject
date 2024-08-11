@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 .mentorContainer {
   display: flex;
   background-color: #ffffff;
@@ -10,6 +11,8 @@
   padding-left: 30px;
   padding-right: 30px;
   box-shadow: 10px 12px 32px 0px #cbc6d742;
+  font-family: Inter, sans-serif;
+  position: relative;
 }
 
 .mentorImage {
@@ -40,42 +43,68 @@
 .name h3 {
   margin: 0;
   margin-right: 8px;
-  font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
 }
 
 .name img {
   width: 16px;
   height: 16px;
+  color: #696cff;
 }
 
 .average {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  color: #6b7280;
+}
+
+.average span {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12.1px;
+  text-align: left;
+  color: #000000;
 }
 
 .skills {
-  font-size: 14px;
-  font-weight: 600;
-  color: #374151;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
   margin-top: 5px;
   margin-bottom: 5px;
+  color: #000000;
 }
 
 .about {
-  font-size: 14px;
-  color: #6b7280;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000000;
+}
+
+.viewMentor {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
 }
 
 .viewMentor button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Noto Sans, sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 400;
   background-color: #6366f1;
-  color: white;
+  color: #ffffff;
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+  width: 80px;
+  height: 30px;
+  border-radius: 3px;
+  padding: 6px, 8px;
   cursor: pointer;
 }
 
