@@ -11,7 +11,18 @@
     { "task": "Deploy application to production", "status": "In Progress" },
     { "task": "Conduct performance testing", "status": "In Progress" }
   ],
-
+  "mentors": [
+    {
+      "_id": "001",
+      "picture": "/avatars/7.webp",
+      "name": "Keira Press",
+      "title": "Sales Representative",
+      "email": "mentoremail@mail.com",
+      "phone": "+389 77 663 234",
+      "skills": ["Sales", "Management", "Problem-solving"],
+      "details": "Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis. Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis. Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis. Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis."
+    }
+  ],
   "jobs": [
     {
       "companyLogo": "/startup_logos/1.jpg",
