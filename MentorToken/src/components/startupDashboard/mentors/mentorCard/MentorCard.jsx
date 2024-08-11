@@ -1,9 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "./MentorCard.module.css";
 import { StarRating } from "../../../starRating/StarRating";
 
-export const MentorCard = ({ mentor, isBest }) => {
+export const MentorCard = ({ mentor, isBest, onClick }) => {
   return (
     <div className={styles.mentorCard}>
       <div className={styles.mentorContainer}>
@@ -49,7 +48,7 @@ export const MentorCard = ({ mentor, isBest }) => {
               TRENDING
             </span>
           )}
-          <button>View Mentor</button>
+          <button onClick={onClick}>View Mentor</button>
         </div>
       </div>
     </div>

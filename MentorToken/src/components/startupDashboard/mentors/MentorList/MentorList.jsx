@@ -3,7 +3,7 @@ import data from "../../../../dummyData.json";
 import styles from "./MentorList.module.css";
 import { MentorCard } from "../mentorCard/MentorCard";
 
-export const MentorList = () => {
+export const MentorList = ({ onMentorClick }) => {
   const bestMentorRating = Math.max(
     ...data.mentors.map((mentor) => mentor.average)
   );
@@ -15,6 +15,7 @@ export const MentorList = () => {
           key={index}
           mentor={mentor}
           isBest={mentor.average === bestMentorRating}
+          onClick={() => onMentorClick(mentor)}
         />
       ))}
     </div>
