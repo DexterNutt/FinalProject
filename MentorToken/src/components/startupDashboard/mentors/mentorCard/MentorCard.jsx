@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./MentorCard.module.css";
 import { StarRating } from "../../../starRating/StarRating";
+
 export const MentorCard = ({ mentor, isBest }) => {
   return (
     <div className={styles.mentorCard}>
