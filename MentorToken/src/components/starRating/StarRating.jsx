@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./StarRating.module.css";
 
 export const StarRating = ({ rating, totalStars = 5 }) => {
-  const fullStars = Math.floor(rating);
+  const fullStars = Math.round(rating);
   const emptyStars = totalStars - fullStars;
 
   return (
