@@ -12,6 +12,7 @@ import { Register } from "./pages/register/Register.jsx";
 import { TestPage } from "./pages/test/TestPage.jsx";
 import { MentorDashboard } from "./components/mentorDashboard/MentorDashboard.jsx";
 import { StartupDashboard } from "./components/startupDashboard/StartupDashboard.jsx";
+import { MentorStats } from "./components/mentorDashboard/stats/mentorStats/MentorStats.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./main.css";
 import store from "./store.jsx";
@@ -31,8 +32,8 @@ root.render(
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/mentor/dashboard" element={<MentorDashboard />} />
-        <Route path="/startup/dashboard" element={<StartupDashboard />} />
+        <Route path="/dashboard/mentor" element={<MentorDashboard />} />
+        <Route path="/dashboard/startup" element={<StartupDashboard />} />
         <Route path="/test" element={<TestPage />} />
       </Routes>
       <Show>
