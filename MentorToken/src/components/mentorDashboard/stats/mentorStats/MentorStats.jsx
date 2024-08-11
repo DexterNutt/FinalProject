@@ -2,18 +2,14 @@ import React from "react";
 import { MentorProfile } from "./mentorProfile/MentorProfile.jsx";
 import { MentorDetails } from "./mentorDetails/MentorDetails.jsx";
 import styles from "./MentorStats.module.css";
+import data from "../../../../dummyData.json";
 
 export const MentorStats = () => {
-  const mentorData = {
-    picture: "/avatars/7.webp",
-    name: "Keira Press",
-    title: "Sales Representative",
-    email: "mentoremail@mail.com",
-    phone: "+389 77 663 234",
-    skills: ["Sales", "Management", "Problem-solving"],
-    details:
-      "Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis. Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis. Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis. Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis.",
-  };
+  const mentorData = data.mentors.find((mentor) => mentor._id === "002");
+
+  // WHEN PULLING FROM THE DATABASE USE PARAMS TO GET THE ID >>>
+  //  const { id } = useParams();
+  // const mentorData = dummyData.mentors.find((mentor) => mentor._id === id);
 
   return (
     <div className={styles.mentorContainer}>
