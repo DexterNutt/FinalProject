@@ -3,7 +3,7 @@ import { Box, TextField, Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import styles from "./LoginForm.module.css";
 import { logInToApp } from "./duck/operations";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { formButtonStyles, inputFieldStyles } from "../../styles/formStyles";
 
 export const LoginForm = () => {
@@ -18,7 +18,11 @@ export const LoginForm = () => {
         logInToApp(loginData.email, loginData.password)
       );
       if (response.status === "success") {
-        navigate("/mentor/dashboard");
+        if (response.data.role === "mentor") {
+          navigate("/dashboard/mentor");
+        } else if (response.data.role === "startup") {
+          navigate("/dashboard/startup");
+        }
       } else {
         alert("Login failed. Please try again.");
       }
@@ -27,7 +31,6 @@ export const LoginForm = () => {
       alert("Login failed. Please try again.");
     }
   };
-
   return (
     <Box className={styles.LoginForm} sx={{ height: "100vh" }}>
       <Box className={styles.LoginFormContainer}>
