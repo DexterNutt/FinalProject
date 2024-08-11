@@ -5,7 +5,7 @@ import styles from "./MentorStats.module.css";
 import data from "../../../../dummyData.json";
 
 export const MentorStats = () => {
-  const mentorData = data.mentors.find((mentor) => mentor._id === "002");
+  const mentorData = data.mentors.find((mentor) => mentor._id === "001");
 
   // WHEN PULLING FROM THE DATABASE USE PARAMS TO GET THE ID >>>
   //  const { id } = useParams();
