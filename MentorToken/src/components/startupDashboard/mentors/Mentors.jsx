@@ -4,7 +4,7 @@ import { StartupProfile } from "../../startupProfile/StartupProfile";
 import { MentorList } from "./MentorList/MentorList";
 import { QuickOverview } from "../../mentorDashboard/stats/mentorStats/quickOverview/QuickOverview";
 import { MentorProfile } from "../../mentorDashboard/stats/mentorStats/mentorProfile/MentorProfile";
-import { MentorDetails } from "../../mentorDashboard/stats/mentorStats/mentorDetails/MentorDetails";
+import { MentorDetailsVisitor } from "../../startupDashboard/mentors/mentorDetailsVisitor/MentorDetailsVisitor";
 import { JobsIndicator } from "../../mentorDashboard/jobs/jobsIndicator/JobsIndicator";
 import { JobList } from "../../mentorDashboard/jobs/jobList/JobList";
 import { PendingJobs } from "../../mentorDashboard/jobs/pendingJobs/PendingJobs";
@@ -45,7 +45,7 @@ export const Mentors = () => {
             <div className={styles.openMentor}>
               <div className={styles.mentorData}>
                 <MentorProfile mentorData={selectedMentor} />
-                <MentorDetails mentorData={selectedMentor} />
+                <MentorDetailsVisitor mentorData={selectedMentor} />
               </div>
               <div className={styles.jobsContainer}>
                 <div className={styles.assignedJobs}>
