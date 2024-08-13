@@ -15,7 +15,6 @@ export const JobOfferModal = ({ mentor, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log("Job Name:", jobName);
     console.log("Short Description:", shortDescription);
     onClose();
@@ -25,7 +24,7 @@ export const JobOfferModal = ({ mentor, onClose }) => {
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>
-          <img src="/vectors/x.svg" alt="Close" />
+          <img src="/vectors/exit.svg" alt="Close" />
         </button>
         <h2 className={styles.modalTitle}>OFFER JOB</h2>
         <p className={styles.modalSubtitle}>Create and offer job to a mentor</p>

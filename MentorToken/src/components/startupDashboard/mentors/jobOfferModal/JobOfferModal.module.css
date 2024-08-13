@@ -42,6 +42,10 @@
   color: #696cff;
 }
 
+.closeButton img {
+  rotate: 2deg;
+}
+
 .modalTitle {
   font-size: 28px;
   font-weight: 700;
@@ -82,7 +86,7 @@
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  color: #566a7f;
+  color: #aab4bf;
   border: 2px solid #d3d3ff;
   border-radius: 9px;
   box-sizing: border-box;
@@ -95,6 +99,7 @@
 .inputField:focus,
 .textAreaField:focus {
   border: 2px solid #696cff;
+  color: #566a7f;
   outline: none;
 }
 
