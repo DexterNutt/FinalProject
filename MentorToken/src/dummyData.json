@@ -187,23 +187,81 @@
       "skills": ["Sales", "Management", "Problem-solving"],
       "average": 2.54,
       "about": "Field sales training. 5+ years in an outside sales position",
-      "details": "Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis. Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis. Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis. Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien volutpat ac velit facilisis fermentum diam bibendum libero non. Semper morbi at congue pellentesque pharetra amet rhoncus elit quis."
+      "details": "Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien scelerisque ut orci tellus pellentesque non."
     },
     {
       "_id": "002",
+      "imageUrl": "/avatars/mentors/5.webp",
       "name": "Alison Vetrovs",
+      "title": "Sales Representative",
+      "email": "mentoremail@mail.com",
+      "phone": "+389 77 663 234",
       "skills": ["Sales", "Management", "Problem-solving"],
-      "average": 4.92,
-      "about": "The sales representative position is an OR based sales role with uncapped potential.",
-      "imageUrl": "/avatars/mentors/5.webp"
+      "average": 4.21,
+      "about": "Field sales training. 5+ years in an outside sales position",
+      "details": "Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien scelerisque ut orci tellus pellentesque non."
     },
     {
       "_id": "003",
-      "name": "Marcus Cardar",
-      "skills": ["Leadership", "Management", "Product sales"],
-      "average": 3.56,
-      "about": "Field sales training. 5+ years in an outside sales position.",
-      "imageUrl": "/avatars/mentors/6.webp"
+      "imageUrl": "/avatars/mentors/6.webp",
+      "name": "Michael Brown",
+      "title": "Sales Representative",
+      "email": "mentoremail@mail.com",
+      "phone": "+389 77 663 234",
+      "skills": ["Sales", "Management", "Problem-solving"],
+      "average": 3.51,
+      "about": "Field sales training. 5+ years in an outside sales position",
+      "details": "Lorem ipsum dolor sit amet consectetur. Suspendisse quis varius felis augue adipiscing. Sapien scelerisque ut orci tellus pellentesque non."
+    }
+  ],
+
+  "startups": [
+    {
+      "companyLogo": "/startup_logos/4.jpg",
+      "companyName": "TechWave Innovations",
+      "description": "Lorem IpsLorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin.",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin.",
+      "applicants": [
+        {
+          "imageUrl": "/avatars/mentors/4.webp",
+          "mentorName": "Kierra Press",
+          "skills": ["Sales", "Management", "Problem-solving"]
+        },
+        {
+          "imageUrl": "/avatars/mentors/5.webp",
+          "mentorName": "Alison Vetrovs",
+          "skills": ["Sales", "Management", "Problem-solving"]
+        },
+        {
+          "imageUrl": "/avatars/mentors/6.webp",
+          "mentorName": "Michael Brown",
+          "skills": ["Sales", "Management", "Problem-solving"]
+        }
+      ]
+    },
+    {
+      "companyLogo": "/startup_logos/5.jpg",
+      "companyName": "TechWave Innovations",
+      "jobTitle": "New Job Offer",
+      "jobDescription": "Lorem Ipsum Dolor Sit Amet Consectetur. Facilisis Nunc Ut Tellus Augue A Aliquam Arcu. Libero Imperdiet Odio Sed Morbi Quis Felis Proin.",
+      "applicants": [
+        {
+          "imageUrl": "/avatars/mentors/4.webp",
+          "mentorName": "Kierra Press",
+          "skills": ["Sales", "Management", "Problem-solving"]
+        },
+        {
+          "imageUrl": "/avatars/mentors/5.webp",
+          "mentorName": "Alison Vetrovs",
+          "skills": ["Sales", "Management", "Problem-solving"]
+        },
+        {
+          "imageUrl": "/avatars/mentors/6.webp",
+          "mentorName": "Michael Brown",
+          "skills": ["Sales", "Management", "Problem-solving"]
+        }
+      ]
     }
   ]
 }
