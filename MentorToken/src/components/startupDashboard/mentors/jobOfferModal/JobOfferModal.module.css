@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalContent {
+  font-family: Manrope, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #696cff;
+}
+
+.modalTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #566a7f;
+  margin: 0;
+}
+
+.modalSubtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #566a7f;
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.inputNameLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #696cff;
+  margin-bottom: 8px;
+}
+
+.inputLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #566a7f;
+  margin-bottom: 8px;
+}
+
+.inputField,
+.textAreaField {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: #566a7f;
+  border: 2px solid #d3d3ff;
+  border-radius: 9px;
+  box-sizing: border-box;
+}
+
+.textAreaField {
+  height: 10rem;
+}
+
+.inputField:focus,
+.textAreaField:focus {
+  border: 2px solid #696cff;
+  outline: none;
+}
+
+.submitButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28rem;
+  height: 3.75rem;
+  padding: 12px;
+  background-color: #696cff;
+  color: #ffffff;
+  border: none;
+  margin-top: 16px;
+  border-radius: 9px;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 62px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #585ae5;
+}
