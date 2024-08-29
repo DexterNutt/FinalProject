@@ -5,10 +5,6 @@ export const LogInUser = async (email, password) => {
   const header = {
     "Content-Type": "application/json",
     Accept: "application/json",
-    // "Access-Control-Allow-Headers":
-    // "Origin, X-Requested-With, Content-Type, Accept",
-    // "Access-Control-Allow-Origin": "*",
-    // "Access-Control-Allow-Methods": "GET, PUT, POST",
   };
   const data = {
     email: email,
@@ -34,27 +30,15 @@ export const registerUser = async (
   address,
   representative
 ) => {
-  // console.log("Register User Params: ", {
-  //   email,
-  //   password,
-  //   role,
-  //   mentorName,
-  //   startupName,
-  //   address,
-  //   representative,
-  // });
-
   const header = {
     "Content-Type": "application/json",
     Accept: "application/json",
   };
-
   const data = {
     email: email,
     password: password,
     role: role,
   };
-
   if (role === "mentor") {
     data.mentorName = mentorName;
   } else if (role === "startup") {
@@ -62,9 +46,6 @@ export const registerUser = async (
     data.representative = representative;
     data.address = address;
   }
-
-  // console.log("POST REQUEST:", data);
-
   try {
     const json = await axios.post(
       `${api.localRoute}/api/v1/auth/register`,
