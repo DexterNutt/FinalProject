@@ -34,15 +34,15 @@ export const registerUser = async (
   address,
   representative
 ) => {
-  console.log("Register User Params: ", {
-    email,
-    password,
-    role,
-    mentorName,
-    startupName,
-    address,
-    representative,
-  });
+  // console.log("Register User Params: ", {
+  //   email,
+  //   password,
+  //   role,
+  //   mentorName,
+  //   startupName,
+  //   address,
+  //   representative,
+  // });
 
   const header = {
     "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export const registerUser = async (
     data.address = address;
   }
 
-  console.log("POST REQUEST:", data);
+  // console.log("POST REQUEST:", data);
 
   try {
     const json = await axios.post(
