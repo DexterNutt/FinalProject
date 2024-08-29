@@ -12,8 +12,14 @@ const authProxy = proxy("http://localhost:9000", {
   },
 });
 
-app.use("/api/v1/auth", authProxy);
+const usersProxy = proxy("http://localhost:9000", {
+  proxyReqPathResolver: (req) => {
+    return `/api/v1/dashboard/mentors${req.url}`;
+  },
+});
 
+app.use("/api/v1/auth", authProxy);
+app.use("api/v1/dashboard/mentors/:id", usersProxy);
 app.listen(9001, (err) => {
   if (err) {
     return console.log(err);
