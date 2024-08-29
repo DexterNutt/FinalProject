@@ -32,9 +32,8 @@ root.render(
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard/mentor/" element={<MentorDashboard />} />
         <Route path="/dashboard/mentor/:id" element={<MentorDashboard />} />
-        <Route path="/dashboard/startup" element={<StartupDashboard />} />
+        <Route path="/dashboard/startup/:id" element={<StartupDashboard />} />
         <Route path="/test" element={<TestPage />} />
       </Routes>
       <Show>

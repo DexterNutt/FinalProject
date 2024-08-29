@@ -5,6 +5,7 @@ import styles from "./LoginForm.module.css";
 import { logInToApp } from "./duck/operations";
 import { useNavigate } from "react-router-dom";
 import { formButtonStyles, inputFieldStyles } from "../../styles/formStyles";
+import { jwtDecode } from "jwt-decode";
 
 export const LoginForm = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -14,14 +15,18 @@ export const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await dispatch(
+      const data = await dispatch(
         logInToApp(loginData.email, loginData.password)
       );
-      if (response.status === "success") {
-        if (response.data.role === "mentor") {
-          navigate("/dashboard/mentor");
-        } else if (response.data.role === "startup") {
-          navigate("/dashboard/startup");
+
+      const decodedToken = jwtDecode(data.token);
+      const userId = decodedToken.id;
+
+      if (data.status === "success") {
+        if (decodedToken.role === "mentor") {
+          navigate(`/dashboard/mentor/${userId}`);
+        } else if (decodedToken.role === "startup") {
+          navigate(`/dashboard/startup/${userId}`);
         }
       } else {
         alert("Login failed. Please try again.");
@@ -31,6 +36,7 @@ export const LoginForm = () => {
       alert("Login failed. Please try again.");
     }
   };
+
   return (
     <Box className={styles.LoginForm} sx={{ height: "100vh" }}>
       <Box className={styles.LoginFormContainer}>
