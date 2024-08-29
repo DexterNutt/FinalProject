@@ -85,13 +85,13 @@ export const RegisterForm = () => {
   };
 
   const handleMentorSubmit = (registerMentorData) => {
-    console.log("Received Data:", registerMentorData);
+    // console.log("Received Data:", registerMentorData);
     setMentorData(registerMentorData);
     handleSubmit(registerMentorData);
   };
 
   const handleStartupSubmit = (registerStartupData) => {
-    console.log("Received Data:", registerStartupData);
+    // console.log("Received Data:", registerStartupData);
     setStartupData(registerStartupData);
     handleSubmit(registerStartupData);
   };
@@ -107,7 +107,7 @@ export const RegisterForm = () => {
       address: data.address || startupData.address,
     };
 
-    console.log("Submitting Data:", submissionData);
+    // console.log("Submitting Data:", submissionData);
 
     try {
       const response = await dispatch(
