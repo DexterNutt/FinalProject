@@ -6,7 +6,8 @@ FE:
 1. Lazy load (check React)
 2. Blisk.io -> за mobile View
 3. Export the svgs from the landing page
-4. REWRITE REDUX!
+4. REWRITE REDUX! IN PROGRESS...
 5. Add custom alerts on login and register
 6. Rewrite Mentor/Startup profile to use the database for the logged in mentor
 7. Render the Search and Mentor/Startup profile once (like the sidebar)
+8. Refactor Main.jsx Routing to App.jsx Routing.
