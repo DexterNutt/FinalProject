@@ -1,8 +1,8 @@
 const User = require("../../../pkg/users/userSchema");
 
-exports.get = async (req, res) => {
+exports.findUser = async (req, res) => {
   try {
-    const userId = req.params.userId;
+    const userId = req.params.id;
     const user = await User.findById(userId);
 
     if (!user) {

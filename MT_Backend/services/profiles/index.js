@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/api/v1/dashboard/mentor/:id", users.get);
+app.get("/api/v1/dashboard/mentor/:id", users.findUser);
 
 app.listen(process.env.PORT_USERS, (err) => {
   if (err) {
