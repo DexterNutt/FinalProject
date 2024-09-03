@@ -101,6 +101,7 @@ export const RegisterForm = () => {
       email,
       password,
       role,
+      image,
       mentorName: data.mentorName || mentorData.mentorName,
       startupName: data.startupName || startupData.startupName,
       representative: data.representative || startupData.representative,
@@ -115,6 +116,7 @@ export const RegisterForm = () => {
           email,
           password,
           role,
+          image,
           submissionData.mentorName,
           submissionData.startupName,
           submissionData.address,
@@ -122,7 +124,7 @@ export const RegisterForm = () => {
         )
       );
       if (response.status === "success") {
-        navigate("/mentor/dashboard");
+        navigate("/dashboard/mentor");
       } else {
         alert(
           `You tried to register: ${
