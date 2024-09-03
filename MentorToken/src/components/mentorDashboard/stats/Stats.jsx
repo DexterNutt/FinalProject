@@ -1,6 +1,5 @@
 import React from "react";
-import { SearchBar } from "../../search/Search";
-import { UserProfile } from "../../userProfile/UserProfile";
+
 import { MentorStats } from "./mentorStats/MentorStats";
 import styles from "./Stats.module.css";
 import { MentorChart } from "./mentorStats/mentorChart/MentorChart";
@@ -10,10 +9,6 @@ export const Stats = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.header}>
-          <SearchBar />
-          <UserProfile />
-        </div>
         <div className={styles.body}>
           <MentorStats />
         </div>
