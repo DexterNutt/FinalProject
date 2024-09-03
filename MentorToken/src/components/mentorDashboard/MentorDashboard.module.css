@@ -5,7 +5,6 @@
 
 .sidebarContainer {
   display: flex;
-  flex: 0 0 15rem;
 }
 
 .contentContainer {
