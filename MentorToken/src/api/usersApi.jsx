@@ -8,7 +8,7 @@ export const fetchUser = async () => {
 
     // REMEMBER: AXIOS USES 2 PARAMS THE URL AND CONFIG I.E. THE HEADERS IN THIS CASE
     const response = await axios.get(
-      `${api.localRoute}/api/v1/dashboard/mentor/`,
+      `${api.localRoute}/api/v1/dashboard/mentor`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
