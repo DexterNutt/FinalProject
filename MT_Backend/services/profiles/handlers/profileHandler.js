@@ -1,15 +1,25 @@
+const mongo = require("mongodb");
 const User = require("../../../pkg/users/userSchema");
+const jwtDecode = require("");
 
 exports.findUser = async (req, res) => {
   try {
-    const userId = req.params.id;
-    const user = await User.findById(userId);
+    const authToken = req.headers.authorization;
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    res.json(user);
+    const token = authToken.split(" ")[1];
+    console.log(token);
+
+    // STEP 1: DECODE
+
+    // STEP 2: EXTRACT ID
+
+    // STEP 3: FETCH IN DATABASE BY ID WITH PROJECTIONS ( NAME; SKILLS...; JUST THE THINGS I NEED )
+
+    // STEP 4: SEND DATA TO FE
+
+    res.status(200).json({ DATAGOESHERE });
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    console.error("Error finding User:", error);
+    return res.status(500).json({ message: "Error finding user in database" });
   }
 };
