@@ -6,20 +6,22 @@ const app = express();
 
 app.use(cors());
 
+// NEED TO VERIFY TOKENS HERE!
+
 const authProxy = proxy("http://localhost:9000", {
   proxyReqPathResolver: (req) => {
     return `/api/v1/auth${req.url}`;
   },
 });
 
-const usersProxy = proxy("http://localhost:9000", {
+const usersProxy = proxy("http://localhost:9002", {
   proxyReqPathResolver: (req) => {
-    return `/api/v1/dashboard/mentors${req.url}`;
+    return `/api/v1/dashboard/mentor`;
   },
 });
 
 app.use("/api/v1/auth", authProxy);
-app.use("api/v1/dashboard/mentors/:id", usersProxy);
+app.use("/api/v1/dashboard/mentor", usersProxy);
 
 app.listen(9001, (err) => {
   if (err) {
