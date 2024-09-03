@@ -57,6 +57,13 @@ const userSchema = new mongoose.Schema({
   jobsPosted: {
     type: [String],
   },
+  image: {
+    type: String,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 userSchema.pre("save", async function (next) {
