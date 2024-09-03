@@ -27,6 +27,7 @@
 }
 
 .userRole {
+  text-transform: capitalize;
   font-size: 15px;
   font-weight: 500;
   color: #b9b8bc;
