@@ -24,7 +24,7 @@ exports.findUser = async (req, res) => {
     // STEP 3: FETCH IN DATABASE BY ID WITH PROJECTIONS
     const userData = await User.findById(
       userId,
-      "email phone description mentorName skills acceptedJobs"
+      "email phone description mentorName skills acceptedJobs role"
     );
 
     // STEP 4: SEND DATA TO FE
