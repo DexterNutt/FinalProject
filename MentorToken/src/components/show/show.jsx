@@ -12,19 +12,21 @@ export const Show = ({ children }) => {
       "/register/startup",
       "/register/mentor",
       "/test",
+      "/dashboard/startup",
+      "/dashboard/mentor",
     ];
 
     const shouldHideNavBar = hideNavBarHere.some((path) =>
       matchPath({ path, end: path === "/test" }, location.pathname)
     );
 
-    const dynamicRoutes = ["/dashboard/startup/:id", "/dashboard/mentor/:id"];
+    // const dynamicRoutes = ["/dashboard/startup/", "/dashboard/mentor/"];
 
-    const isDynamicRoute = dynamicRoutes.some((route) =>
-      matchPath({ path: route, end: false }, location.pathname)
-    );
+    // const isDynamicRoute = dynamicRoutes.some((route) =>
+    //   matchPath({ path: route, end: false }, location.pathname)
+    // );
 
-    setShowNavBar(!(shouldHideNavBar || isDynamicRoute));
+    setShowNavBar(!shouldHideNavBar);
   }, [location]);
 
   return <div>{showNavBar && children}</div>;

@@ -1,18 +1,18 @@
 .container {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  gap: 50px;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  min-width: 70vw;
+  width: 100%;
   padding-left: 50px;
 }
 
 .header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   width: 100%;
   margin-top: 50px;
@@ -21,7 +21,6 @@
 
 .body {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 50px;
 }
