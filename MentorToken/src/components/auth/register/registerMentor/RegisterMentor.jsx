@@ -25,14 +25,24 @@ export const RegisterMentor = ({ onNext }) => {
   const [isDefaultPhoto, setIsDefaultPhoto] = useState(true);
 
   const handlePhotoUpload = (event) => {
+    // THINK ABOUT REFACTOR
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setPhoto(e.target.result);
-        setIsDefaultPhoto(false);
-      };
-      reader.readAsDataURL(file);
+      const formData = new FormData();
+      formData.append("photo", file);
+
+      fetch("/upload", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setPhoto(data.file.path);
+          setIsDefaultPhoto(false);
+        })
+        .catch((error) => {
+          console.error("Error uploading file:", error);
+        });
     }
   };
 
