@@ -27,9 +27,7 @@ const mentorDashboardSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {
-    // Optional reducers if you want to add more actions
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserData.pending, (state) => {

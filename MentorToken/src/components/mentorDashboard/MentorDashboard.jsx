@@ -18,6 +18,7 @@ export const MentorDashboard = () => {
   const [visibility, setVisibility] = useState(true);
 
   // Should data from BE in json
+  // Avoid data directly in components, use the thunks
   useEffect(() => {
     dispatch(fetchUserData());
   }, [dispatch]);
