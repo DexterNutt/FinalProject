@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import { authReducer } from "./components/auth/loginForm/duck";
-import { registerReducer } from "./components/auth/register/registerForm/duck";
+import authReducer from "./components/auth/loginForm/loginSlice";
 
 const reducer = {
-  authReducer: authReducer,
-  registerReducer: registerReducer,
+  auth: authReducer,
+  // registerReducer: registerReducer, (assuming you'll refactor the registerReducer similarly)
 };
 
 export default configureStore({

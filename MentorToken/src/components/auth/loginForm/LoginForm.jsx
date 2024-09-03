@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import styles from "./LoginForm.module.css";
-import { logInToApp } from "./duck/operations";
+import { logInToApp } from "./loginSlice";
 import { useNavigate } from "react-router-dom";
 import { formButtonStyles, inputFieldStyles } from "../../styles/formStyles";
 import { jwtDecode } from "jwt-decode";
@@ -15,18 +15,18 @@ export const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await dispatch(
-        logInToApp(loginData.email, loginData.password)
+      const resultAction = await dispatch(
+        logInToApp({ email: loginData.email, password: loginData.password })
       );
 
-      const decodedToken = jwtDecode(data.token);
-      const userId = decodedToken.id;
+      if (logInToApp.fulfilled.match(resultAction)) {
+        const { token } = resultAction.payload;
+        const decodedToken = jwtDecode(token);
 
-      if (data.status === "success") {
         if (decodedToken.role === "mentor") {
-          navigate(`/dashboard/mentor/${userId}`);
+          navigate("/dashboard/mentor");
         } else if (decodedToken.role === "startup") {
-          navigate(`/dashboard/startup/${userId}`);
+          navigate("/dashboard/startup");
         }
       } else {
         alert("Login failed. Please try again.");
