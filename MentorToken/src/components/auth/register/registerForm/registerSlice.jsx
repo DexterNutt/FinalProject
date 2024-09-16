@@ -48,7 +48,6 @@ const registerSlice = createSlice({
     image: "",
     mentorData: {},
     startupData: {},
-    status: "idle",
     error: null,
   },
   reducers: {

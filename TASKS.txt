@@ -4,7 +4,6 @@ BE:
 FE:
 1. Lazy load (check React)
 2. Blisk.io -> за mobile View
-3. Export the svgs from the landing page
-4. Add custom alerts on login and register 
-5. Refactor Main.jsx Routing to App.jsx Routing.
-6. Start redux slice on register from scratch, find a way to send the image to BE & display it immediately
+3. Add custom alerts on login and register 
+4. Refactor Main.jsx Routing to App.jsx Routing.
+5. Start redux slice on register from scratch, find a way to send the image to BE & display it immediately
