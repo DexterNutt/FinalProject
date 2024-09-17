@@ -8,6 +8,7 @@ export const registerToApp = (
   mentorName,
   startupName,
   address,
+  image,
   representative
 ) => {
   return (dispatch) => {
@@ -18,6 +19,7 @@ export const registerToApp = (
       mentorName,
       startupName,
       address,
+      image,
       representative
     )
       .then((res) => {

@@ -1,17 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import styles from "./RegisterForm.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { RegisterMentor } from "../registerMentor/RegisterMentor";
 import { RegisterStartup } from "../registerStartup/RegisterStartup";
-import { registerToApp } from "./duck/operations";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { formButtonStyles, inputFieldStyles } from "../../../styles/formStyles";
+import { uploadImage } from "../../../../api/imagesApi";
+import {
+  updateEmail,
+  updatePassword,
+  updateRole,
+  registerToApp,
+} from "../registerForm/registerSlice";
 
 export const RegisterForm = () => {
-  const [role, setRole] = useState("startup");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { email, password, role, mentorData, startupData } = useSelector(
+    (state) => state.register
+  );
+
+  const [step, setStep] = useState(1);
   const [passwordStrength, setPasswordStrength] = useState("Weak");
   const [passwordCriteria, setPasswordCriteria] = useState({
     length: false,
@@ -19,33 +30,19 @@ export const RegisterForm = () => {
     noPersonalInfo: false,
     passwordStrength: false,
   });
-  const [step, setStep] = useState(1);
-  const [mentorData, setMentorData] = useState({
-    mentorName: "",
-  });
 
-  const [startupData, setStartupData] = useState({
-    startupName: "",
-    representative: "",
-    address: "",
-    inviteMentor: "",
-  });
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleButtonClick = (role) => {
-    setRole(role);
+  const handleButtonClick = (selectedRole) => {
+    dispatch(updateRole(selectedRole));
   };
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    dispatch(updateEmail(e.target.value));
     validatePassword(password, e.target.value);
   };
 
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
-    setPassword(newPassword);
+    dispatch(updatePassword(newPassword));
     validatePassword(newPassword, email);
   };
 
@@ -84,60 +81,23 @@ export const RegisterForm = () => {
     }
   };
 
-  const handleMentorSubmit = (registerMentorData) => {
-    // console.log("Received Data:", registerMentorData);
-    setMentorData(registerMentorData);
-    handleSubmit(registerMentorData);
-  };
-
-  const handleStartupSubmit = (registerStartupData) => {
-    // console.log("Received Data:", registerStartupData);
-    setStartupData(registerStartupData);
-    handleSubmit(registerStartupData);
-  };
-
-  const handleSubmit = async (data) => {
-    const submissionData = {
-      email,
-      password,
-      role,
-      image,
-      mentorName: data.mentorName || mentorData.mentorName,
-      startupName: data.startupName || startupData.startupName,
-      representative: data.representative || startupData.representative,
-      address: data.address || startupData.address,
-    };
-
-    // console.log("Submitting Data:", submissionData);
-
-    try {
-      const response = await dispatch(
-        registerToApp(
-          email,
-          password,
-          role,
-          image,
-          submissionData.mentorName,
-          submissionData.startupName,
-          submissionData.address,
-          submissionData.representative
-        )
-      );
-      if (response.status === "success") {
-        navigate("/dashboard/mentor");
-      } else {
-        alert(
-          `You tried to register: ${
-            role === "mentor"
-              ? submissionData.mentorName
-              : submissionData.address
-          }`
-        );
-      }
-    } catch (error) {
-      console.error("Register error:", error);
-      alert("Register failed. Please try again.");
-    }
+  const handleSubmit = (data) => {
+    dispatch(
+      registerToApp({
+        email,
+        password,
+        role,
+        data,
+      })
+    )
+      .then((response) => {
+        if (response.type.endsWith("/fulfilled")) {
+          navigate(`/dashboard/${role}`);
+        } else {
+          alert("Registration failed");
+        }
+      })
+      .catch((error) => console.log("Error:", error));
   };
 
   return (
@@ -154,7 +114,7 @@ export const RegisterForm = () => {
                 className={`${styles.accountButton} ${
                   role === "startup" ? styles.selected : ""
                 }`}
-                onClick={() => handleButtonClick("startup")}
+                onClick={() => handleButtonClick("startup")} // Select Startup role
               >
                 Startup
               </Button>
@@ -162,7 +122,7 @@ export const RegisterForm = () => {
                 className={`${styles.accountButton} ${
                   role === "mentor" ? styles.selected : ""
                 }`}
-                onClick={() => handleButtonClick("mentor")}
+                onClick={() => handleButtonClick("mentor")} // Select Mentor role
               >
                 Mentor
               </Button>
@@ -233,39 +193,25 @@ export const RegisterForm = () => {
               </ul>
             </Box>
 
-            {passwordCriteria.length &&
-            passwordCriteria.digitOrSpecialChar &&
-            passwordCriteria.noPersonalInfo ? (
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                className={styles.registerButton}
-                sx={formButtonStyles}
-              >
-                Continue
-              </Button>
-            ) : (
-              <Button
-                disabled
-                type="submit"
-                fullWidth
-                variant="contained"
-                className={styles.registerButton}
-                sx={formButtonStyles}
-              >
-                Continue
-              </Button>
-            )}
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              className={styles.registerButton}
+              sx={formButtonStyles}
+              disabled={passwordStrength === "Weak"} // Disable button if weak password
+            >
+              Continue
+            </Button>
           </Box>
         )}
 
         {step === 2 && role === "mentor" && (
-          <RegisterMentor onNext={handleMentorSubmit} />
+          <RegisterMentor onNext={(data) => handleSubmit(data)} />
         )}
 
         {step === 2 && role === "startup" && (
-          <RegisterStartup onNext={handleStartupSubmit} />
+          <RegisterStartup onNext={(data) => handleSubmit(data)} />
         )}
 
         {step === 1 && (

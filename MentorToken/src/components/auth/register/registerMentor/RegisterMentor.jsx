@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   Box,
   TextField,
@@ -8,49 +9,46 @@ import {
 } from "@mui/material";
 import styles from "./RegisterMentor.module.css";
 import { formButtonStyles, inputFieldStyles } from "../../../styles/formStyles";
-
-// const [skills, setSkills] = useState("");
-
-// const handleNameChange = (e) => {
-//   setMentorName(e.target.value);
-// };
-
-// const handleSkillsChange = (e) => {
-//   setSkills(e.target.value);
-// };
+import { updateMentorData } from "../registerForm/registerSlice";
 
 export const RegisterMentor = ({ onNext }) => {
+  const dispatch = useDispatch();
   const [mentorName, setMentorName] = useState("");
   const [photo, setPhoto] = useState("/user.png");
   const [isDefaultPhoto, setIsDefaultPhoto] = useState(true);
-
-  const handlePhotoUpload = (event) => {
-    // THINK ABOUT REFACTOR
-    const file = event.target.files[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append("photo", file);
-
-      fetch("/upload", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setPhoto(data.file.path);
-          setIsDefaultPhoto(false);
-        })
-        .catch((error) => {
-          console.error("Error uploading file:", error);
-        });
-    }
-  };
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting:", mentorName);
-    console.log("Submitting:", photo);
+
+    const validationErrors = {};
+    if (!mentorName.trim()) {
+      validationErrors.mentorName = "Mentor name is required";
+    }
+    if (!agreeToTerms) {
+      validationErrors.terms = "You must agree to the terms";
+    }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    dispatch(updateMentorData({ mentorName, photo }));
+
     onNext({ mentorName, photo });
+  };
+
+  const handlePhotoUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setPhoto(e.target.result);
+        setIsDefaultPhoto(false);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -94,16 +92,15 @@ export const RegisterMentor = ({ onNext }) => {
           margin="normal"
           required
           fullWidth
-          id="Mentor Name"
+          id="mentorName"
           label="Mentor Name"
-          name="Mentor Name"
-          placeholder="Name and surname"
+          name="mentorName"
+          placeholder="Name and Surname"
           value={mentorName}
-          onChange={(e) => {
-            console.log("Input Change:", e.target.value);
-            setMentorName(e.target.value);
-          }}
+          onChange={(e) => setMentorName(e.target.value)}
           autoFocus
+          error={!!errors.mentorName} // Show error if exists
+          helperText={errors.mentorName} // Display error message
           sx={inputFieldStyles}
         />
 
@@ -135,6 +132,8 @@ export const RegisterMentor = ({ onNext }) => {
             <FormControlLabel
               control={
                 <Checkbox
+                  checked={agreeToTerms}
+                  onChange={(e) => setAgreeToTerms(e.target.checked)} // Handle checkbox change
                   className={styles.checkbox}
                   sx={{
                     color: "#696cff",
@@ -152,6 +151,9 @@ export const RegisterMentor = ({ onNext }) => {
               </a>
             </span>
           </div>
+          {errors.terms && (
+            <div style={{ color: "red", marginTop: "8px" }}>{errors.terms}</div>
+          )}
         </div>
       </Box>
     </Box>

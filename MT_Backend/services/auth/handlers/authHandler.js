@@ -2,38 +2,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
 const User = require("../../../pkg/users/userSchema");
-const multer = require("multer");
-const path = require("path");
+
 dotenv.config({ path: `${__dirname}/../../../pkg/config/config.env` });
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
-
-const upload = multer({
-  storage,
-  limits: { fileSize: 2500000 },
-  fileFilter: (req, file, cb) => {
-    const filetypes = /jpeg|jpg|png|gif/;
-    const extname = filetypes.test(
-      path.extname(file.originalname).toLowerCase()
-    );
-    const mimetype = filetypes.test(file.mimetype);
-
-    if (mimetype && extname) {
-      return cb(null, true);
-    } else {
-      cb("Error: Images Only!");
-    }
-  },
-});
-
-const uploadMiddleware = upload.single("image");
 
 exports.register = async (req, res) => {
   try {
@@ -58,13 +28,13 @@ exports.register = async (req, res) => {
           .json({ error: "Email, password, and role are required." });
       }
 
-      const image = req.file ? req.file.path : null;
+      const photo = req.file ? req.file.path : null;
 
       const newUser = new User({
         email,
         password,
         role,
-        image,
+        image: photo, // Store the uploaded image path here
         mentorName: role === "mentor" ? mentorName : undefined,
         startupName: role === "startup" ? startupName : undefined,
         representative: role === "startup" ? representative : undefined,
@@ -78,7 +48,7 @@ exports.register = async (req, res) => {
           id: newUser._id,
           email: newUser.email,
           role: newUser.role,
-          image,
+          image: photo,
         },
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES }
@@ -92,7 +62,7 @@ exports.register = async (req, res) => {
             id: newUser._id,
             email: newUser.email,
             role: newUser.role,
-            image,
+            image: photo,
           },
         },
       });

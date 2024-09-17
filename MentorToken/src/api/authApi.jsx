@@ -28,6 +28,7 @@ export const registerUser = async (
   mentorName,
   startupName,
   address,
+  image,
   representative
 ) => {
   const header = {
@@ -38,6 +39,7 @@ export const registerUser = async (
     email: email,
     password: password,
     role: role,
+    image: image,
   };
   if (role === "mentor") {
     data.mentorName = mentorName;

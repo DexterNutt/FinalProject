@@ -18,13 +18,15 @@ export const RegisterStartup = ({ onNext }) => {
   });
   const [photo, setPhoto] = useState("/work.png");
   const [isDefaultPhoto, setIsDefaultPhoto] = useState(true);
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handlePhotoUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setPhoto(file);
       const reader = new FileReader();
       reader.onload = (e) => {
-        setPhoto(e.target.result);
         setIsDefaultPhoto(false);
       };
       reader.readAsDataURL(file);
@@ -39,10 +41,31 @@ export const RegisterStartup = ({ onNext }) => {
     }));
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!startupData.startupName)
+      newErrors.startupName = "Startup name is required";
+    if (!startupData.representative)
+      newErrors.representative = "Representative is required";
+    if (!startupData.address) newErrors.address = "Address is required";
+    if (!agreeToTerms) newErrors.terms = "You must accept the terms";
+    return newErrors;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting:");
-    onNext(startupData);
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    console.log("Submitting:", startupData);
+    const submissionData = {
+      ...startupData,
+      photo,
+    };
+
+    onNext(submissionData);
   };
 
   return (
@@ -159,6 +182,8 @@ export const RegisterStartup = ({ onNext }) => {
             <FormControlLabel
               control={
                 <Checkbox
+                  checked={agreeToTerms}
+                  onChange={(e) => setAgreeToTerms(e.target.checked)}
                   className={styles.checkbox}
                   sx={{
                     color: "#696cff",
