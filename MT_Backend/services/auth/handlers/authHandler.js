@@ -15,7 +15,7 @@ exports.register = async (req, res) => {
       startupName,
       representative,
       address,
-      imageUrl,
+      photo,
     } = req.body;
 
     if (!email || !password || !role) {
@@ -28,7 +28,7 @@ exports.register = async (req, res) => {
       email,
       password,
       role,
-      image: imageUrl,
+      photo: photo,
       mentorName: role === "mentor" ? mentorName : undefined,
       startupName: role === "startup" ? startupName : undefined,
       representative: role === "startup" ? representative : undefined,
@@ -42,7 +42,7 @@ exports.register = async (req, res) => {
         id: newUser._id,
         email: newUser.email,
         role: newUser.role,
-        image: imageUrl,
+        photo: photo,
       },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES }
@@ -56,7 +56,8 @@ exports.register = async (req, res) => {
           id: newUser._id,
           email: newUser.email,
           role: newUser.role,
-          image: imageUrl,
+          mentorName: newUser.mentorName,
+          photo: photo,
         },
       },
     });

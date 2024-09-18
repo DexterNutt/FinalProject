@@ -57,7 +57,7 @@ const userSchema = new mongoose.Schema({
   jobsPosted: {
     type: [String],
   },
-  image: {
+  photo: {
     type: String,
   },
   date: {
