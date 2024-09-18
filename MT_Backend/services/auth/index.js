@@ -7,13 +7,14 @@ const app = express();
 
 db.init();
 app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 
 // Auth and registration routes >
 app.post("/api/v1/auth/register", auth.register);
 app.post("/api/v1/auth/login", auth.login);
 
 // Image upload route >
-app.post("api/v1/auth/upload", upload.single("photo"), (req, res) => {
+app.post("/api/v1/image/upload", upload.single("photo"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded." });
   }

@@ -2,14 +2,15 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
 const User = require("../../../pkg/users/userSchema");
+const upload = require("./uploadHandler");
 
 dotenv.config({ path: `${__dirname}/../../../pkg/config/config.env` });
 
 exports.register = async (req, res) => {
   try {
-    uploadMiddleware(req, res, async (err) => {
+    upload.single("photo")(req, res, async (err) => {
       if (err) {
-        return res.status(400).send(err.message);
+        return res.status(400).json({ error: err.message });
       }
 
       const {
@@ -28,13 +29,13 @@ exports.register = async (req, res) => {
           .json({ error: "Email, password, and role are required." });
       }
 
-      const photo = req.file ? req.file.path : null;
+      const photoPath = req.file ? req.file.path : null;
 
       const newUser = new User({
         email,
         password,
         role,
-        image: photo, // Store the uploaded image path here
+        image: photoPath,
         mentorName: role === "mentor" ? mentorName : undefined,
         startupName: role === "startup" ? startupName : undefined,
         representative: role === "startup" ? representative : undefined,
@@ -48,7 +49,7 @@ exports.register = async (req, res) => {
           id: newUser._id,
           email: newUser.email,
           role: newUser.role,
-          image: photo,
+          image: imagePath,
         },
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES }

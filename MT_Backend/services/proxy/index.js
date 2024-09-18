@@ -20,8 +20,15 @@ const usersProxy = proxy("http://localhost:9002", {
   },
 });
 
+const imagesProxy = proxy("http://localhost:9000", {
+  proxyReqPathResolver: (req) => {
+    return `/api/v1/image/upload`;
+  },
+});
+
 app.use("/api/v1/auth", authProxy);
 app.use("/api/v1/dashboard/mentor", usersProxy);
+app.use("/api/v1/image/upload", imagesProxy);
 
 app.listen(9001, (err) => {
   if (err) {
