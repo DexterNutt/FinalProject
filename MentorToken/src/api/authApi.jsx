@@ -6,6 +6,7 @@ export const LogInUser = async (email, password) => {
     "Content-Type": "application/json",
     Accept: "application/json",
   };
+
   const data = {
     email: email,
     password: password,
@@ -21,37 +22,35 @@ export const LogInUser = async (email, password) => {
   }
 };
 
-export const registerUser = async (
-  email,
-  password,
-  role,
-  mentorName,
-  startupName,
-  address,
-  image,
-  representative
-) => {
+export const registerUser = async (data) => {
   const header = {
     "Content-Type": "application/json",
     Accept: "application/json",
   };
-  const data = {
-    email: email,
-    password: password,
-    role: role,
-    image: image,
+
+  const requestData = {
+    email: data.email,
+    password: data.password,
+    role: data.role,
+    photo: data.photo,
+    mentorName: "",
+    startupName: "",
+    representative: "",
+    address: "",
   };
-  if (role === "mentor") {
-    data.mentorName = mentorName;
-  } else if (role === "startup") {
-    data.startupName = startupName;
-    data.representative = representative;
-    data.address = address;
+
+  if (data.role === "mentor") {
+    requestData.mentorName = data.mentorName;
+  } else if (data.role === "startup") {
+    requestData.startupName = data.startupName;
+    requestData.representative = data.representative;
+    requestData.address = data.address;
   }
+
   try {
     const json = await axios.post(
       `${api.localRoute}/api/v1/auth/register`,
-      data,
+      requestData,
       {
         headers: header,
       }

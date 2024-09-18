@@ -5,16 +5,16 @@ export const uploadImage = async (imageFile) => {
   const formData = new FormData();
   formData.append("photo", imageFile);
 
-  const header = {
+  const headers = {
     "Content-Type": "multipart/form-data",
   };
 
   try {
     const response = await axios.post(
-      `${api.localRoute}/api/v1/auth/upload`,
+      `${api.localRoute}/api/v1/image/upload`,
       formData,
       {
-        headers: header,
+        headers: headers,
       }
     );
     return response.data;

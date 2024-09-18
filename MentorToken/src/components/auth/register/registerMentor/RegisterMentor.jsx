@@ -10,16 +10,18 @@ import {
 import styles from "./RegisterMentor.module.css";
 import { formButtonStyles, inputFieldStyles } from "../../../styles/formStyles";
 import { updateMentorData } from "../registerForm/registerSlice";
+import { uploadImage } from "../../../../api/imagesApi";
 
 export const RegisterMentor = ({ onNext }) => {
   const dispatch = useDispatch();
   const [mentorName, setMentorName] = useState("");
   const [photo, setPhoto] = useState("/user.png");
+  const [photoToUpload, setPhotoToUpload] = useState("");
   const [isDefaultPhoto, setIsDefaultPhoto] = useState(true);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationErrors = {};
@@ -34,18 +36,35 @@ export const RegisterMentor = ({ onNext }) => {
       return;
     }
 
-    dispatch(updateMentorData({ mentorName, photo }));
+    const formData = new FormData();
 
-    onNext({ mentorName, photo });
+    formData.append("photo", photoToUpload);
+
+    let imageUrl = "/user.png";
+
+    if (photoToUpload) {
+      try {
+        const response = await uploadImage(photoToUpload);
+        imageUrl = response.filePath;
+      } catch (err) {
+        console.error("Error uploading image:", err);
+        return;
+      }
+
+      dispatch(updateMentorData({ mentorName, imageUrl }));
+      onNext({ mentorName, photo: imageUrl });
+    }
   };
 
   const handlePhotoUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setPhotoToUpload(file);
+      setIsDefaultPhoto(false);
+
       const reader = new FileReader();
       reader.onload = (e) => {
         setPhoto(e.target.result);
-        setIsDefaultPhoto(false);
       };
       reader.readAsDataURL(file);
     }
@@ -75,6 +94,7 @@ export const RegisterMentor = ({ onNext }) => {
             <input
               type="file"
               id="photoUpload"
+              name="photo"
               accept="image/*"
               style={{ display: "none" }}
               onChange={handlePhotoUpload}
@@ -99,8 +119,8 @@ export const RegisterMentor = ({ onNext }) => {
           value={mentorName}
           onChange={(e) => setMentorName(e.target.value)}
           autoFocus
-          error={!!errors.mentorName} // Show error if exists
-          helperText={errors.mentorName} // Display error message
+          error={!!errors.mentorName}
+          helperText={errors.mentorName}
           sx={inputFieldStyles}
         />
 

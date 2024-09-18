@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { RegisterMentor } from "../registerMentor/RegisterMentor";
 import { RegisterStartup } from "../registerStartup/RegisterStartup";
 import { formButtonStyles, inputFieldStyles } from "../../../styles/formStyles";
-import { uploadImage } from "../../../../api/imagesApi";
+
 import {
   updateEmail,
   updatePassword,
@@ -82,6 +82,11 @@ export const RegisterForm = () => {
   };
 
   const handleSubmit = (data) => {
+    if (!role) {
+      alert("Please select a role before submitting");
+      return;
+    }
+
     dispatch(
       registerToApp({
         email,
@@ -114,7 +119,7 @@ export const RegisterForm = () => {
                 className={`${styles.accountButton} ${
                   role === "startup" ? styles.selected : ""
                 }`}
-                onClick={() => handleButtonClick("startup")} // Select Startup role
+                onClick={() => handleButtonClick("startup")}
               >
                 Startup
               </Button>
@@ -122,7 +127,7 @@ export const RegisterForm = () => {
                 className={`${styles.accountButton} ${
                   role === "mentor" ? styles.selected : ""
                 }`}
-                onClick={() => handleButtonClick("mentor")} // Select Mentor role
+                onClick={() => handleButtonClick("mentor")}
               >
                 Mentor
               </Button>

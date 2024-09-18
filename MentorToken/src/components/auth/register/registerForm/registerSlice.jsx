@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setUserStorage } from "../../../../config/StorageFunctions";
 import { registerUser } from "../../../../api/authApi";
-import { uploadImage } from "../../../../api/imagesApi";
 
 export const registerToApp = createAsyncThunk(
-  "register/registerToApp",
+  "auth/registerToApp",
   async ({ email, password, role, data }, thunkAPI) => {
     try {
       const response = await registerUser({
@@ -15,10 +14,12 @@ export const registerToApp = createAsyncThunk(
         startupName: data.startupName,
         address: data.address,
         representative: data.representative,
-        imageUrl: data.photo,
+        photo: data.photo,
       });
+
       return response.data;
     } catch (error) {
+      console.log(error);
       return thunkAPI.rejectWithValue("Registration failed");
     }
   }
@@ -36,7 +37,7 @@ const initialState = {
 };
 
 const registerSlice = createSlice({
-  name: "register",
+  name: "auth",
   initialState,
   reducers: {
     updateEmail: (state, action) => {
@@ -66,9 +67,12 @@ const registerSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(registerToApp.fulfilled, (state, action) => {
-        state.token = action.payload.token;
-        state.user = action.payload.username;
+        const { token, username, photo } = action.payload;
+        setUserStorage(token, username);
+        state.token = token;
+        state.user = username;
         state.error = null;
+        state.photo = photo;
       })
       .addCase(registerToApp.rejected, (state, action) => {
         state.error = action.payload;

@@ -6,7 +6,7 @@ export const fetchUser = async () => {
   try {
     const token = getToken();
 
-    // REMEMBER: AXIOS USES 2 PARAMS THE URL AND CONFIG I.E. THE HEADERS IN THIS CASE
+    // REMEMBER: AXIOS USES 2 PARAMS FOR GET THE URL AND CONFIG I.E. THE HEADERS IN THIS CASE
     const response = await axios.get(
       `${api.localRoute}/api/v1/dashboard/mentor`,
       {
