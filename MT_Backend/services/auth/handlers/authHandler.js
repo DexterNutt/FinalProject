@@ -2,71 +2,63 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
 const User = require("../../../pkg/users/userSchema");
-const upload = require("./uploadHandler");
 
 dotenv.config({ path: `${__dirname}/../../../pkg/config/config.env` });
 
 exports.register = async (req, res) => {
   try {
-    upload.single("photo")(req, res, async (err) => {
-      if (err) {
-        return res.status(400).json({ error: err.message });
-      }
+    const {
+      email,
+      password,
+      role,
+      mentorName,
+      startupName,
+      representative,
+      address,
+      imageUrl,
+    } = req.body;
 
-      const {
-        email,
-        password,
-        role,
-        mentorName,
-        startupName,
-        representative,
-        address,
-      } = req.body;
-
-      if (!email || !password || !role) {
-        return res
-          .status(400)
-          .json({ error: "Email, password, and role are required." });
-      }
-
-      const photoPath = req.file ? req.file.path : null;
-
-      const newUser = new User({
-        email,
-        password,
-        role,
-        image: photoPath,
-        mentorName: role === "mentor" ? mentorName : undefined,
-        startupName: role === "startup" ? startupName : undefined,
-        representative: role === "startup" ? representative : undefined,
-        address: role === "startup" ? address : undefined,
+    if (!email || !password || !role) {
+      return res.status(400).json({
+        error: "Email, password, and role are required.",
       });
+    }
 
-      await newUser.save();
+    const newUser = new User({
+      email,
+      password,
+      role,
+      image: imageUrl,
+      mentorName: role === "mentor" ? mentorName : undefined,
+      startupName: role === "startup" ? startupName : undefined,
+      representative: role === "startup" ? representative : undefined,
+      address: role === "startup" ? address : undefined,
+    });
 
-      const token = jwt.sign(
-        {
+    await newUser.save();
+
+    const token = jwt.sign(
+      {
+        id: newUser._id,
+        email: newUser.email,
+        role: newUser.role,
+        image: imageUrl,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES }
+    );
+
+    res.status(201).json({
+      status: "success",
+      token,
+      data: {
+        user: {
           id: newUser._id,
           email: newUser.email,
           role: newUser.role,
-          image: imagePath,
+          image: imageUrl,
         },
-        process.env.JWT_SECRET,
-        { expiresIn: process.env.JWT_EXPIRES }
-      );
-
-      res.status(201).json({
-        status: "success",
-        token,
-        data: {
-          user: {
-            id: newUser._id,
-            email: newUser.email,
-            role: newUser.role,
-            image: photo,
-          },
-        },
-      });
+      },
     });
   } catch (error) {
     console.error(error);
