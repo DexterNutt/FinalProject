@@ -7,13 +7,6 @@ export const registerToApp = createAsyncThunk(
   "register/registerToApp",
   async ({ email, password, role, data }, thunkAPI) => {
     try {
-      let imageUrl = null;
-
-      if (data.image) {
-        const uploadResponse = await uploadImage(data.image);
-        imageUrl = uploadResponse.filePath;
-      }
-
       const response = await registerUser({
         email,
         password,
@@ -22,7 +15,7 @@ export const registerToApp = createAsyncThunk(
         startupName: data.startupName,
         address: data.address,
         representative: data.representative,
-        imageUrl,
+        imageUrl: data.photo,
       });
       return response.data;
     } catch (error) {
@@ -56,10 +49,18 @@ const registerSlice = createSlice({
       state.role = action.payload;
     },
     updateMentorData: (state, action) => {
-      state.mentorData = { ...state.mentorData, ...action.payload };
+      const { mentorName, imageUrl } = action.payload;
+      state.mentorData = { mentorName, photo: imageUrl };
     },
     updateStartupData: (state, action) => {
       state.startupData = { ...state.startupData, ...action.payload };
+    },
+    updatePhoto: (state, action) => {
+      if (state.role === "mentor") {
+        state.mentorData.photo = action.payload;
+      } else if (state.role === "startup") {
+        state.startupData.photo = action.payload;
+      }
     },
   },
   extraReducers: (builder) => {
