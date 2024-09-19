@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   Box,
   TextField,
@@ -8,8 +9,11 @@ import {
 } from "@mui/material";
 import styles from "./RegisterStartup.module.css";
 import { formButtonStyles, inputFieldStyles } from "../../../styles/formStyles";
+import { updateStartupData } from "../registerForm/registerSlice";
+import { uploadImage } from "../../../../api/imagesApi";
 
 export const RegisterStartup = ({ onNext }) => {
+  const dispatch = useDispatch();
   const [startupData, setStartupData] = useState({
     startupName: "",
     representative: "",
@@ -17,28 +21,37 @@ export const RegisterStartup = ({ onNext }) => {
     inviteMentor: "",
   });
   const [photo, setPhoto] = useState("/work.png");
+  const [photoToUpload, setPhotoToUpload] = useState("");
   const [isDefaultPhoto, setIsDefaultPhoto] = useState(true);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const handlePhotoUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setPhoto(file);
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setIsDefaultPhoto(false);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleDataChange = (e) => {
-    const { name, value } = e.target;
-    setStartupData((data) => ({
-      ...data,
-      [name]: value,
-    }));
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("photo", photoToUpload);
+
+    let imageUrl = "/work.png";
+
+    if (photoToUpload) {
+      try {
+        const response = await uploadImage(photoToUpload);
+        imageUrl = response.filePath;
+      } catch (err) {
+        console.error("Error uploading image:", err);
+        return;
+      }
+    }
+
+    dispatch(updateStartupData({ ...startupData, imageUrl }));
+    onNext({ ...startupData, photo: imageUrl });
   };
 
   const validateForm = () => {
@@ -52,20 +65,26 @@ export const RegisterStartup = ({ onNext }) => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-    console.log("Submitting:", startupData);
-    const submissionData = {
-      ...startupData,
-      photo,
-    };
+  const handleDataChange = (e) => {
+    const { name, value } = e.target;
+    setStartupData((data) => ({
+      ...data,
+      [name]: value,
+    }));
+  };
 
-    onNext(submissionData);
+  const handlePhotoUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setPhotoToUpload(file);
+      setIsDefaultPhoto(false);
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setPhoto(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -93,6 +112,7 @@ export const RegisterStartup = ({ onNext }) => {
             <input
               type="file"
               id="photoUpload"
+              name="photo"
               accept="image/*"
               style={{ display: "none" }}
               onChange={handlePhotoUpload}
@@ -100,15 +120,6 @@ export const RegisterStartup = ({ onNext }) => {
           </div>
         </div>
       </div>
-
-      {/* <div className={styles.photoContainer}>
-        <div className={styles.workPhoto}>
-          <img src="/work.png" alt="work photo" />
-          <div className={styles.camera}>
-            <img src="/photo-img.webp" alt="camera" />
-          </div>
-        </div>
-      </div> */}
 
       <Box
         component="form"
@@ -136,7 +147,7 @@ export const RegisterStartup = ({ onNext }) => {
           fullWidth
           name="representative"
           label="Legal Representative"
-          id="legalRepresentative"
+          id="representative"
           placeholder="Name and Surname"
           value={startupData.representative}
           onChange={handleDataChange}
@@ -195,12 +206,15 @@ export const RegisterStartup = ({ onNext }) => {
               }
             />
             <span>
-              By signing up to create an account I accept Company’s{" "}
+              By signing up to create an account I accept Company
               <a href="#" className={styles.loginLinkText}>
                 Terms of use & Privacy Policy.
               </a>
             </span>
           </div>
+          {errors.terms && (
+            <div style={{ color: "red", marginTop: "8px" }}>{errors.terms}</div>
+          )}
         </div>
       </Box>
     </Box>
