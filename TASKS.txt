@@ -3,5 +3,4 @@ FE:
 2. Blisk.io -> за mobile View
 3. Add custom alerts on login and register
 4. Refactor Main.jsx Routing to App.jsx Routing
-5. Implement error route 
-6. Use the same logic for images for the startup profile
+5. Implement 404 Page not found route 

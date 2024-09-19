@@ -35,6 +35,7 @@ root.render(
         <Route path="/dashboard/mentor/" element={<MentorDashboard />} />
         <Route path="/dashboard/startup/" element={<StartupDashboard />} />
         <Route path="/test" element={<TestPage />} />
+        <Route path="*" element={<TestPage />} /*{PageNotFound}*/ />
       </Routes>
       <Show>
         <Footer />
