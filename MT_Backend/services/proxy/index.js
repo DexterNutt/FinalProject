@@ -20,6 +20,12 @@ const usersProxy = proxy("http://localhost:9002", {
   },
 });
 
+const startupsProxy = proxy("http://localhost:9002", {
+  proxyReqPathResolver: (req) => {
+    return `/api/v1/dashboard/startup`;
+  },
+});
+
 const imagesProxy = proxy("http://localhost:9000", {
   proxyReqPathResolver: (req) => {
     return `/api/v1/image/upload`;
@@ -34,6 +40,7 @@ const serveImagesProxy = proxy("http://localhost:9002", {
 
 app.use("/api/v1/auth", authProxy);
 app.use("/api/v1/dashboard/mentor", usersProxy);
+app.use("/api/v1/dashboard/startup", startupsProxy);
 app.use("/api/v1/image/upload", imagesProxy);
 app.use("/uploads", serveImagesProxy);
 
