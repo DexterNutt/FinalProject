@@ -1,12 +1,29 @@
 .body {
   display: flex;
+  height: 100vh;
+}
+
+.sidebarContainer {
+  display: flex;
+}
+
+.contentContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .content {
+  display: flex;
+  padding: 1rem 0;
   flex: 1;
-  transition: 0.3s ease;
-}
-
-.content.expanded {
-  margin-left: 0;
+  flex-direction: column;
 }

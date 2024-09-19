@@ -39,11 +39,11 @@ export const Sidebar = ({
   }, [activeItem, visibility]);
 
   return (
-    <div className={`${styles.sidebar} ${!visibility ? styles.hidden : ""}`}>
-      <div className={styles.logo}>
-        <img src="/logo.svg" alt="logo" />
-        <p>Mentor Token</p>
-      </div>
+    <div
+      className={`${styles.sidebar} ${
+        !visibility ? styles.collapsed : styles.expanded
+      }`}
+    >
       <div
         className={`${styles.hideMenu} ${!visibility ? styles.menuHidden : ""}`}
         onClick={handleSidebarVisibility}
@@ -54,6 +54,10 @@ export const Sidebar = ({
           className={arrowRotation ? styles.arrowRotation : ""}
         />
       </div>
+      <div className={styles.logo}>
+        <img src="/logo.svg" alt="logo" />
+        {visibility && <p>Mentor Token</p>}
+      </div>
       <div className={styles.LinksContainer}>
         <div
           className={`${styles.link} ${activeItem === 0 ? styles.active : ""}`}
@@ -62,9 +66,11 @@ export const Sidebar = ({
           <div className={styles.icon}>
             <img src="/vectors/dashboard/category.svg" alt="category icon" />
           </div>
-          <div className={styles.text}>
-            <span>Dashboard</span>
-          </div>
+          {visibility && (
+            <div className={styles.text}>
+              <span>Dashboard</span>
+            </div>
+          )}
         </div>
         <div
           className={`${styles.link} ${activeItem === 1 ? styles.active : ""}`}
@@ -73,9 +79,11 @@ export const Sidebar = ({
           <div className={styles.icon}>
             <img src="/vectors/dashboard/profile.svg" alt="profile icon" />
           </div>
-          <div className={styles.text}>
-            <span>Mentors</span>
-          </div>
+          {visibility && (
+            <div className={styles.text}>
+              <span>Mentors</span>
+            </div>
+          )}
         </div>
         <div
           className={`${styles.link} ${activeItem === 2 ? styles.active : ""}`}
@@ -84,19 +92,19 @@ export const Sidebar = ({
           <div className={styles.icon}>
             <img src="/vectors/dashboard/disc.svg" alt="disc icon" />
           </div>
-          <div className={styles.text}>
-            <span>Jobs</span>
-          </div>
+          {visibility && (
+            <div className={styles.text}>
+              <span>Jobs</span>
+            </div>
+          )}
         </div>
         <div ref={indicatorRef} className={styles.activeIndicator}></div>
       </div>
-      <div className={styles.logout}>
+      <div className={styles.logout} onClick={handleLogout}>
         <div className={styles.icon}>
           <img src="/vectors/dashboard/logout.svg" alt="logout arrow" />
         </div>
-        <button className={styles.text} onClick={handleLogout}>
-          Logout
-        </button>
+        {visibility && <span className={styles.text}>Logout</span>}
       </div>
     </div>
   );

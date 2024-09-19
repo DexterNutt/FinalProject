@@ -8,10 +8,6 @@ export const Feed = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.header}>
-          <SearchBar />
-          <StartupProfile />
-        </div>
         <div className={styles.body}>
           <JobList />
         </div>
