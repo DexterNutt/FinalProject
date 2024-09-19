@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors());
 
-// NEED TO VERIFY TOKENS HERE!
+// NEED TO VERIFY TOKENS HERE IN REAL PROJECTS!
 
 const authProxy = proxy("http://localhost:9000", {
   proxyReqPathResolver: (req) => {
@@ -26,9 +26,16 @@ const imagesProxy = proxy("http://localhost:9000", {
   },
 });
 
+const serveImagesProxy = proxy("http://localhost:9002", {
+  proxyReqPathResolver: (req) => {
+    return `/uploads${req.url}`;
+  },
+});
+
 app.use("/api/v1/auth", authProxy);
 app.use("/api/v1/dashboard/mentor", usersProxy);
 app.use("/api/v1/image/upload", imagesProxy);
+app.use("/uploads", serveImagesProxy);
 
 app.listen(9001, (err) => {
   if (err) {

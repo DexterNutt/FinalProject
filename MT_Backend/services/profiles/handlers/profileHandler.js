@@ -1,7 +1,6 @@
 const User = require("../../../pkg/users/userSchema");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
-
 dotenv.config({ path: `${__dirname}/../../../pkg/config/config.env` });
 
 exports.findUser = async (req, res) => {
@@ -24,7 +23,7 @@ exports.findUser = async (req, res) => {
     // STEP 3: FETCH IN DATABASE BY ID WITH PROJECTIONS
     const userData = await User.findById(
       userId,
-      "email phone description mentorName skills acceptedJobs role"
+      "email phone description mentorName skills acceptedJobs role photo"
     );
 
     // STEP 4: SEND DATA TO FE

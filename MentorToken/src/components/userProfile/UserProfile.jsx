@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./UserProfile.module.css";
+// import { api } from "../../config/properties";
 
 export const UserProfile = () => {
   const { userData } = useSelector((state) => state.mentorDashboard);
@@ -11,7 +12,11 @@ export const UserProfile = () => {
       {userData ? (
         <>
           <img
-            src={userData.profileImage || "/user.png"}
+            src={
+              userData.photo
+                ? `http://localhost:9000${userData.photo}`
+                : "/user.png"
+            }
             alt="User Profile"
             className={styles.profileImage}
           />
