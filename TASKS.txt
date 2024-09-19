@@ -4,4 +4,4 @@ FE:
 3. Add custom alerts on login and register
 4. Refactor Main.jsx Routing to App.jsx Routing
 5. Implement error route 
-6. Render User Profile image from DB
+6. Use the same logic for images for the startup profile
