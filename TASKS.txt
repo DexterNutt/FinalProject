@@ -1,10 +1,7 @@
-BE: 
-1. Find a way to add PIC to DB > Multer! -> STARTED
-
 FE:
 1. Lazy load (check React)
 2. Blisk.io -> за mobile View
-3. Add custom alerts on login and register 
-4. Refactor Main.jsx Routing to App.jsx Routing.
-5. Start redux slice on register from scratch, find a way to send the image to BE & display it immediately
-6. Implement error route 
+3. Add custom alerts on login and register
+4. Refactor Main.jsx Routing to App.jsx Routing
+5. Implement error route 
+6. Render User Profile image from DB
