@@ -88,15 +88,16 @@ exports.searchUsers = async (req, res) => {
     const token = authToken.split(" ")[1];
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
-    const userId = decodedToken.id;
-
     const searchTerm = req.query.search;
 
     const searchFilter = {
       $or: [{ mentorName: { $regex: searchTerm, $options: "i" } }],
     };
 
-    const mentors = await User.find(searchFilter, "mentorName photo");
+    const mentors = await User.find(
+      searchFilter,
+      "mentorName skills description photo"
+    );
 
     if (mentors.length === 0) {
       return res.status(404).json({ message: "No mentors found" });
