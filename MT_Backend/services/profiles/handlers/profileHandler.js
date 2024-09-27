@@ -23,7 +23,7 @@ exports.findUser = async (req, res) => {
     // STEP 3: FETCH IN DATABASE BY ID WITH PROJECTIONS
     const userData = await User.findById(
       userId,
-      "email phone description mentorName skills acceptedJobs role photo"
+      "email phone description mentorName skills title acceptedJobs role photo"
     );
 
     // STEP 4: SEND DATA TO FE
@@ -86,6 +86,7 @@ exports.searchUsers = async (req, res) => {
     }
 
     const token = authToken.split(" ")[1];
+
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     const searchTerm = req.query.search;
@@ -96,7 +97,7 @@ exports.searchUsers = async (req, res) => {
 
     const mentors = await User.find(
       searchFilter,
-      "mentorName skills description photo"
+      "mentorName skills title description photo"
     );
 
     if (mentors.length === 0) {
