@@ -22,6 +22,9 @@ const searchSlice = createSlice({
     setQuery: (state, action) => {
       state.query = action.payload;
     },
+    resetSearch: (state) => {
+      return { ...state, query: "", results: [], status: "idle", error: null };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -39,5 +42,5 @@ const searchSlice = createSlice({
   },
 });
 
-export const { setQuery } = searchSlice.actions;
+export const { setQuery, resetSearch } = searchSlice.actions;
 export default searchSlice.reducer;

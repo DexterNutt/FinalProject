@@ -1,15 +1,14 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Search.module.css";
-import { setQuery, fetchMentors } from "./searchSlice";
+import { setQuery, fetchMentors, resetSearch } from "./searchSlice";
 
-export const SearchBar = () => {
+export const SearchBar = ({ onSelectMentor }) => {
   const dispatch = useDispatch();
   const query = useSelector((state) => state.search.query);
   const searchStatus = useSelector((state) => state.search.status);
   const mentors = useSelector((state) => state.search.results);
 
-  // Debounced search function
   const searchMentor = useCallback(() => {
     let timeoutId;
     return (e) => {
@@ -26,11 +25,16 @@ export const SearchBar = () => {
 
       timeoutId = setTimeout(() => {
         dispatch(fetchMentors(searchedTerm));
-      }, 500);
+      }, 1000);
     };
   }, [dispatch]);
 
-  const topMentors = mentors.slice(0, 3);
+  const handleSelectMentor = (mentor) => {
+    onSelectMentor(mentor);
+    dispatch(resetSearch());
+  };
+
+  const topSearchHits = mentors.slice(0, 3);
 
   return (
     <div className={styles.searchBar}>
@@ -41,19 +45,25 @@ export const SearchBar = () => {
         value={query}
         onChange={searchMentor()}
       />
-      {searchStatus === "loading" && <p>Loading...</p>}
-
-      {searchStatus === "succeeded" && topMentors.length > 0 && (
-        <ul className={styles.resultsList}>
-          {topMentors.map((mentor) => (
-            <li key={mentor._id} className={styles.resultItem}>
-              {mentor.mentorName}
-            </li>
-          ))}
-        </ul>
+      {searchStatus === "loading" && (
+        <div className={styles.loading}>Loading...</div>
       )}
 
-      {searchStatus === "succeeded" && topMentors.length === 0 && (
+      {searchStatus === "succeeded" && topSearchHits.length > 0 && (
+        <div className={styles.resultsList}>
+          {topSearchHits.map((mentor) => (
+            <div
+              key={mentor._id}
+              className={styles.resultItem}
+              onClick={() => handleSelectMentor(mentor)}
+            >
+              {mentor.mentorName}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {searchStatus === "succeeded" && topSearchHits.length === 0 && (
         <p>No matches found</p>
       )}
     </div>

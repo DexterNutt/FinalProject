@@ -1,16 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap");
 
 .searchBar {
-  font-family: DM Sans, sans-serif;
+  font-family: "DM Sans", sans-serif;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   background-color: #ffffff;
   padding: 10px;
   width: 100%;
   max-width: 450px;
   border-radius: 35px;
-  height: 30px;
+  height: auto;
+  position: relative;
 }
 
 .searchBar img {
@@ -26,4 +28,37 @@
   width: 100%;
   font-size: 16px;
   color: #b9b8bc;
+  padding: 5px;
+}
+
+.loading {
+  color: #b9b8bc;
+}
+
+.resultsList {
+  position: absolute;
+  color: #707070;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-radius: 0 0 35px 35px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.resultItem {
+  padding: 10px;
+  padding-left: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.resultItem:hover {
+  background-color: #f0f0f0;
 }
