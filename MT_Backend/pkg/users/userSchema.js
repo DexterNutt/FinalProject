@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
     type: [String],
   },
   acceptedJobs: {
-    type: [String],
+    type: [],
   },
   startupName: {
     type: String,
@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
     type: [String],
   },
   jobsPosted: {
-    type: [String],
+    type: [],
   },
   photo: {
     type: String,

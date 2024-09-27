@@ -74,3 +74,39 @@ exports.findStartup = async (req, res) => {
       .json({ message: "Error finding startup in database" });
   }
 };
+
+exports.searchUsers = async (req, res) => {
+  try {
+    const authToken = req.headers.authorization;
+
+    if (!authToken) {
+      return res
+        .status(401)
+        .json({ message: "Authorization token is missing" });
+    }
+
+    const token = authToken.split(" ")[1];
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+
+    const userId = decodedToken.id;
+
+    const searchTerm = req.query.search;
+
+    const searchFilter = {
+      $or: [{ mentorName: { $regex: searchTerm, $options: "i" } }],
+    };
+
+    const mentors = await User.find(searchFilter, "mentorName photo");
+
+    if (mentors.length === 0) {
+      return res.status(404).json({ message: "No mentors found" });
+    }
+
+    res.status(200).json(mentors);
+  } catch (error) {
+    console.error("Error searching for mentors:", error);
+    return res
+      .status(500)
+      .json({ message: "Error searching for mentors in database" });
+  }
+};

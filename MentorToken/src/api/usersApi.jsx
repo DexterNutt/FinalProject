@@ -24,3 +24,25 @@ export const fetchUser = async () => {
     throw err;
   }
 };
+
+export const searchUser = async (searchTerm) => {
+  try {
+    const token = getToken();
+
+    const response = await axios.get(
+      `${api.localRoute}/api/v1/mentors?search=${searchTerm}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (err) {
+    console.log("Error searching for mentors:", err.message);
+    throw err;
+  }
+};
