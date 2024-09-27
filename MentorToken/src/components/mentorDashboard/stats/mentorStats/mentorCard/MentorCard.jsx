@@ -1,14 +1,25 @@
 import React from "react";
-import styles from "./MentorProfile.module.css";
+import { useSelector } from "react-redux";
+import styles from "./MentorCard.module.css";
 
-export const MentorProfile = ({ mentorData }) => {
+export const MentorCard = () => {
+  const { userData } = useSelector((state) => state.mentorDashboard);
+
+  if (!userData) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profile}>
         <div className={styles.picContainer}>
           <img
-            src={mentorData.imageUrl}
-            alt="mentor profile"
+            src={
+              userData.photo
+                ? `http://localhost:9000${userData.photo}`
+                : "/user.png"
+            }
+            alt="User Profile"
             className={styles.profileImage}
           />
           <img
@@ -19,7 +30,7 @@ export const MentorProfile = ({ mentorData }) => {
         </div>
 
         <div className={styles.mentorName}>
-          <p>{mentorData.name}</p>
+          <p>{userData.mentorName}</p>
           <img
             src="/vectors/socials/radix-icons_linkedin-logo.svg"
             alt="LinkedIn logo"
@@ -27,17 +38,17 @@ export const MentorProfile = ({ mentorData }) => {
         </div>
 
         <div className={styles.mentorTitle}>
-          <p>{mentorData.title}</p>
+          <p>{userData.title}</p>
         </div>
 
         <div className={styles.mentorEmail}>
           <img src="/vectors/dashboard/mail.svg" alt="mail icon" />
-          <p>{mentorData.email}</p>
+          <p>{userData.email}</p>
         </div>
 
         <div className={styles.mentorPhone}>
           <img src="/vectors/dashboard/phone.svg" alt="phone icon" />
-          <p>{mentorData.phone}</p>
+          <p>{userData.phone}</p>
         </div>
       </div>
     </div>

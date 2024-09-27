@@ -1,7 +1,5 @@
 import React from "react";
 import { JobList } from "./jobList/JobList";
-import { SearchBar } from "../../search/Search";
-import { StartupProfile } from "../../startupProfile/StartupProfile";
 import styles from "./Feed.module.css";
 
 export const Feed = () => {

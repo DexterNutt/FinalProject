@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./MentorCard.module.css";
+import styles from "./MentorTab.module.css";
 import { StarRating } from "../../../starRating/StarRating";
 
-export const MentorCard = ({ mentor, isBest, onClick }) => {
+export const MentorTab = ({ mentor, isBest, onClick }) => {
   return (
     <div className={styles.mentorCard}>
       <div className={styles.mentorContainer}>

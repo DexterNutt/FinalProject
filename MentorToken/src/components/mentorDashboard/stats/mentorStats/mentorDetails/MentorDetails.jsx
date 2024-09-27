@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styles from "./MentorDetails.module.css";
 
-export const MentorDetails = ({ mentorData }) => {
+export const MentorDetails = () => {
+  const { userData } = useSelector((state) => state.mentorDashboard);
+
   return (
     <>
       <div className={styles.detailsContainer}>
@@ -10,8 +13,8 @@ export const MentorDetails = ({ mentorData }) => {
           <img src="/vectors/edit.svg" alt="edit icon" />
         </div>
         <div className={styles.details}>
-          <h3>Skills: {mentorData.skills.join(" | ")}</h3>
-          <p>{mentorData.details}</p>
+          <h3>Skills: {userData.skills.join(" | ")}</h3>
+          <p>{userData.description}</p>
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import React from "react";
 import data from "../../../../dummyData.json";
 import styles from "./MentorList.module.css";
-import { MentorCard } from "../mentorCard/MentorCard";
+import { MentorTab } from "../mentorTab/MentorTab";
 
 export const MentorList = ({ onMentorClick }) => {
   const bestMentorRating = Math.max(
@@ -11,7 +11,7 @@ export const MentorList = ({ onMentorClick }) => {
   return (
     <div className={styles.mentorList}>
       {data.mentors.map((mentor, index) => (
-        <MentorCard
+        <MentorTab
           key={index}
           mentor={mentor}
           isBest={mentor.average === bestMentorRating}
