@@ -6,9 +6,9 @@ import { Feed } from "./feed/Feed";
 import { Mentors } from "./mentors/Mentors";
 import styles from "./StartupDashboard.module.css";
 import { SearchBar } from "../search/Search";
-import { UserProfile } from "../userProfile/UserProfile";
 import { fetchStartupData } from "./startupDashboardSlice";
 import { StartupProfile } from "../startupProfile/StartupProfile";
+import { MentorDetailsVisitor } from "./mentors/mentorDetailsVisitor/MentorDetailsVisitor"; // Import MentorDetailsVisitor
 
 export const StartupDashboard = () => {
   const dispatch = useDispatch();
@@ -18,9 +18,15 @@ export const StartupDashboard = () => {
   const [activeItem, setActiveItem] = useState(0);
   const [visibility, setVisibility] = useState(true);
 
+  const [selectedMentor, setSelectedMentor] = useState(null);
+
   useEffect(() => {
     dispatch(fetchStartupData());
   }, [dispatch]);
+
+  const handleSelectMentor = (mentor) => {
+    setSelectedMentor(mentor);
+  };
 
   if (loading) {
     return (
@@ -52,13 +58,23 @@ export const StartupDashboard = () => {
         }`}
       >
         <div className={styles.header}>
-          <SearchBar />
+          <SearchBar onSelectMentor={handleSelectMentor} />
           <StartupProfile userData={startupData} />
         </div>
+
         <div className={styles.content}>
-          {activeItem === 0 && <Jobs data={startupData} />}
-          {activeItem === 1 && <Mentors data={startupData} />}
-          {activeItem === 2 && <Feed data={startupData} />}
+          {selectedMentor ? (
+            <MentorDetailsVisitor
+              mentorData={selectedMentor}
+              onBack={() => setSelectedMentor(null)}
+            />
+          ) : (
+            <>
+              {activeItem === 0 && <Jobs data={startupData} />}
+              {activeItem === 1 && <Mentors data={startupData} />}
+              {activeItem === 2 && <Feed data={startupData} />}
+            </>
+          )}
         </div>
       </div>
     </div>
