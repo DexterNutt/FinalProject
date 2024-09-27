@@ -1,10 +1,8 @@
 import React, { useState, useRef } from "react";
-import { SearchBar } from "../../search/Search";
-import { StartupProfile } from "../../startupProfile/StartupProfile";
 import { MentorList } from "./MentorList/MentorList";
 import { QuickOverview } from "../../mentorDashboard/stats/mentorStats/quickOverview/QuickOverview";
-import { MentorProfile } from "../../mentorDashboard/stats/mentorStats/mentorProfile/MentorProfile";
-import { MentorDetailsVisitor } from "../../startupDashboard/mentors/mentorDetailsVisitor/MentorDetailsVisitor";
+import { MentorCard } from "../../mentorDashboard/stats/mentorStats/mentorCard/MentorCard";
+import { MentorDetailsVisitor } from "./mentorDetailsVisitor/MentorDetailsVisitor";
 import { JobsIndicator } from "../../mentorDashboard/jobs/jobsIndicator/JobsIndicator";
 import { JobList } from "../../mentorDashboard/jobs/jobList/JobList";
 import { PendingJobs } from "../../mentorDashboard/jobs/pendingJobs/PendingJobs";
@@ -40,7 +38,7 @@ export const Mentors = () => {
           {selectedMentor ? (
             <div className={styles.openMentor}>
               <div className={styles.mentorData}>
-                <MentorProfile mentorData={selectedMentor} />
+                <MentorCard mentorData={selectedMentor} />
                 <MentorDetailsVisitor mentorData={selectedMentor} />
               </div>
               <div className={styles.jobsContainer}>
