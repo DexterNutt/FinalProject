@@ -1,11 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./UserProfile.module.css";
-// import { api } from "../../config/properties";
 
 export const UserProfile = () => {
   const { userData } = useSelector((state) => state.mentorDashboard);
-  console.log(userData);
 
   return (
     <div className={styles.userProfile}>
