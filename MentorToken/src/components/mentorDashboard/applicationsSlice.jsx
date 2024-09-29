@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   fetchApplicationsFromApp,
   submitApplicationToApp,
-} from "../api/applicationsApi";
+} from "../../api/applicationsApi";
 
 export const fetchApplications = createAsyncThunk(
   "applications/fetchApplications",
