@@ -37,14 +37,21 @@ export const registerUser = async (data) => {
     startupName: "",
     representative: "",
     address: "",
+    phone: data.phone,
+    skills: data.skills,
+    title: data.title,
   };
 
   if (data.role === "mentor") {
     requestData.mentorName = data.mentorName;
+    requestData.skills = data.skills;
+    requestData.phone = data.phone;
+    requestData.title = data.title;
   } else if (data.role === "startup") {
     requestData.startupName = data.startupName;
     requestData.representative = data.representative;
     requestData.address = data.address;
+    requestData.phone = data.phone;
   }
 
   try {

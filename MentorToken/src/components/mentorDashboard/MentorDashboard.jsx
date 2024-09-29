@@ -8,6 +8,7 @@ import { Stats } from "./stats/Stats";
 import { Feed } from "./feed/Feed";
 import styles from "./MentorDashboard.module.css";
 import { fetchUserData } from "./mentorDashboardSlice";
+import { MentorStats } from "./stats/mentorStats/MentorStats";
 
 export const MentorDashboard = () => {
   const dispatch = useDispatch();
@@ -17,17 +18,18 @@ export const MentorDashboard = () => {
   const [activeItem, setActiveItem] = useState(0);
   const [visibility, setVisibility] = useState(true);
 
+  const [selectedMentor, setSelectedMentor] = useState(null);
+
   useEffect(() => {
     dispatch(fetchUserData());
   }, [dispatch]);
 
+  const handleSelectMentor = (mentor) => {
+    setSelectedMentor(mentor);
+  };
+
   if (loading) {
-    return (
-      <div className={styles.loading}>
-        {/* ADD LOADING SPINNER <LoadingSpinner /> */}
-        <h1>TBA</h1>
-      </div>
-    );
+    return <div className={styles.loading}>Loading...</div>;
   }
 
   if (error) {
@@ -51,13 +53,22 @@ export const MentorDashboard = () => {
         }`}
       >
         <div className={styles.header}>
-          <SearchBar />
+          <SearchBar onSelectMentor={handleSelectMentor} />
           <UserProfile userData={userData} />
         </div>
         <div className={styles.content}>
-          {activeItem === 0 && <Jobs userData={userData} />}
-          {activeItem === 1 && <Stats userData={userData} />}
-          {activeItem === 2 && <Feed userData={userData} />}
+          {selectedMentor ? (
+            <UserPage
+              mentorData={selectedMentor}
+              onBack={() => setSelectedMentor(null) && setActiveItem(0)}
+            />
+          ) : (
+            <>
+              {activeItem === 0 && <Jobs userData={userData} />}
+              {activeItem === 1 && <Stats userData={userData} />}
+              {activeItem === 2 && <Feed userData={userData} />}
+            </>
+          )}
         </div>
       </div>
     </div>

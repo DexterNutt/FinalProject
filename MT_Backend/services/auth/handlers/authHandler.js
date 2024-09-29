@@ -16,7 +16,12 @@ exports.register = async (req, res) => {
       representative,
       address,
       photo,
+      phone,
+      skills,
+      title,
     } = req.body;
+
+    console.log(req.body);
 
     if (!email || !password || !role) {
       return res.status(400).json({
@@ -29,11 +34,16 @@ exports.register = async (req, res) => {
       password,
       role,
       photo: photo,
+      phone: phone || undefined,
+      title: title || undefined,
+      skills: role === "mentor" ? skills : undefined,
       mentorName: role === "mentor" ? mentorName : undefined,
       startupName: role === "startup" ? startupName : undefined,
       representative: role === "startup" ? representative : undefined,
       address: role === "startup" ? address : undefined,
     });
+
+    console.log(newUser);
 
     await newUser.save();
 
@@ -57,7 +67,10 @@ exports.register = async (req, res) => {
           email: newUser.email,
           role: newUser.role,
           mentorName: newUser.mentorName,
-          photo: photo,
+          photo: newUser.photo,
+          skills: newUser.skills,
+          phone: newUser.phone,
+          title: newUser.title,
         },
       },
     });
@@ -91,7 +104,6 @@ exports.login = async (req, res) => {
         id: user._id,
         username: user.mentorName,
         role: user.role,
-        skills: user.skills,
       },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES }

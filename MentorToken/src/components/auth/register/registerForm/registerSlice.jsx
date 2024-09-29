@@ -15,6 +15,9 @@ export const registerToApp = createAsyncThunk(
         address: data.address,
         representative: data.representative,
         photo: data.photo,
+        skills: data.skills,
+        phone: data.phone,
+        title: data.title,
       });
 
       return response.data;
@@ -50,8 +53,8 @@ const registerSlice = createSlice({
       state.role = action.payload;
     },
     updateMentorData: (state, action) => {
-      const { mentorName, imageUrl } = action.payload;
-      state.mentorData = { mentorName, photo: imageUrl };
+      const { mentorName, imageUrl, skills, phone, title } = action.payload;
+      state.mentorData = { mentorName, photo: imageUrl, skills, phone, title };
     },
     updateStartupData: (state, action) => {
       state.startupData = { ...state.startupData, ...action.payload };

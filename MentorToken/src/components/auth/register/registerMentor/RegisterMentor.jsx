@@ -16,6 +16,9 @@ export const RegisterMentor = ({ onNext }) => {
   const dispatch = useDispatch();
   const [mentorName, setMentorName] = useState("");
   const [photo, setPhoto] = useState("/user.png");
+  const [skills, setSkills] = useState("");
+  const [phone, setPhone] = useState("");
+  const [title, setTitle] = useState("");
   const [photoToUpload, setPhotoToUpload] = useState("");
   const [isDefaultPhoto, setIsDefaultPhoto] = useState(true);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
@@ -37,7 +40,6 @@ export const RegisterMentor = ({ onNext }) => {
     }
 
     const formData = new FormData();
-
     formData.append("photo", photoToUpload);
 
     let imageUrl = "/user.png";
@@ -51,8 +53,10 @@ export const RegisterMentor = ({ onNext }) => {
         return;
       }
 
-      dispatch(updateMentorData({ mentorName, imageUrl }));
-      onNext({ mentorName, photo: imageUrl });
+      dispatch(
+        updateMentorData({ mentorName, imageUrl, skills, phone, title })
+      );
+      onNext({ mentorName, photo: imageUrl, skills, phone, title });
     }
   };
 
@@ -124,19 +128,45 @@ export const RegisterMentor = ({ onNext }) => {
           sx={inputFieldStyles}
         />
 
-        {/* <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="skills"
-              label="Skills"
-              type="skills"
-              id="skills"
-              placeholder="Your Skills"
-              value={skills}
-              onChange={handleSkillsChange}
-              sx={inputFieldStyles}
-            /> */}
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          name="skills"
+          label="Skills"
+          type="skills"
+          id="skills"
+          placeholder="Your Skills"
+          value={skills}
+          onChange={(e) => setSkills(e.target.value)}
+          sx={inputFieldStyles}
+        />
+
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="phone"
+          label="Phone Number"
+          name="phone"
+          placeholder="Phone Number"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          sx={inputFieldStyles}
+        />
+
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="title"
+          label="Title"
+          name="title"
+          placeholder="Your Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          sx={inputFieldStyles}
+        />
 
         <Button
           type="submit"
@@ -153,7 +183,7 @@ export const RegisterMentor = ({ onNext }) => {
               control={
                 <Checkbox
                   checked={agreeToTerms}
-                  onChange={(e) => setAgreeToTerms(e.target.checked)} // Handle checkbox change
+                  onChange={(e) => setAgreeToTerms(e.target.checked)}
                   className={styles.checkbox}
                   sx={{
                     color: "#696cff",
