@@ -2,34 +2,31 @@ import axios from "axios";
 import { api } from "../config/properties";
 import { getToken } from "../config/StorageFunctions";
 
-export const fetchUser = async () => {
+export const fetchJobsFromApp = async () => {
   try {
     const token = getToken();
 
-    const response = await axios.get(
-      `${api.localRoute}/api/v1/dashboard/mentor`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await axios.get(`${api.localRoute}/api/v1/jobs`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
 
     return response.data;
   } catch (err) {
-    console.log("Error fetching user data:", err.message);
+    console.log("Error fetching jobs data:", err.message);
     throw err;
   }
 };
 
-export const searchUser = async (searchTerm) => {
+export const searchJobsFromApp = async (searchTerm) => {
   try {
     const token = getToken();
 
     const response = await axios.get(
-      `${api.localRoute}/api/v1/mentors?search=${searchTerm}`,
+      `${api.localRoute}/api/v1/jobs?search=${searchTerm}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -41,7 +38,7 @@ export const searchUser = async (searchTerm) => {
 
     return response.data;
   } catch (err) {
-    console.log("Error searching for mentors:", err.message);
+    console.log("Error searching for jobs:", err.message);
     throw err;
   }
 };

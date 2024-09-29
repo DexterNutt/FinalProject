@@ -5,6 +5,8 @@ import mentorDashboardReducer from "./components/mentorDashboard/mentorDashboard
 import registerReducer from "./components/auth/register/registerForm/registerSlice";
 import startupDashboardReducer from "./components/startupDashboard/startupDashboardSlice";
 import searchReducer from "./components/search/searchSlice";
+import jobsReducer from "./components/mentorDashboard/jobsSlice";
+import applicationsReducer from "./components/mentorDashboard/applicationsSlice";
 
 const reducer = {
   auth: authReducer,
@@ -12,6 +14,8 @@ const reducer = {
   mentorDashboard: mentorDashboardReducer,
   startupDashboard: startupDashboardReducer,
   search: searchReducer,
+  jobs: jobsReducer,
+  applications: applicationsReducer,
 };
 
 export default configureStore({
