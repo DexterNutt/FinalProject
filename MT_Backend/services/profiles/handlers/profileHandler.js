@@ -97,7 +97,7 @@ exports.searchUsers = async (req, res) => {
 
     const mentors = await User.find(
       searchFilter,
-      "mentorName skills title description photo"
+      "mentorName skills title description phone email photo"
     );
 
     if (mentors.length === 0) {

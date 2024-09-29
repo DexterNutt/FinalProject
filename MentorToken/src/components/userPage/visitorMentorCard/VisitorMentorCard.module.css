@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.profileContainer {
+  font-family: Manrope, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 233px;
+  height: 280px;
+  border-radius: 21px;
+  background-color: #ffffff;
+}
+
+.picContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.profileImage {
+  margin: 0;
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.verifiedCheck {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  bottom: 5px;
+  right: 35px;
+}
+
+.mentorName,
+.mentorTitle {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+
+  text-align: left;
+}
+
+.mentorName p {
+  font-size: 24px;
+  color: #566a7f;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.mentorTitle p {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 15px;
+  color: #696cff;
+}
+
+.mentorEmail,
+.mentorPhone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+  color: #566a7f;
+}
+
+.mentorEmail img,
+.mentorPhone img {
+  width: 14px;
+  height: 14px;
+}
+
+.mentorEmail p,
+.mentorPhone p {
+  margin: 0;
+  margin-left: 4px;
+}

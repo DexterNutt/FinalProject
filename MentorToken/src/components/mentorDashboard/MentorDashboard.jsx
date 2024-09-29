@@ -8,7 +8,7 @@ import { Stats } from "./stats/Stats";
 import { Feed } from "./feed/Feed";
 import styles from "./MentorDashboard.module.css";
 import { fetchUserData } from "./mentorDashboardSlice";
-import { MentorStats } from "./stats/mentorStats/MentorStats";
+import { UserPage } from "../userPage/UserPage";
 
 export const MentorDashboard = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,6 @@ export const MentorDashboard = () => {
   );
   const [activeItem, setActiveItem] = useState(0);
   const [visibility, setVisibility] = useState(true);
-
   const [selectedMentor, setSelectedMentor] = useState(null);
 
   useEffect(() => {
@@ -59,8 +58,8 @@ export const MentorDashboard = () => {
         <div className={styles.content}>
           {selectedMentor ? (
             <UserPage
-              mentorData={selectedMentor}
-              onBack={() => setSelectedMentor(null) && setActiveItem(0)}
+              selectedMentor={selectedMentor}
+              onBack={() => setSelectedMentor(null)}
             />
           ) : (
             <>

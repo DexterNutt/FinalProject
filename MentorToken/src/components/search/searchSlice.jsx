@@ -1,4 +1,3 @@
-// searchSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { searchUser } from "../../api/usersApi";
 

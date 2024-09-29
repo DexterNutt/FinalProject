@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./MentorDetailsVisitor.module.css";
 import { JobOfferModal } from "../jobOfferModal/JobOfferModal";
 
-export const MentorDetailsVisitor = ({ mentorData }) => {
+export const MentorDetailsVisitor = ({ mentorData, onBack }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleViewMore = () => {

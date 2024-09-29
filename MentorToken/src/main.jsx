@@ -12,6 +12,7 @@ import { Register } from "./pages/register/Register.jsx";
 import { TestPage } from "./pages/test/TestPage.jsx";
 import { MentorDashboard } from "./components/mentorDashboard/MentorDashboard.jsx";
 import { StartupDashboard } from "./components/startupDashboard/StartupDashboard.jsx";
+import { MentorDetailsVisitor } from "./components/startupDashboard/mentors/mentorDetailsVisitor/MentorDetailsVisitor.jsx";
 import { MentorStats } from "./components/mentorDashboard/stats/mentorStats/MentorStats.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./main.css";
@@ -34,6 +35,10 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard/mentor/" element={<MentorDashboard />} />
         <Route path="/dashboard/startup/" element={<StartupDashboard />} />
+        <Route
+          path="/dashboard/mentor/:mentorId"
+          element={<MentorDetailsVisitor />}
+        />
         <Route path="/test" element={<TestPage />} />
         <Route path="*" element={<TestPage />} /*{PageNotFound}*/ />
       </Routes>
