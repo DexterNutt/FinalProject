@@ -1,5 +1,5 @@
 const Job = require("../../../pkg/jobs/jobSchema");
-const Application = require("../pkg/application/ApplicationSchema");
+const Application = require("../../../pkg/jobs/applicationSchema");
 
 exports.createJob = async (req, res, next) => {
   if (req.file) {

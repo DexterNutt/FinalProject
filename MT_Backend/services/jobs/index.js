@@ -13,7 +13,6 @@ app.use(express.json());
 
 app.post("/api/v1/jobs", jobs.createJob);
 app.get("/api/v1/jobs", jobs.getOpen);
-app.get("/api/v1/jobs/:id", jobs.getJobById);
 app.put("/api/v1/jobs/:id", jobs.updateJob);
 app.delete("/api/v1/jobs/:id", jobs.deleteJob);
 app.post("/api/v1/jobs/offer", jobs.offerJob);
@@ -37,5 +36,5 @@ app.listen(process.env.PORT_JOBS, (err) => {
   if (err) {
     console.error("Service could not be initiated");
   }
-  console.log(`User service running on port ${process.env.PORT_JOBS}`);
+  console.log(`Jobs service running on port ${process.env.PORT_JOBS}`);
 });
