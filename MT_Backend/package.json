@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"node services/auth/index.js\" \"node services/profiles/index.js\" \"node services/proxy/index.js\""
+    "start": "concurrently \"node services/auth/index.js\" \"node services/profiles/index.js\" \"node services/jobs/index.js\" \"node services/proxy/index.js\""
   },
   "author": "",
   "license": "ISC",
