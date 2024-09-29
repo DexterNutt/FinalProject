@@ -1,73 +1,72 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: [true, "Email is required"],
-  },
-  password: {
-    type: String,
-    required: [true, "Password is required"],
-  },
-  role: {
-    type: String,
-    enum: ["mentor", "startup"],
-    required: [true, "Role is required"],
-  },
-  phone: {
-    type: String,
-  },
-  description: {
-    type: String,
-  },
-  mentorName: {
-    type: String,
-    required: function () {
-      return this.role === "mentor";
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+    },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+    },
+    role: {
+      type: String,
+      enum: ["mentor", "startup"],
+      required: [true, "Role is required"],
+    },
+    phone: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    mentorName: {
+      type: String,
+      required: function () {
+        return this.role === "mentor";
+      },
+    },
+    skills: {
+      type: [String],
+    },
+    acceptedJobs: {
+      type: [],
+    },
+    startupName: {
+      type: String,
+      required: function () {
+        return this.role === "startup";
+      },
+    },
+    representative: {
+      type: String,
+      required: function () {
+        return this.role === "startup";
+      },
+    },
+    address: {
+      type: String,
+      required: function () {
+        return this.role === "startup";
+      },
+    },
+    mentors: {
+      type: [String],
+    },
+    jobsPosted: {
+      type: [],
+    },
+    photo: {
+      type: String,
+    },
+    title: {
+      type: String,
     },
   },
-  skills: {
-    type: [String],
-  },
-  acceptedJobs: {
-    type: [],
-  },
-  startupName: {
-    type: String,
-    required: function () {
-      return this.role === "startup";
-    },
-  },
-  representative: {
-    type: String,
-    required: function () {
-      return this.role === "startup";
-    },
-  },
-  address: {
-    type: String,
-    required: function () {
-      return this.role === "startup";
-    },
-  },
-  mentors: {
-    type: [String],
-  },
-  jobsPosted: {
-    type: [],
-  },
-  photo: {
-    type: String,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-  title: {
-    type: String,
-  },
-});
+  { timestamps: true }
+);
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
