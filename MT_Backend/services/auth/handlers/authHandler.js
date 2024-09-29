@@ -21,8 +21,6 @@ exports.register = async (req, res) => {
       title,
     } = req.body;
 
-    console.log(req.body);
-
     if (!email || !password || !role) {
       return res.status(400).json({
         error: "Email, password, and role are required.",
@@ -42,8 +40,6 @@ exports.register = async (req, res) => {
       representative: role === "startup" ? representative : undefined,
       address: role === "startup" ? address : undefined,
     });
-
-    console.log(newUser);
 
     await newUser.save();
 
