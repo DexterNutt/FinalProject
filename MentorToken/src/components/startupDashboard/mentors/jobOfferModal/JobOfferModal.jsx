@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import styles from "./JobOfferModal.module.css";
+import { offerJobToMentor } from "../../../../api/jobsApi";
+import { useSelector } from "react-redux";
 
 export const JobOfferModal = ({ mentor, onClose }) => {
   const [jobName, setJobName] = useState("");
   const [shortDescription, setShortDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { startupData } = useSelector((state) => state.startupDashboard);
 
   const handleJobNameChange = (e) => {
     setJobName(e.target.value);
@@ -13,11 +18,24 @@ export const JobOfferModal = ({ mentor, onClose }) => {
     setShortDescription(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Job Name:", jobName);
-    console.log("Short Description:", shortDescription);
-    onClose();
+    setLoading(true);
+    setError(null);
+
+    try {
+      await offerJobToMentor(
+        startupData._id,
+        mentor._id,
+        jobName,
+        shortDescription
+      );
+      onClose();
+    } catch (err) {
+      setError("Failed to offer the job. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -28,6 +46,9 @@ export const JobOfferModal = ({ mentor, onClose }) => {
         </button>
         <h2 className={styles.modalTitle}>OFFER JOB</h2>
         <p className={styles.modalSubtitle}>Create and offer job to a mentor</p>
+
+        {error && <p className={styles.error}>{error}</p>}
+
         <form onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
             <label className={styles.inputNameLabel} htmlFor="jobName">
@@ -56,8 +77,12 @@ export const JobOfferModal = ({ mentor, onClose }) => {
               required
             />
           </div>
-          <button type="submit" className={styles.submitButton}>
-            Send Job Offer
+          <button
+            type="submit"
+            className={styles.submitButton}
+            disabled={loading}
+          >
+            {loading ? "Sending..." : "Send Job Offer"}
           </button>
         </form>
       </div>

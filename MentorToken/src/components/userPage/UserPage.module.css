@@ -22,6 +22,7 @@
   position: relative;
 }
 
+.offerJobButton,
 .backButton {
   background-color: #696cff;
   color: white;
@@ -32,13 +33,20 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease-in-out;
   position: absolute;
-  right: 5rem;
+  right: 30rem;
+}
+
+.offerJobButton {
+  bottom: 10rem;
+}
+
+.backButton {
   bottom: 2rem;
 }
 
+.offerJobButton:hover,
 .backButton:hover {
   background-color: #5a5ed9;
 }
