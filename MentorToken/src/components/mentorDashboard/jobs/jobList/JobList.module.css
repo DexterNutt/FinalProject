@@ -38,17 +38,17 @@
   flex-shrink: 0;
 }
 
-.status.Done {
+.done {
   background-color: #ebf6eb;
   color: #31aa27;
 }
 
-.status.Rejected {
+.rejected {
   background-color: #fff0f3;
   color: #f2076a;
 }
 
-.status.InProgress {
+.inProgress {
   background-color: #eeedff;
   color: #696cff;
 }

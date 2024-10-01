@@ -9,18 +9,18 @@ export const Jobs = () => {
   const [activeItem, setActiveItem] = useState(0);
   const indicatorRef = useRef(null);
 
-  const getActiveTab = () => {
-    switch (activeItem) {
-      case 1:
-        return "Done";
-      case 2:
-        return "Rejected";
-      case 3:
-        return "In Progress";
-      default:
-        return "All";
-    }
-  };
+  // const getActiveTab = () => {
+  //   switch (activeItem) {
+  //     case 1:
+  //       return "Done";
+  //     case 2:
+  //       return "Rejected";
+  //     case 3:
+  //       return "In Progress";
+  //     default:
+  //       return "All";
+  //   }
+  // };
 
   return (
     <div className={styles.container}>
@@ -32,7 +32,7 @@ export const Jobs = () => {
               setActiveItem={setActiveItem}
               indicatorRef={indicatorRef}
             />
-            <JobList activeTab={getActiveTab()} />
+            <JobList activeItem={activeItem} />
           </div>
           <div className={styles.upcomingJobs}>
             <div className={styles.pendingJobs}>
