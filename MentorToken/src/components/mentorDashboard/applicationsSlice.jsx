@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   fetchApplicationsFromApp,
   submitApplicationToApp,
+  acceptJobOfferInApp,
+  rejectJobOfferInApp,
 } from "../../api/applicationsApi";
 
 export const fetchApplications = createAsyncThunk(
@@ -28,6 +30,30 @@ export const submitApplication = createAsyncThunk(
   }
 );
 
+export const acceptJobOffer = createAsyncThunk(
+  "applications/acceptApplication",
+  async (applicationId, { rejectWithValue }) => {
+    try {
+      const data = await acceptJobOfferInApp(applicationId);
+      return { applicationId, data };
+    } catch (error) {
+      return rejectWithValue(error.message || "Failed to accept application");
+    }
+  }
+);
+
+export const rejectJobOffer = createAsyncThunk(
+  "applications/rejectApplication",
+  async (applicationId, { rejectWithValue }) => {
+    try {
+      const data = await rejectJobOfferInApp(applicationId);
+      return { applicationId, data };
+    } catch (error) {
+      return rejectWithValue(error.message || "Failed to reject application");
+    }
+  }
+);
+
 const applicationsSlice = createSlice({
   name: "applications",
   initialState: {
@@ -44,7 +70,7 @@ const applicationsSlice = createSlice({
       })
       .addCase(fetchApplications.fulfilled, (state, action) => {
         state.loading = false;
-        state.applications = action.payload;
+        state.applications = action.payload.data.application;
       })
       .addCase(fetchApplications.rejected, (state, action) => {
         state.loading = false;
@@ -61,6 +87,34 @@ const applicationsSlice = createSlice({
       .addCase(submitApplication.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Something went wrong";
+      })
+      .addCase(acceptJobOffer.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(acceptJobOffer.fulfilled, (state, action) => {
+        state.loading = false;
+        state.applications = state.applications.filter(
+          (app) => app._id !== action.payload.applicationId
+        );
+      })
+      .addCase(acceptJobOffer.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to accept application";
+      })
+      .addCase(rejectJobOffer.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(rejectJobOffer.fulfilled, (state, action) => {
+        state.loading = false;
+        state.applications = state.applications.filter(
+          (app) => app._id !== action.payload.applicationId
+        );
+      })
+      .addCase(rejectJobOffer.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to reject application";
       });
   },
 });
