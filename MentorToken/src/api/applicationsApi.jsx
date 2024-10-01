@@ -43,3 +43,42 @@ export const submitApplicationToApp = async (applicationData) => {
     throw err;
   }
 };
+
+export const getPendingApplications = async (mentorId, applicationType) => {
+  try {
+    const response = await axios.get(
+      `${api.localRoute}/api/v1/applications/mentor/${mentorId}`,
+      {
+        params: { applicationType: applicationType },
+      }
+    );
+    return response.data.data.pending.docs;
+  } catch (err) {
+    console.error("Error fetching pending applications", err);
+    throw err;
+  }
+};
+
+export const acceptJobOfferInApp = async (applicationId) => {
+  try {
+    const response = await axios.patch(
+      `${api.localRoute}/api/v1/applications/accept/${applicationId}`
+    );
+    return response.data;
+  } catch (err) {
+    console.error("Error accepting application", err);
+    throw err;
+  }
+};
+
+export const rejectJobOfferInApp = async (applicationId) => {
+  try {
+    const response = await axios.patch(
+      `${api.localRoute}/api/v1/applications/reject/${applicationId}`
+    );
+    return response.data;
+  } catch (err) {
+    console.error("Error rejecting application", err);
+    throw err;
+  }
+};

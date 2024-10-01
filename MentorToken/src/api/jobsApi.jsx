@@ -42,3 +42,36 @@ export const searchJobsFromApp = async (searchTerm) => {
     throw err;
   }
 };
+
+export const offerJobToMentor = async (
+  companyId,
+  mentorId,
+  jobName,
+  description
+) => {
+  try {
+    const token = getToken();
+
+    const response = await axios.post(
+      `${api.localRoute}/api/v1/jobs/offer`,
+      {
+        companyId: companyId,
+        mentorId: mentorId,
+        title: jobName,
+        description: description,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (err) {
+    console.log("Error offering job:", err.message);
+    throw err;
+  }
+};
