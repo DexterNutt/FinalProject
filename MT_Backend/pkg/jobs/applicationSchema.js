@@ -25,6 +25,7 @@ const applicationSchema = new mongoose.Schema(
       enum: ["done", "rejected", "in progress", "pending"],
       default: "pending",
     },
+    title: String,
   },
   { timestamps: true }
 );

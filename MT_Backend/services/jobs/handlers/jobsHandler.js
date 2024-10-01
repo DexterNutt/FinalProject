@@ -157,10 +157,12 @@ exports.offerJob = async (req, res, next) => {
       mentorId: mentorId,
       companyId: companyId,
       jobId: newJob._id,
+      title: title,
       status: "pending",
       acceptedStatus: "pending",
       applicationType: req.body.applicationType,
     });
+
     res.status(201).json({
       status: "success",
       data: {
@@ -170,6 +172,57 @@ exports.offerJob = async (req, res, next) => {
     });
   } catch (err) {
     next(err);
+  }
+};
+
+exports.deleteOffer = async (req, res, next) => {
+  try {
+    const deletedApplication = await Application.findByIdAndDelete(
+      req.params.id
+    );
+
+    const deletedJob = await Job.findByIdAndDelete(deletedApplication.jobId);
+
+    if (!deletedApplication) {
+      const error = new Error("Job not found");
+      error.statusCode = 404;
+      return next(error);
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        application: deletedApplication,
+        job: deletedJob,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getMyOffer = async (req, res, next) => {
+  try {
+    const mentorId = req.params.mentorId;
+
+    const offers = await Application.find({
+      mentorId: mentorId,
+      status: "pending",
+    }).populate("jobId", "title description");
+    if (!offers) {
+      return res.status(404).json({
+        status: "fail",
+        message: "No job offers found for this mentor",
+      });
+    }
+    res.status(200).json({
+      status: "success",
+      data: {
+        offers,
+      },
+    });
+  } catch (error) {
+    next(error);
   }
 };
 

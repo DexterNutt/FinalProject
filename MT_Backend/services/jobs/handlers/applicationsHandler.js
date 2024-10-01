@@ -203,7 +203,7 @@ exports.getUserPendingApplications = async (req, res, next) => {
       });
     }
 
-    const pending = await Application.paginate(
+    const pending = await Application(
       { mentorId: userId, acceptedStatus: "pending" },
       options
     );
@@ -224,25 +224,51 @@ exports.getUserPendingApplications = async (req, res, next) => {
   }
 };
 
-exports.deleteOffer = async (req, res, next) => {
+exports.acceptJobOffer = async (req, res, next) => {
   try {
-    const deletedApplication = await Application.findByIdAndDelete(
-      req.params.id
-    );
+    const applicationId = req.params.id;
+    const application = await Application.findById(applicationId);
 
-    const deletedJob = await Job.findByIdAndDelete(deletedApplication.jobId);
-
-    if (!deletedApplication) {
-      const error = new Error("Job not found");
+    if (!application) {
+      const error = new Error("Application not found");
       error.statusCode = 404;
       return next(error);
     }
 
+    application.acceptedStatus = "in progress";
+
+    const updatedApplication = await application.save();
+
     res.status(200).json({
       status: "success",
       data: {
-        application: deletedApplication,
-        job: deletedJob,
+        application: updatedApplication,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.rejectJobOffer = async (req, res, next) => {
+  try {
+    const applicationId = req.params.id;
+    const application = await Application.findById(applicationId);
+
+    if (!application) {
+      const error = new Error("Application not found");
+      error.statusCode = 404;
+      return next(error);
+    }
+
+    application.acceptedStatus = "rejected";
+
+    const updatedApplication = await application.save();
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        application: updatedApplication,
       },
     });
   } catch (err) {

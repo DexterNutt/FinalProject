@@ -11,6 +11,7 @@ const app = express();
 db.init();
 app.use(express.json());
 
+//JOB ROUTES >
 app.post("/api/v1/jobs", jobs.createJob);
 app.get("/api/v1/jobs", jobs.getOpen);
 app.put("/api/v1/jobs/:id", jobs.updateJob);
@@ -18,6 +19,7 @@ app.delete("/api/v1/jobs/:id", jobs.deleteJob);
 app.post("/api/v1/jobs/offer", jobs.offerJob);
 app.get("/api/v1/jobs/company/:id", jobs.getJob);
 
+//APPLICATION ROUTES >
 app.post("/api/v1/applications", applications.createApplication);
 app.get(
   "/api/v1/applications/mentor/:mentorId",
@@ -30,7 +32,10 @@ app.get(
   "/api/v1/applications/mentor/:id/pending",
   applications.getUserPendingApplications
 );
-app.delete("/api/v1/applications/offer/:id", applications.deleteOffer);
+
+//ACCEPT OR REJECT OFFERS
+app.patch("/api/v1/applications/accept/:id", applications.acceptJobOffer);
+app.patch("/api/v1/applications/reject/:id", applications.rejectJobOffer);
 
 app.listen(process.env.PORT_JOBS, (err) => {
   if (err) {
