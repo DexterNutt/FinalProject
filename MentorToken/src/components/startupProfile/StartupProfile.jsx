@@ -5,8 +5,6 @@ import styles from "./StartupProfile.module.css";
 export const StartupProfile = () => {
   const { startupData } = useSelector((state) => state.startupDashboard);
 
-  console.log(startupData);
-
   return (
     <div className={styles.userProfile}>
       {startupData ? (
