@@ -8,7 +8,7 @@ import styles from "./StartupDashboard.module.css";
 import { SearchBar } from "../search/Search";
 import { fetchStartupData } from "./startupDashboardSlice";
 import { StartupProfile } from "../startupProfile/StartupProfile";
-import { MentorDetailsVisitor } from "./mentors/mentorDetailsVisitor/MentorDetailsVisitor"; // Import MentorDetailsVisitor
+import { UserPage } from "../userPage/UserPage";
 
 export const StartupDashboard = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,6 @@ export const StartupDashboard = () => {
   );
   const [activeItem, setActiveItem] = useState(0);
   const [visibility, setVisibility] = useState(true);
-
   const [selectedMentor, setSelectedMentor] = useState(null);
 
   useEffect(() => {
@@ -64,8 +63,8 @@ export const StartupDashboard = () => {
 
         <div className={styles.content}>
           {selectedMentor ? (
-            <MentorDetailsVisitor
-              mentorData={selectedMentor}
+            <UserPage
+              selectedMentor={selectedMentor}
               onBack={() => setSelectedMentor(null)}
             />
           ) : (

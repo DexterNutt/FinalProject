@@ -1,21 +1,21 @@
 import React, { useState, useRef } from "react";
 import { MentorList } from "./MentorList/MentorList";
 import { QuickOverview } from "../../mentorDashboard/stats/mentorStats/quickOverview/QuickOverview";
-import { MentorCard } from "../../mentorDashboard/stats/mentorStats/mentorCard/MentorCard";
-import { MentorDetailsVisitor } from "./mentorDetailsVisitor/MentorDetailsVisitor";
 import { JobsIndicator } from "../../mentorDashboard/jobs/jobsIndicator/JobsIndicator";
 import { JobList } from "../../mentorDashboard/jobs/jobList/JobList";
 import { PendingJobs } from "../../mentorDashboard/jobs/pendingJobs/PendingJobs";
-
+import { MentorCard } from "../../mentorDashboard/stats/mentorStats/mentorCard/MentorCard";
 import styles from "./Mentors.module.css";
+import { UserPage } from "../../userPage/UserPage";
 
-export const Mentors = () => {
+export const Mentors = ({ onMentorClick }) => {
   const [selectedMentor, setSelectedMentor] = useState(null);
   const [activeItem, setActiveItem] = useState(0);
   const indicatorRef = useRef(null);
 
   const handleMentorClick = (mentor) => {
     setSelectedMentor(mentor);
+    onMentorClick(mentor);
   };
 
   const getActiveTab = () => {
@@ -38,8 +38,7 @@ export const Mentors = () => {
           {selectedMentor ? (
             <div className={styles.openMentor}>
               <div className={styles.mentorData}>
-                <MentorCard mentorData={selectedMentor} />
-                <MentorDetailsVisitor mentorData={selectedMentor} />
+                <UserPage mentorData={selectedMentor} />
               </div>
               <div className={styles.jobsContainer}>
                 <div className={styles.assignedJobs}>
