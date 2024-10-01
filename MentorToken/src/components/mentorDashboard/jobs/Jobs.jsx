@@ -1,6 +1,4 @@
 import React, { useState, useRef } from "react";
-import { SearchBar } from "../../search/Search";
-import { UserProfile } from "../../userProfile/UserProfile";
 import { JobList } from "./jobList/JobList";
 import { JobsIndicator } from "./jobsIndicator/JobsIndicator";
 import { PendingJobs } from "./pendingJobs/PendingJobs";
