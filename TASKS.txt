@@ -1,4 +1,2 @@
-FE:
-1. Refactor Main.jsx Routing to App.jsx Routing
-2. Implement 404 Page not found route 
-3. Work on jobs functionality
+TO DOs:
+1. Work on jobs functionality
