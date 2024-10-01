@@ -1,6 +1,5 @@
 const Application = require("../../../pkg/jobs/applicationSchema");
 const Job = require("../../../pkg/jobs/jobSchema");
-const mongoose = require("mongoose");
 
 exports.createApplication = async (req, res, next) => {
   const { jobId, mentorId, applicationType } = req.body;
@@ -106,32 +105,16 @@ exports.getAll = async (req, res, next) => {
 
 exports.getUserApplications = async (req, res, next) => {
   try {
-    const page = parseInt(req.query.page) || 1;
     const userId = req.params.id;
-    const acceptedStatus = req.query.acceptedStatus || false;
+    const status = req.query.status || false;
 
-    const limit = req.query.limit || 8;
-    const options = {
-      page: page,
-      limit: limit,
-      populate: {
-        path: "jobId",
-        select: "title",
-      },
-      sort: { createdAt: -1 },
-    };
-
-    if (acceptedStatus) {
-      const jobs = await Application.paginate(
-        {
-          mentorId: userId,
-          $and: [
-            { acceptedStatus: { $ne: "pending" } },
-            { acceptedStatus: acceptedStatus },
-          ],
-        },
-        options
-      );
+    if (status) {
+      const jobs = await Application.find({
+        mentorId: userId,
+        $and: [{ status: { $ne: "pending" } }, { status: status }],
+      })
+        .populate("jobId", "title")
+        .sort({ createdAt: -1 });
 
       if (!jobs) {
         const error = new Error("This User doesn't exist");
@@ -144,15 +127,15 @@ exports.getUserApplications = async (req, res, next) => {
           jobs: jobs,
         },
       });
+      return;
     }
 
-    const jobs = await Application.paginate(
-      {
-        mentorId: userId,
-        $and: [{ acceptedStatus: { $ne: "pending" } }],
-      },
-      options
-    );
+    const jobs = await Application.find({
+      mentorId: userId,
+      status: { $ne: "pending" },
+    })
+      .populate("jobId", "title")
+      .sort({ createdAt: -1 });
 
     if (!jobs) {
       const error = new Error("This User doesn't exist");
@@ -172,29 +155,16 @@ exports.getUserApplications = async (req, res, next) => {
 
 exports.getUserPendingApplications = async (req, res, next) => {
   try {
-    const page = parseInt(req.query.page) || 1;
     const userId = req.params.id;
 
-    const limit = req.query.limit || 8;
-    const options = {
-      page: page,
-      limit: limit,
-      populate: {
-        path: "jobId",
-        select: "title",
-      },
-      sort: { createdAt: -1 },
-    };
-
     if (req.query.applicationType) {
-      const pending = await Application.paginate(
-        {
-          mentorId: userId,
-          acceptedStatus: "pending",
-          applicationType: req.query.applicationType,
-        },
-        options
-      );
+      const pending = await Application.find({
+        mentorId: userId,
+        status: "pending",
+        applicationType: req.query.applicationType,
+      })
+        .populate("jobId", "title")
+        .sort({ createdAt: -1 });
 
       return res.json({
         data: {
@@ -203,10 +173,12 @@ exports.getUserPendingApplications = async (req, res, next) => {
       });
     }
 
-    const pending = await Application(
-      { mentorId: userId, acceptedStatus: "pending" },
-      options
-    );
+    const pending = await Application.find({
+      mentorId: userId,
+      status: "pending",
+    })
+      .populate("jobId", "title")
+      .sort({ createdAt: -1 });
 
     if (!pending) {
       const error = new Error("This User doesn't exist");
@@ -235,7 +207,7 @@ exports.acceptJobOffer = async (req, res, next) => {
       return next(error);
     }
 
-    application.acceptedStatus = "in progress";
+    application.status = "in progress";
 
     const updatedApplication = await application.save();
 
@@ -261,7 +233,7 @@ exports.rejectJobOffer = async (req, res, next) => {
       return next(error);
     }
 
-    application.acceptedStatus = "rejected";
+    application.status = "rejected";
 
     const updatedApplication = await application.save();
 

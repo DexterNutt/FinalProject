@@ -94,36 +94,17 @@ exports.getOpen = async (req, res, next) => {
 
 exports.getMyJobs = async (req, res, next) => {
   const companyId = req.params.id;
-  const page = parseInt(req.query.page) || 1;
   const status = "open";
 
-  const limit = 6;
-
   try {
-    const options = {
-      page: page,
-      limit: limit,
-      populate: {
-        path: "companyId",
-        select: "startUpName",
-      },
-      sort: { createdAt: -1 },
-    };
-
-    const result = await Job.paginate(
-      { companyId: companyId, status: status },
-      options
-    );
+    const jobs = await Job.find({ companyId: companyId, status: status })
+      .populate("companyId", "startUpName")
+      .sort({ createdAt: -1 });
 
     res.status(200).json({
       status: "success",
       data: {
-        jobs: result.docs,
-        pagination: {
-          currentPage: result.page,
-          totalPages: result.totalPages,
-          totalJobs: result.totalDocs,
-        },
+        jobs: jobs,
       },
     });
   } catch (err) {
@@ -251,18 +232,9 @@ exports.getJob = async (req, res, next) => {
 
 exports.getAll = async (req, res, next) => {
   try {
-    const page = parseInt(req.query.page) || 1;
+    const jobs = await Job.find({ status: "open" }).sort({ createdAt: -1 });
 
-    const limit = req.query.limit || 8;
-    const options = {
-      page: page,
-      limit: limit,
-      sort: { createdAt: -1 },
-    };
-
-    const jobs = await Job.paginate({ status: "open" }, options);
-
-    if (!jobs) {
+    if (!jobs || jobs.length === 0) {
       const error = new Error("There are no Jobs currently");
       error.statusCode = 404;
       return next(error);
