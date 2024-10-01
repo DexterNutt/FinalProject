@@ -3,7 +3,7 @@ import { JobList } from "./jobList/JobList.jsx";
 import styles from "./Feed.module.css";
 import { JobSearch } from "./jobSearch/JobSearch.jsx";
 
-export const Feed = ({ userData }) => {
+export const Feed = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
