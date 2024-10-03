@@ -13,22 +13,28 @@ export const JobCard = ({ job }) => {
     setIsModalOpen(false);
   };
 
+  const startupId = job.startupId || {};
+
   return (
     <>
       <div className={styles.JobCard}>
         <div className={styles.companyHeader}>
           <img
-            src={job.companyLogo}
-            alt={`${job.companyName} logo`}
+            src={job.photo ? `http://localhost:9000${job.photo}` : "/work.png"}
+            alt={`${startupId.startupName || "Unnamed Startup"} logo`}
             className={styles.companyLogo}
           />
-          <h2 className={styles.companyName}>{job.companyName}</h2>
+          <h2 className={styles.companyName}>
+            {startupId.startupName || "Unnamed Startup"}
+          </h2>
         </div>
-        <h3 className={styles.jobTitle}>{job.jobTitle}</h3>
-        <p className={styles.jobDescription}>{job.jobDescription}</p>
-        <button className={styles.viewMoreButton} onClick={handleViewMore}>
-          View More
-        </button>
+        <h3 className={styles.jobTitle}>{job.title}</h3>
+        <p className={styles.jobDescription}>{job.description}</p>
+        <div className={styles.bottom}>
+          <button className={styles.viewMoreButton} onClick={handleViewMore}>
+            View More
+          </button>
+        </div>
       </div>
       {isModalOpen && <JobModal job={job} onClose={handleCloseModal} />}
     </>

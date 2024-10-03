@@ -1,53 +1,32 @@
+const User = require("../../../pkg/users/userSchema");
 const Job = require("../../../pkg/jobs/jobSchema");
 const Application = require("../../../pkg/jobs/applicationSchema");
 
 exports.createJob = async (req, res, next) => {
-  if (req.file) {
-    req.body.jobPicture = req.file.filename;
-  }
-  const { companyId, title, description } = req.body;
+  const { startupId, title, description, photo } = req.body;
 
-  if (!companyId || !title || !description) {
-    const error = new Error("Invalid Data");
-    error.statusCode = 400;
-    return next(error);
+  if (!startupId || !title || !description) {
+    return res.status(400).json({
+      error: "Could not create job",
+    });
   }
 
   try {
-    const newJob = await Job.create(req.body);
+    const newJob = await Job.create({
+      startupId,
+      title,
+      description,
+      photo,
+    });
+
     res.status(201).json({
       status: "success",
       data: {
         job: newJob,
       },
     });
-  } catch (err) {
-    next(err);
-  }
-};
-
-exports.updateJob = async (req, res, next) => {
-  try {
-    if (req.file) {
-      req.body.jobPicture = req.file.filename;
-    }
-    const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
-      runValidators: true,
-      new: true,
-    });
-    if (!updatedJob) {
-      const error = new Error("Job not found");
-      error.statusCode = 404;
-      return next(error);
-    }
-    res.status(200).json({
-      status: "success",
-      data: {
-        job: updatedJob,
-      },
-    });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    res.status(500).json("Error creating job in database");
   }
 };
 
@@ -80,7 +59,10 @@ exports.deleteJob = async (req, res, next) => {
 
 exports.getOpen = async (req, res, next) => {
   try {
-    const jobs = await Job.find({ status: "open" });
+    const jobs = await Job.find({ status: "open" }).populate(
+      "startupId",
+      "startupName"
+    );
     res.status(200).json({
       status: "success",
       data: {
@@ -98,7 +80,7 @@ exports.getMyJobs = async (req, res, next) => {
 
   try {
     const jobs = await Job.find({ companyId: companyId, status: status })
-      .populate("companyId", "startUpName")
+      .populate("companyId", "startupName")
       .sort({ createdAt: -1 });
 
     res.status(200).json({
@@ -113,13 +95,9 @@ exports.getMyJobs = async (req, res, next) => {
 };
 
 exports.offerJob = async (req, res, next) => {
-  if (req.file) {
-    req.body.jobPicture = req.file.filename;
-  }
+  const { startupId, title, description, mentorId, jobPicture } = req.body;
 
-  const { companyId, title, description, mentorId, jobPicture } = req.body;
-
-  if (!companyId || !title || !description) {
+  if (!startupId || !title || !description) {
     const error = new Error("Invalid Data");
     error.statusCode = 400;
     return next(error);
@@ -203,30 +181,34 @@ exports.getMyOffer = async (req, res, next) => {
       },
     });
   } catch (error) {
-    next(error);
+    res
+      .status(500)
+      .json(error, "Error finding job in database, please try again later");
   }
 };
 
-exports.getJob = async (req, res, next) => {
+exports.getJobByStartup = async (req, res, next) => {
   try {
-    const job = await Job.findById(req.params.id).populate(
-      "companyId",
-      "startUpName picture email"
+    const jobs = await Job.find({ startupId: req.params.id }).populate(
+      "startupId",
+      "startupName photo email"
     );
 
-    if (!job) {
-      const error = new Error("This Job doesn't exist");
-      error.statusCode = 404;
-      return next(error);
+    if (!jobs || jobs.length === 0) {
+      res.status(404).json("There are no jobs by this startup");
     }
 
-    res.json({
+    res.status(200).json({
+      status: "success",
       data: {
-        job,
+        jobs,
       },
     });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json(error, "Error finding job in database, please try again later");
   }
 };
 

@@ -19,12 +19,20 @@ export const PendingJobs = () => {
     dispatch(fetchApplications());
   }, [dispatch]);
 
-  const handleAccept = (applicationId) => {
-    dispatch(acceptJobOffer(applicationId));
+  const pendingJobs = applications.filter(
+    (application) =>
+      application.status === "pending" &&
+      application.applicationType === "companyToMentor"
+  );
+
+  const handleAccept = async (applicationId) => {
+    await dispatch(acceptJobOffer(applicationId));
+    dispatch(fetchApplications());
   };
 
-  const handleReject = (applicationId) => {
-    dispatch(rejectJobOffer(applicationId));
+  const handleReject = async (applicationId) => {
+    await dispatch(rejectJobOffer(applicationId));
+    dispatch(fetchApplications());
   };
 
   return (
@@ -36,8 +44,8 @@ export const PendingJobs = () => {
       {error && <p className={styles.error}>{error}</p>}
 
       <div className={styles.jobList}>
-        {applications.length > 0 ? (
-          applications.map((application, index) => (
+        {pendingJobs.length > 0 ? (
+          pendingJobs.map((application, index) => (
             <div key={index} className={styles.job}>
               <p>{application.title}</p>
               <div className={styles.actions}>

@@ -94,13 +94,12 @@ const applicationsSlice = createSlice({
       })
       .addCase(acceptJobOffer.fulfilled, (state, action) => {
         state.loading = false;
-        state.applications = state.applications.filter(
-          (app) => app._id !== action.payload.applicationId
+        const applicationIndex = state.applications.findIndex(
+          (app) => app._id === action.payload.applicationId
         );
-      })
-      .addCase(acceptJobOffer.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload || "Failed to accept application";
+        if (applicationIndex !== -1) {
+          state.applications[applicationIndex].status = "in progress";
+        }
       })
       .addCase(rejectJobOffer.pending, (state) => {
         state.loading = true;
@@ -108,9 +107,12 @@ const applicationsSlice = createSlice({
       })
       .addCase(rejectJobOffer.fulfilled, (state, action) => {
         state.loading = false;
-        state.applications = state.applications.filter(
-          (app) => app._id !== action.payload.applicationId
+        const applicationIndex = state.applications.findIndex(
+          (app) => app._id === action.payload.applicationId
         );
+        if (applicationIndex !== -1) {
+          state.applications[applicationIndex].status = "rejected";
+        }
       })
       .addCase(rejectJobOffer.rejected, (state, action) => {
         state.loading = false;

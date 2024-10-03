@@ -2,13 +2,14 @@ const Application = require("../../../pkg/jobs/applicationSchema");
 const Job = require("../../../pkg/jobs/jobSchema");
 
 exports.createApplication = async (req, res, next) => {
-  const { jobId, mentorId, applicationType } = req.body;
+  const { jobId, mentorId, applicationType, title } = req.body;
 
   if (!jobId || !mentorId || !applicationType) {
-    const error = new Error("Invalid Data");
-    error.statusCode = 401;
-    throw error;
+    res.status(400).json("Failed to apply: Invalid Data");
   }
+
+  console.log(req.body);
+
   try {
     const newApplication = await Application.create(req.body);
     res.status(201).json({

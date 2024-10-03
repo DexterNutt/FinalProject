@@ -2,20 +2,20 @@ const mongoose = require("mongoose");
 
 const jobSchema = new mongoose.Schema(
   {
-    companyId: {
+    startupId: {
       type: mongoose.Types.ObjectId,
       ref: "User",
       required: true,
     },
     title: String,
-    jobPicture: {
-      type: String,
-      default: "default.img",
-    },
     description: String,
     status: {
       type: String,
       enum: ["direct", "open"],
+      default: "open",
+    },
+    photo: {
+      type: String,
     },
   },
   { timestamps: true }

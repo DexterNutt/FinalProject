@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalContent {
+  font-family: "Manrope", sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 34rem;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #566a7f;
+  transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+  color: #696cff;
+}
+
+.closeButton img {
+  transform: rotate(2deg);
+}
+
+.modalTitle {
+  font-size: 30px;
+  font-weight: 700;
+  color: #3a4759;
+  margin: 0;
+}
+
+.modalSubtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #566a7f;
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.inputNameLabel,
+.inputLabel {
+  font-size: 15px;
+  font-weight: 500;
+  color: #3a4759;
+  margin-bottom: 8px;
+}
+
+.inputField,
+.textAreaField {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  color: #3a4759;
+  background-color: #f9f9ff;
+  border: 2px solid #d3d3ff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.textAreaField {
+  height: 12rem;
+}
+
+.inputField:focus,
+.textAreaField:focus {
+  border-color: #696cff;
+  background-color: #fff;
+  outline: none;
+}
+
+.submitButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 3.75rem;
+  padding: 12px;
+  background-color: #696cff;
+  color: #ffffff;
+  border: none;
+  margin-top: 16px;
+  border-radius: 8px;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submitButton:hover {
+  background-color: #585ae5;
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  background-color: #b3b7ff;
+  cursor: not-allowed;
+}

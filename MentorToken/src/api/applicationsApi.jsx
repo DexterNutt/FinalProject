@@ -44,12 +44,41 @@ export const submitApplicationToApp = async (applicationData) => {
   }
 };
 
-export const getPendingApplications = async (mentorId, applicationType) => {
+export const getUserApplications = async (mentorId) => {
   try {
+    const token = getToken();
+
     const response = await axios.get(
       `${api.localRoute}/api/v1/applications/mentor/${mentorId}`,
       {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data.docs;
+  } catch (err) {
+    console.log("Error fetching application:", err.message);
+    throw err;
+  }
+};
+
+export const getPendingApplications = async (mentorId, applicationType) => {
+  try {
+    const token = getToken();
+
+    const response = await axios.get(
+      `${api.localRoute}/api/v1/applications/mentor/${mentorId}/pending`,
+      {
         params: { applicationType: applicationType },
+        headers: {
+          // Headers
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
       }
     );
     return response.data.data.pending.docs;

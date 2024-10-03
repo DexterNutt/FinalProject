@@ -1,5 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchJobsFromApp, searchJobsFromApp } from "../../api/jobsApi";
+import {
+  fetchJobsFromApp,
+  searchJobsFromApp,
+  fetchJobsByStartupFromApp,
+  createJobByStartup,
+} from "../../api/jobsApi";
 
 export const fetchJobs = createAsyncThunk(
   "jobs/fetchJobs",
@@ -21,6 +26,31 @@ export const searchJobs = createAsyncThunk(
       return data;
     } catch (error) {
       return rejectWithValue(error.message || "Failed to search jobs");
+    }
+  }
+);
+
+export const fetchJobsByStartup = createAsyncThunk(
+  "jobs/fetchJobsByStartup",
+  async (startupId, { rejectWithValue }) => {
+    try {
+      console.log(startupId);
+      const data = await fetchJobsByStartupFromApp(startupId);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || "Failed to fetch startup jobs");
+    }
+  }
+);
+
+export const createJob = createAsyncThunk(
+  "jobs/createJob",
+  async (jobData, { rejectWithValue }) => {
+    try {
+      const data = await createJobByStartup(jobData);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || "Failed to create the job");
     }
   }
 );
@@ -58,6 +88,30 @@ const jobsSlice = createSlice({
       .addCase(searchJobs.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Something went wrong";
+      })
+      .addCase(fetchJobsByStartup.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchJobsByStartup.fulfilled, (state, action) => {
+        state.loading = false;
+        state.jobs = action.payload.data.jobs;
+      })
+      .addCase(fetchJobsByStartup.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to fetch startup jobs";
+      })
+      .addCase(createJob.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(createJob.fulfilled, (state, action) => {
+        state.loading = false;
+        state.jobs.push(action.payload);
+      })
+      .addCase(createJob.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to create the job";
       });
   },
 });
