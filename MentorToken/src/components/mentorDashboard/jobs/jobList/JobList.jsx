@@ -5,9 +5,11 @@ import styles from "./JobList.module.css";
 
 export const JobList = ({ activeItem }) => {
   const dispatch = useDispatch();
-  const { applications, loading, error } = useSelector(
-    (state) => state.applications
-  );
+  const {
+    applications = [],
+    loading,
+    error,
+  } = useSelector((state) => state.applications);
 
   useEffect(() => {
     dispatch(fetchApplications());

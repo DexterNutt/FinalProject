@@ -14,6 +14,11 @@ const jobSchema = new mongoose.Schema(
       enum: ["direct", "open"],
       default: "open",
     },
+    jobStatus: {
+      type: String,
+      enum: ["available", "in progress", "completed"],
+      default: "available",
+    },
     photo: {
       type: String,
     },

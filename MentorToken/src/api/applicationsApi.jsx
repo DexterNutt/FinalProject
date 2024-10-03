@@ -21,6 +21,28 @@ export const fetchApplicationsFromApp = async () => {
   }
 };
 
+export const fetchApplicationsToJobFromApp = async (jobId) => {
+  const token = getToken();
+
+  try {
+    const response = await axios.get(
+      `${api.localRoute}/api/v1/applications/${jobId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (err) {
+    console.error("Error fetching applications", err.message);
+    throw err;
+  }
+};
+
 export const submitApplicationToApp = async (applicationData) => {
   try {
     const token = getToken();
@@ -74,7 +96,6 @@ export const getPendingApplications = async (mentorId, applicationType) => {
       {
         params: { applicationType: applicationType },
         headers: {
-          // Headers
           Authorization: `Bearer ${token}`,
           Accept: "application/json",
           "Content-Type": "application/json",

@@ -209,13 +209,19 @@ exports.acceptJobOffer = async (req, res, next) => {
     }
 
     application.status = "in progress";
-
     const updatedApplication = await application.save();
+
+    const job = await Job.findById(application.jobId);
+    if (job) {
+      job.jobStatus = "in progress";
+      await job.save();
+    }
 
     res.status(200).json({
       status: "success",
       data: {
         application: updatedApplication,
+        job: job,
       },
     });
   } catch (err) {
@@ -235,7 +241,6 @@ exports.rejectJobOffer = async (req, res, next) => {
     }
 
     application.status = "rejected";
-
     const updatedApplication = await application.save();
 
     res.status(200).json({
@@ -246,5 +251,27 @@ exports.rejectJobOffer = async (req, res, next) => {
     });
   } catch (err) {
     next(err);
+  }
+};
+
+exports.getApplicationsToJob = async (req, res, next) => {
+  try {
+    const jobId = req.params.id;
+    const applications = await Application.find({ jobId: jobId }).populate(
+      "mentorId",
+      "name skills photo"
+    );
+    if (!applications) {
+      res.status(404).send("No applications found for this job.");
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        applications,
+      },
+    });
+  } catch (error) {
+    next(error);
   }
 };

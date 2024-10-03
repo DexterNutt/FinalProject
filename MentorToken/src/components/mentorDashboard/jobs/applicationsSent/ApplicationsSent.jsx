@@ -5,9 +5,11 @@ import styles from "./ApplicationsSent.module.css";
 
 export const ApplicationsSent = () => {
   const dispatch = useDispatch();
-  const { applications, loading, error } = useSelector(
-    (state) => state.applications
-  );
+  const {
+    applications = [],
+    loading,
+    error,
+  } = useSelector((state) => state.applications);
 
   useEffect(() => {
     dispatch(fetchApplications());

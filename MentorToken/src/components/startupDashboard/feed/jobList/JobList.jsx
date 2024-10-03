@@ -19,11 +19,18 @@ export const JobList = () => {
     dispatch(fetchJobsByStartup(startupId));
   }, [dispatch, startupId]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const availableJobs = jobs.filter((job) => job.jobStatus === "available");
+  console.log("Available jobs:", availableJobs);
 
   const startIndex = currentPage * jobsPerPage;
-  const displayedJobs = jobs.slice(startIndex, startIndex + jobsPerPage);
+
+  const displayedJobs = availableJobs.slice(
+    startIndex,
+    startIndex + jobsPerPage
+  );
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   const handleCreateJob = () => {
     setIsModalOpen(true);

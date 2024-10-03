@@ -4,6 +4,7 @@ import {
   searchJobsFromApp,
   fetchJobsByStartupFromApp,
   createJobByStartup,
+  fetchJobById,
 } from "../../api/jobsApi";
 
 export const fetchJobs = createAsyncThunk(
@@ -34,7 +35,6 @@ export const fetchJobsByStartup = createAsyncThunk(
   "jobs/fetchJobsByStartup",
   async (startupId, { rejectWithValue }) => {
     try {
-      console.log(startupId);
       const data = await fetchJobsByStartupFromApp(startupId);
       return data;
     } catch (error) {
@@ -55,10 +55,23 @@ export const createJob = createAsyncThunk(
   }
 );
 
+export const fetchJob = createAsyncThunk(
+  "jobs/fetchJob",
+  async (jobId, { rejectWithValue }) => {
+    try {
+      const data = await fetchJobById(jobId);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message || "Failed to fetch the job");
+    }
+  }
+);
+
 const jobsSlice = createSlice({
   name: "jobs",
   initialState: {
     jobs: [],
+    job: null,
     loading: false,
     error: null,
   },
@@ -112,6 +125,18 @@ const jobsSlice = createSlice({
       .addCase(createJob.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Failed to create the job";
+      })
+      .addCase(fetchJob.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchJob.fulfilled, (state, action) => {
+        state.loading = false;
+        state.job = action.payload;
+      })
+      .addCase(fetchJob.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to fetch the job";
       });
   },
 });

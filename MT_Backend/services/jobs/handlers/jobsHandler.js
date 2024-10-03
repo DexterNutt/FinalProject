@@ -229,3 +229,31 @@ exports.getAll = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getJobById = async (req, res, next) => {
+  try {
+    const job = await Job.findById(req.params.id).populate(
+      "startupId",
+      "startupName"
+    );
+
+    if (!job) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Job not found",
+      });
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        job,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Error retrieving job",
+    });
+  }
+};

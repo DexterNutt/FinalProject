@@ -16,8 +16,8 @@ app.use(express.json());
 app.post("/api/v1/jobs", jobs.createJob);
 app.get("/api/v1/jobs", jobs.getOpen);
 app.get("/api/v1/jobs/:id", jobs.getMyJobs);
-// app.put("/api/v1/jobs/:id", jobs.updateJob);
 app.delete("/api/v1/jobs/:id", jobs.deleteJob);
+app.get("/api/v1/jobs/:id", jobs.getJobById);
 app.post("/api/v1/jobs/offer", jobs.offerJob);
 app.get("/api/v1/jobs/company/:id", jobs.getJobByStartup);
 
@@ -26,6 +26,7 @@ app.post("/api/v1/applications", applications.createApplication);
 app.get("/api/v1/applications", applications.getAll); // This one is used for the Startups
 app.put("/api/v1/applications/:id", applications.updateApplication);
 app.delete("/api/v1/applications/:id", applications.deleteApplication);
+app.get("/api/v1/applications/:id", applications.getApplicationsToJob);
 app.get(
   "/api/v1/applications/mentor/:mentorId",
   applications.getUserApplications

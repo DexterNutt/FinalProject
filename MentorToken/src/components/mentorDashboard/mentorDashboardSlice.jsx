@@ -20,6 +20,18 @@ export const fetchUserData = createAsyncThunk(
   }
 );
 
+export const fetchMentorById = createAsyncThunk(
+  "mentors/fetchMentorById",
+  async (mentorId, { rejectWithValue }) => {
+    try {
+      const response = await fetchMentorsDetails(mentorId);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message || "Failed to fetch mentor details");
+    }
+  }
+);
+
 const mentorDashboardSlice = createSlice({
   name: "mentorDashboard",
   initialState: {

@@ -11,9 +11,11 @@ import {
 
 export const PendingJobs = () => {
   const dispatch = useDispatch();
-  const { applications, loading, error } = useSelector(
-    (state) => state.applications
-  );
+  const {
+    applications = [],
+    loading,
+    error,
+  } = useSelector((state) => state.applications);
 
   useEffect(() => {
     dispatch(fetchApplications());

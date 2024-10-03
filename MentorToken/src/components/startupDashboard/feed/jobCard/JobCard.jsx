@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import styles from "./JobCard.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import { JobModal } from "../jobModal/JobModal";
+import { fetchApplications } from "../../../mentorDashboard/applicationsSlice";
 
 export const JobCard = ({ job }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const { applications, loading, error } = useSelector(
+    (state) => state.applications
+  );
 
   const handleViewMore = () => {
+    dispatch(fetchApplications(job._id));
     setIsModalOpen(true);
   };
 
@@ -56,7 +64,15 @@ export const JobCard = ({ job }) => {
           </button>
         </div>
       </div>
-      {isModalOpen && <JobModal job={job} onClose={handleCloseModal} />}
+      {isModalOpen && (
+        <JobModal
+          job={job}
+          applications={applications}
+          onClose={handleCloseModal}
+          loading={loading}
+          error={error}
+        />
+      )}
     </>
   );
 };

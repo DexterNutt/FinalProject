@@ -4,6 +4,7 @@ import {
   submitApplicationToApp,
   acceptJobOfferInApp,
   rejectJobOfferInApp,
+  fetchApplicationsToJobFromApp,
 } from "../../api/applicationsApi";
 
 export const fetchApplications = createAsyncThunk(
@@ -12,6 +13,19 @@ export const fetchApplications = createAsyncThunk(
     try {
       const data = await fetchApplicationsFromApp();
       return data;
+    } catch (error) {
+      return rejectWithValue(error.message || "Failed to fetch applications");
+    }
+  }
+);
+
+export const fetchApplicationsToJob = createAsyncThunk(
+  "applications/fetchApplicationsToJob",
+  async (jobId, { rejectWithValue }) => {
+    try {
+      const response = await fetchApplicationsToJobFromApp(jobId);
+      console.log("Response from fetchApplicationsToJobFromApp:", response);
+      return response.data.applications;
     } catch (error) {
       return rejectWithValue(error.message || "Failed to fetch applications");
     }
@@ -58,12 +72,14 @@ const applicationsSlice = createSlice({
   name: "applications",
   initialState: {
     applications: [],
+    applicationsToJob: [],
     loading: false,
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
+      // Fetch all Applications
       .addCase(fetchApplications.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -76,6 +92,23 @@ const applicationsSlice = createSlice({
         state.loading = false;
         state.error = action.payload || "Something went wrong";
       })
+
+      //Fetch applications to a specific job
+      .addCase(fetchApplicationsToJob.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchApplicationsToJob.fulfilled, (state, action) => {
+        console.log("Applications payload:", action.payload);
+        state.loading = false;
+        state.applicationsToJob = action.payload;
+      })
+      .addCase(fetchApplicationsToJob.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to fetch applications";
+      })
+
+      // Submit a New Application
       .addCase(submitApplication.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -88,27 +121,37 @@ const applicationsSlice = createSlice({
         state.loading = false;
         state.error = action.payload || "Something went wrong";
       })
+
+      // Accept a Job Offer
       .addCase(acceptJobOffer.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(acceptJobOffer.fulfilled, (state, action) => {
         state.loading = false;
+        const { applicationId } = action.payload;
         const applicationIndex = state.applications.findIndex(
-          (app) => app._id === action.payload.applicationId
+          (app) => app._id === applicationId
         );
         if (applicationIndex !== -1) {
           state.applications[applicationIndex].status = "in progress";
         }
       })
+      .addCase(acceptJobOffer.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to accept application";
+      })
+
+      // Reject a Job Offer
       .addCase(rejectJobOffer.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(rejectJobOffer.fulfilled, (state, action) => {
         state.loading = false;
+        const { applicationId } = action.payload;
         const applicationIndex = state.applications.findIndex(
-          (app) => app._id === action.payload.applicationId
+          (app) => app._id === applicationId
         );
         if (applicationIndex !== -1) {
           state.applications[applicationIndex].status = "rejected";
