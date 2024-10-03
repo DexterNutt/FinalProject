@@ -30,7 +30,7 @@ export const JobList = ({ activeItem }) => {
   const filteredApplications = applications.filter((application) => {
     switch (activeItem) {
       case 0:
-        return true;
+        return application.status !== "pending";
       case 1:
         return application.status === "done";
       case 2:

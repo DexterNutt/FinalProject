@@ -95,31 +95,29 @@ exports.getMyJobs = async (req, res, next) => {
 };
 
 exports.offerJob = async (req, res, next) => {
-  const { startupId, title, description, mentorId, jobPicture } = req.body;
+  const { startupId, title, description, mentorId, photo } = req.body;
 
   if (!startupId || !title || !description) {
-    const error = new Error("Invalid Data");
-    error.statusCode = 400;
-    return next(error);
+    res.status(400).json("Error, Invalid Data, please try again.");
   }
 
   try {
     const newJob = await Job.create({
-      companyId: companyId,
+      startupId: startupId,
       title: title,
       description: description,
-      jobPicture: jobPicture,
+      photo: photo,
       status: "direct",
     });
 
     const newApplication = await Application.create({
       mentorId: mentorId,
-      companyId: companyId,
+      startupId: startupId,
       jobId: newJob._id,
       title: title,
       status: "pending",
       acceptedStatus: "pending",
-      applicationType: req.body.applicationType,
+      applicationType: "companyToMentor",
     });
 
     res.status(201).json({

@@ -37,17 +37,18 @@ export const searchJobsFromApp = async (searchTerm) => {
     );
 
     return response.data;
-  } catch (err) {
-    console.log("Error searching for jobs:", err.message);
-    throw err;
+  } catch (error) {
+    console.log("Error searching for jobs:", error.message);
+    throw error;
   }
 };
 
 export const offerJobToMentor = async (
-  companyId,
+  startupId,
   mentorId,
-  jobName,
-  description
+  title,
+  description,
+  applicationType
 ) => {
   try {
     const token = getToken();
@@ -55,10 +56,11 @@ export const offerJobToMentor = async (
     const response = await axios.post(
       `${api.localRoute}/api/v1/jobs/offer`,
       {
-        companyId: companyId,
+        startupId: startupId,
         mentorId: mentorId,
-        title: jobName,
+        title: title,
         description: description,
+        applicationType: applicationType,
       },
       {
         headers: {
@@ -70,9 +72,9 @@ export const offerJobToMentor = async (
     );
 
     return response.data;
-  } catch (err) {
-    console.log("Error offering job:", err.message);
-    throw err;
+  } catch (error) {
+    console.log("Error offering job:", error.message);
+    throw error;
   }
 };
 

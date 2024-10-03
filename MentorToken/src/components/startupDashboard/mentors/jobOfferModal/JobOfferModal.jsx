@@ -4,18 +4,18 @@ import { offerJobToMentor } from "../../../../api/jobsApi";
 import { useSelector } from "react-redux";
 
 export const JobOfferModal = ({ mentor, onClose }) => {
-  const [jobName, setJobName] = useState("");
-  const [shortDescription, setShortDescription] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { startupData } = useSelector((state) => state.startupDashboard);
 
   const handleJobNameChange = (e) => {
-    setJobName(e.target.value);
+    setTitle(e.target.value);
   };
 
   const handleDescriptionChange = (e) => {
-    setShortDescription(e.target.value);
+    setDescription(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -23,12 +23,15 @@ export const JobOfferModal = ({ mentor, onClose }) => {
     setLoading(true);
     setError(null);
 
+    const applicationType = "companyToMentor";
+
     try {
       await offerJobToMentor(
         startupData._id,
         mentor._id,
-        jobName,
-        shortDescription
+        title,
+        description,
+        applicationType
       );
       onClose();
     } catch (err) {
@@ -51,13 +54,11 @@ export const JobOfferModal = ({ mentor, onClose }) => {
 
         <form onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
-            <label className={styles.inputNameLabel} htmlFor="jobName">
-              Job Name
-            </label>
+            <label className={styles.inputNameLabel}>Job Name</label>
             <input
               type="text"
-              id="jobName"
-              value={jobName}
+              id="title"
+              value={title}
               onChange={handleJobNameChange}
               className={styles.inputField}
               placeholder="Enter job name"
@@ -65,12 +66,10 @@ export const JobOfferModal = ({ mentor, onClose }) => {
             />
           </div>
           <div className={styles.inputGroup}>
-            <label className={styles.inputLabel} htmlFor="shortDescription">
-              Short Description
-            </label>
+            <label className={styles.inputLabel}>Short Description</label>
             <textarea
-              id="shortDescription"
-              value={shortDescription}
+              id="description"
+              value={description}
               onChange={handleDescriptionChange}
               className={styles.textAreaField}
               placeholder="Write short description about job offering"
