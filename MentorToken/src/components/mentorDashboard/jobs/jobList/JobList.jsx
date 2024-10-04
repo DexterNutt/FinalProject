@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchApplications } from "../../applicationsSlice";
+import { fetchApplicationsByMentor } from "../../applicationsSlice";
 import styles from "./JobList.module.css";
 
 export const JobList = ({ activeItem }) => {
@@ -11,23 +11,19 @@ export const JobList = ({ activeItem }) => {
     error,
   } = useSelector((state) => state.applications);
 
+  const { userData } = useSelector((state) => state.mentorDashboard);
+
+  const mentorId = userData?._id;
+
   useEffect(() => {
-    dispatch(fetchApplications());
-  }, [dispatch]);
+    if (mentorId) {
+      dispatch(fetchApplicationsByMentor(mentorId));
+    }
+  }, [dispatch, mentorId]);
 
   if (loading) {
     return <p>Loading jobs...</p>;
   }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  const statusClassMap = {
-    done: styles.done,
-    rejected: styles.rejected,
-    "in progress": styles.inProgress,
-  };
 
   const filteredApplications = applications.filter((application) => {
     switch (activeItem) {
@@ -43,6 +39,16 @@ export const JobList = ({ activeItem }) => {
         return false;
     }
   });
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  const statusClassMap = {
+    done: styles.done,
+    rejected: styles.rejected,
+    "in progress": styles.inProgress,
+  };
 
   return (
     <div className={styles.dashboardJobs}>

@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchApplications } from "../../applicationsSlice";
+import { fetchApplicationsByMentor } from "../../applicationsSlice";
 import styles from "./ApplicationsSent.module.css";
 
 export const ApplicationsSent = () => {
   const dispatch = useDispatch();
+
+  const { userData } = useSelector((state) => state.mentorDashboard);
+  const mentorId = userData?._id;
+
   const {
     applications = [],
     loading,
@@ -12,8 +16,10 @@ export const ApplicationsSent = () => {
   } = useSelector((state) => state.applications);
 
   useEffect(() => {
-    dispatch(fetchApplications());
-  }, [dispatch]);
+    if (mentorId) {
+      dispatch(fetchApplicationsByMentor(mentorId));
+    }
+  }, [dispatch, mentorId]);
 
   const applicationsSent = applications
     .filter((application) => application.applicationType === "mentorToCompany")

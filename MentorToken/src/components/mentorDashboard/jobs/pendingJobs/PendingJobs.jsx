@@ -11,16 +11,14 @@ import {
 
 export const PendingJobs = () => {
   const dispatch = useDispatch();
+  const { userData } = useSelector((state) => state.mentorDashboard);
+  const mentorId = userData?._id;
 
   const {
     applications = [],
     loading,
     error,
   } = useSelector((state) => state.applications);
-
-  const { userData } = useSelector((state) => state.mentorDashboard);
-
-  const mentorId = userData?._id;
 
   useEffect(() => {
     if (mentorId) {
