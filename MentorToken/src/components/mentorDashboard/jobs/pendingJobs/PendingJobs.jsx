@@ -4,22 +4,29 @@ import { useDispatch } from "react-redux";
 import styles from "./PendingJobs.module.css";
 
 import {
-  fetchApplications,
   acceptJobOffer,
   rejectJobOffer,
+  fetchApplicationsByMentor,
 } from "../../applicationsSlice";
 
 export const PendingJobs = () => {
   const dispatch = useDispatch();
+
   const {
     applications = [],
     loading,
     error,
   } = useSelector((state) => state.applications);
 
+  const { userData } = useSelector((state) => state.mentorDashboard);
+
+  const mentorId = userData?._id;
+
   useEffect(() => {
-    dispatch(fetchApplications());
-  }, [dispatch]);
+    if (mentorId) {
+      dispatch(fetchApplicationsByMentor(mentorId));
+    }
+  }, [dispatch, mentorId]);
 
   const pendingJobs = applications.filter(
     (application) =>
@@ -29,12 +36,12 @@ export const PendingJobs = () => {
 
   const handleAccept = async (applicationId) => {
     await dispatch(acceptJobOffer(applicationId));
-    dispatch(fetchApplications());
+    dispatch(fetchApplicationsByMentor(mentorId));
   };
 
   const handleReject = async (applicationId) => {
     await dispatch(rejectJobOffer(applicationId));
-    dispatch(fetchApplications());
+    dispatch(fetchApplicationsByMentor(mentorId));
   };
 
   return (

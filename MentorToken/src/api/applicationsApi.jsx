@@ -91,3 +91,25 @@ export const rejectJobOfferInApp = async (applicationId) => {
     throw err;
   }
 };
+
+export const fetchApplicationsByMentorFromApp = async (mentorId) => {
+  const token = getToken();
+
+  try {
+    const response = await axios.get(
+      `${api.localRoute}/api/v1/applications/mentor/${mentorId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (err) {
+    console.error("Error fetching applications for mentor", err.message);
+    throw err;
+  }
+};

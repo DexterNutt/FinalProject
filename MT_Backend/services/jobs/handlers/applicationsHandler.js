@@ -130,3 +130,22 @@ exports.getApplicationsToJob = async (req, res, next) => {
     });
   }
 };
+
+exports.getApplicationsByMentor = async (req, res, next) => {
+  try {
+    const mentorId = req.params.mentorId;
+    const applications = await Application.find({ mentorId: mentorId });
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        applications: applications || [],
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Failed to fetch applications for the mentor",
+    });
+  }
+};

@@ -5,6 +5,7 @@ import {
   acceptJobOfferInApp,
   rejectJobOfferInApp,
   fetchApplicationsToJobFromApp,
+  fetchApplicationsByMentorFromApp,
 } from "../../api/applicationsApi";
 
 export const fetchApplications = createAsyncThunk(
@@ -67,6 +68,18 @@ export const rejectJobOffer = createAsyncThunk(
   }
 );
 
+export const fetchApplicationsByMentor = createAsyncThunk(
+  "applications/fetchApplicationsByMentor",
+  async (mentorId, { rejectWithValue }) => {
+    try {
+      const response = await fetchApplicationsByMentorFromApp(mentorId);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message || "Failed to fetch applications");
+    }
+  }
+);
+
 const applicationsSlice = createSlice({
   name: "applications",
   initialState: {
@@ -98,9 +111,9 @@ const applicationsSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchApplicationsToJob.fulfilled, (state, action) => {
-        const jobId = action.meta.arg; // jobId is passed as argument to the action
+        const jobId = action.meta.arg;
         state.loading = false;
-        state.applicationsToJob[jobId] = action.payload.data.applications; // Store applications under jobId
+        state.applicationsToJob[jobId] = action.payload.data.applications;
       })
       .addCase(fetchApplicationsToJob.rejected, (state, action) => {
         state.loading = false;
@@ -159,6 +172,20 @@ const applicationsSlice = createSlice({
       .addCase(rejectJobOffer.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Failed to reject application";
+      })
+
+      // Fetch Applications by Mentor
+      .addCase(fetchApplicationsByMentor.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchApplicationsByMentor.fulfilled, (state, action) => {
+        state.loading = false;
+        state.applications = action.payload.data.applications;
+      })
+      .addCase(fetchApplicationsByMentor.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Something went wrong";
       });
   },
 });

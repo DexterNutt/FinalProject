@@ -18,6 +18,10 @@ app.get("/api/v1/jobs", jobs.getOpen);
 app.get("/api/v1/jobs/:id", jobs.getJobById);
 app.post("/api/v1/jobs/offer", jobs.offerJob);
 app.get("/api/v1/jobs/company/:id", jobs.getJobByStartup);
+app.get(
+  "/api/v1/applications/mentor/:mentorId",
+  applications.getApplicationsByMentor
+);
 
 //APPLICATION ROUTES >
 app.post("/api/v1/applications", applications.createApplication);
