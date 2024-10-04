@@ -66,48 +66,27 @@ export const submitApplicationToApp = async (applicationData) => {
   }
 };
 
-export const getUserApplications = async (mentorId) => {
-  try {
-    const token = getToken();
+// export const getPendingApplications = async (mentorId, applicationType) => {
+//   try {
+//     const token = getToken();
 
-    const response = await axios.get(
-      `${api.localRoute}/api/v1/applications/mentor/${mentorId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return response.data.docs;
-  } catch (err) {
-    console.log("Error fetching application:", err.message);
-    throw err;
-  }
-};
-
-export const getPendingApplications = async (mentorId, applicationType) => {
-  try {
-    const token = getToken();
-
-    const response = await axios.get(
-      `${api.localRoute}/api/v1/applications/mentor/${mentorId}/pending`,
-      {
-        params: { applicationType: applicationType },
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return response.data.data.pending.docs;
-  } catch (err) {
-    console.error("Error fetching pending applications", err);
-    throw err;
-  }
-};
+//     const response = await axios.get(
+//       `${api.localRoute}/api/v1/applications/mentor/${mentorId}/pending`,
+//       {
+//         params: { applicationType: applicationType },
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//           Accept: "application/json",
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+//     return response.data.data.pending.docs;
+//   } catch (err) {
+//     console.error("Error fetching pending applications", err);
+//     throw err;
+//   }
+// };
 
 export const acceptJobOfferInApp = async (applicationId) => {
   try {
