@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Hero.module.css";
 import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsLoaded(true);
+  };
   const arrowRight = (
     <svg
       width="18"
@@ -59,7 +64,12 @@ export const Hero = () => {
             <span onClick={goToContact}>Get in Touch</span>
           </div>
         </div>
-        <img src="/laptop.webp" alt="laptop" />
+        <img
+          src="/laptop.webp"
+          alt="laptop"
+          className={isLoaded ? styles.loaded : styles.loadingImage}
+          onLoad={handleImageLoad}
+        />
       </div>
     </div>
   );

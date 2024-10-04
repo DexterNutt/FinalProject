@@ -130,6 +130,12 @@
   bottom: 0;
   width: 935px;
   height: 701.25px;
+  filter: blur(10px);
+  transition: filter 0.5s ease-in-out;
+}
+
+.heroContainer img.loaded {
+  filter: none;
 }
 
 .buttonContainer span {
