@@ -1,2 +1,3 @@
 To Do's:
 1. Present the project
+2. Fix bug on StartupDashboard
