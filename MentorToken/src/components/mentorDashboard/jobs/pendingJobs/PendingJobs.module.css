@@ -77,10 +77,21 @@
   background-color: #696cff;
   color: white;
   border: none;
+  transition: background-color 0.3s ease;
+}
+
+.accept:hover {
+  background-color: #575ed8;
 }
 
 .reject {
   background-color: white;
   color: #f2076a;
   border: 1px solid #f2076a;
+  transition: background-color 0.3s ease;
+}
+
+.reject:hover {
+  background-color: #f2076a;
+  color: white;
 }
