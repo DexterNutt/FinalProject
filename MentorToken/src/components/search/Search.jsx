@@ -25,7 +25,7 @@ export const SearchBar = ({ onSelectMentor }) => {
 
       timeoutId = setTimeout(() => {
         dispatch(fetchMentors(searchedTerm));
-      }, 1000);
+      }, 500);
     };
   }, [dispatch]);
 
