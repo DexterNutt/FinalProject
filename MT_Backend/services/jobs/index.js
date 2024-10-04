@@ -15,7 +15,6 @@ app.use(express.json());
 //JOB ROUTES >
 app.post("/api/v1/jobs", jobs.createJob);
 app.get("/api/v1/jobs", jobs.getOpen);
-app.get("/api/v1/jobs/:id", jobs.getMyJobs);
 app.get("/api/v1/jobs/:id", jobs.getJobById);
 app.post("/api/v1/jobs/offer", jobs.offerJob);
 app.get("/api/v1/jobs/company/:id", jobs.getJobByStartup);
