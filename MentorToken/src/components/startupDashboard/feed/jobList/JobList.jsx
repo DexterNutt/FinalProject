@@ -1,23 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./JobList.module.css";
 import { JobCard } from "../jobCard/JobCard";
 import { useDispatch, useSelector } from "react-redux";
 import { JobCreateModal } from "../jobCreateModal/JobCreateModal";
 import { fetchJobsByStartup } from "../../../mentorDashboard/jobsSlice";
+import { fetchApplicationsToJob } from "../../../mentorDashboard/applicationsSlice";
 
 export const JobList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const jobsPerPage = 8;
   const dispatch = useDispatch();
+
   const { jobs, loading, error } = useSelector((state) => state.jobs);
+  const { applicationsToJob } = useSelector((state) => state.applications);
   const { startupData } = useSelector((state) => state.startupDashboard);
 
   const startupId = startupData._id;
 
   useEffect(() => {
-    dispatch(fetchJobsByStartup(startupId));
+    if (startupId) {
+      dispatch(fetchJobsByStartup(startupId));
+    }
   }, [dispatch, startupId]);
+
+  const applicationsFetched = useRef(false);
+
+  useEffect(() => {
+    if (jobs.length > 0 && !applicationsFetched.current) {
+      jobs.forEach((job) => {
+        dispatch(fetchApplicationsToJob(job._id));
+      });
+      applicationsFetched.current = true;
+    }
+  }, [dispatch, jobs]);
 
   const availableJobs = jobs.filter((job) => job.jobStatus === "available");
 
@@ -64,7 +80,13 @@ export const JobList = () => {
 
       <div className={styles.body}>
         {displayedJobs.length > 0 ? (
-          displayedJobs.map((job) => <JobCard key={job._id} job={job} />)
+          displayedJobs.map((job) => (
+            <JobCard
+              key={job._id}
+              job={job}
+              applicants={applicationsToJob[job._id] || []}
+            />
+          ))
         ) : (
           <p>No jobs found for this startup.</p>
         )}

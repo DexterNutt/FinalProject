@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import styles from "./JobCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { JobModal } from "../jobModal/JobModal";
-import { fetchApplications } from "../../../mentorDashboard/applicationsSlice";
+import { fetchApplicationsToJob } from "../../../mentorDashboard/applicationsSlice";
 
-export const JobCard = ({ job }) => {
+export const JobCard = ({ job, applicants }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const { applications, loading, error } = useSelector(
+  const { applicationsToJob, loading, error } = useSelector(
     (state) => state.applications
   );
 
   const handleViewMore = () => {
-    dispatch(fetchApplications(job._id));
+    dispatch(fetchApplicationsToJob(job._id));
     setIsModalOpen(true);
   };
 
@@ -22,6 +22,8 @@ export const JobCard = ({ job }) => {
   };
 
   const startupId = job.startupId || {};
+
+  console.log("APPLICANTS:", applicants);
 
   return (
     <>
@@ -43,31 +45,42 @@ export const JobCard = ({ job }) => {
         <h3 className={styles.jobTitle}>{job.title}</h3>
         <p className={styles.jobDescription}>{job.description}</p>
         <div className={styles.bottom}>
-          <div className={styles.applicantsContainer}>
-            <div className={styles.applicants}>
-              {job.applicants &&
-                job.applicants.map((applicant, i) => (
-                  <img
-                    key={applicant._id || i}
-                    src={applicant.photo}
-                    alt={`Applicant ${i + 1}`}
-                    className={styles.applicantPic}
-                  />
-                ))}
+          <div className={styles.bottomContainer}>
+            <div className={styles.applicantsContainer}>
+              <div className={styles.applicants}>
+                {applicants.length > 0 ? (
+                  applicants.map((applicant, i) => (
+                    <img
+                      key={applicant._id || i}
+                      src={
+                        applicant.mentorId.photo
+                          ? `http://localhost:9000${applicant.mentorId.photo}`
+                          : `/user.png`
+                      }
+                      className={styles.applicantPic}
+                    />
+                  ))
+                ) : (
+                  <span className={styles.applicantCount}>No Applicants</span>
+                )}
+              </div>
+              {applicants.length > 0 && (
+                <span className={styles.applicantCount}>
+                  {applicants.length} Applicants
+                </span>
+              )}
             </div>
-            <span className={styles.applicantCount}>
-              {job.applicants?.length || 0} Applicants
-            </span>
           </div>
           <button className={styles.viewMoreButton} onClick={handleViewMore}>
             View More
           </button>
         </div>
       </div>
+
       {isModalOpen && (
         <JobModal
           job={job}
-          applications={applications}
+          applications={applicationsToJob[job._id] || []}
           onClose={handleCloseModal}
           loading={loading}
           error={error}

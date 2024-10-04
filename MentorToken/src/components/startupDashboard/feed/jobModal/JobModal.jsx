@@ -1,24 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchApplicationsToJob,
   acceptJobOffer,
   rejectJobOffer,
 } from "../../../mentorDashboard/applicationsSlice";
 
 import styles from "./JobModal.module.css";
 
-export const JobModal = ({ job, onClose }) => {
+export const JobModal = ({ job, applications, onClose, loading, error }) => {
   const dispatch = useDispatch();
-  const { applicationsToJob, loading, error } = useSelector(
-    (state) => state.applications
-  );
-
-  useEffect(() => {
-    if (job && job._id) {
-      dispatch(fetchApplicationsToJob(job._id));
-    }
-  }, [dispatch, job]);
 
   const startupId = job.startupId;
 
@@ -62,10 +52,10 @@ export const JobModal = ({ job, onClose }) => {
               Mentors That Applied To The Job
             </h4>
             <div className={styles.mentorsList}>
-              {applicationsToJob.length === 0 ? (
+              {applications.length === 0 ? (
                 <p className={styles.noApplicants}>No applicants yet.</p>
               ) : (
-                applicationsToJob.slice(0, 5).map((applicant) => (
+                applications.slice(0, 5).map((applicant) => (
                   <div key={applicant._id} className={styles.mentorCard}>
                     <img
                       src={

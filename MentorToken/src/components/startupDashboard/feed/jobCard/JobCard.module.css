@@ -3,6 +3,8 @@
 
 .JobCard {
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
   width: 260px;
   height: auto;
@@ -65,9 +67,21 @@
   -webkit-box-orient: vertical;
 }
 
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.bottomContainer {
+  display: flex;
+  justify-self: end;
+}
+
 .applicantsContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
 }
 
 .applicants {
@@ -80,14 +94,15 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  margin-right: -5px;
+  margin-right: -19px;
   object-fit: cover;
   border: 2px solid #fff;
 }
 
 .applicantCount {
   font-family: Poppins, sans-serif;
-  font-size: 12px;
+  margin-left: 22px;
+  font-size: 9.4px;
   color: #757d8a;
 }
 
@@ -109,10 +124,4 @@
 
 .viewMoreButton:hover {
   background-color: #575ed8;
-}
-
-.bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }

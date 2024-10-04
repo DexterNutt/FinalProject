@@ -71,7 +71,7 @@ const applicationsSlice = createSlice({
   name: "applications",
   initialState: {
     applications: [],
-    applicationsToJob: [],
+    applicationsToJob: {},
     loading: false,
     error: null,
   },
@@ -98,13 +98,13 @@ const applicationsSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchApplicationsToJob.fulfilled, (state, action) => {
-        console.log("Applications payload:", action.payload);
+        const jobId = action.meta.arg; // jobId is passed as argument to the action
         state.loading = false;
-        state.applicationsToJob = action.payload.data.applications;
+        state.applicationsToJob[jobId] = action.payload.data.applications; // Store applications under jobId
       })
       .addCase(fetchApplicationsToJob.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload.message || "Failed to fetch applications";
+        state.error = action.payload || "Failed to fetch applications";
       })
 
       // Submit a New Application
