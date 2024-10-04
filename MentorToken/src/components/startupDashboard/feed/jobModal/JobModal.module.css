@@ -13,6 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 }
 
 .modalContent {
@@ -54,11 +55,12 @@
   line-height: 20px;
   color: #566a7f;
   margin-top: 30px;
-  width: 199px;
+  width: fit-content;
   height: 30px;
 }
 
-.modalJobDescription {
+.modalJobDescription,
+.noApplicants {
   font-family: Manrope, sans-serif;
   font-weight: 400;
   font-size: 13px;

@@ -57,6 +57,12 @@
   text-align: left;
   color: #757d8a;
   margin-bottom: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 6;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 }
 
 .applicantsContainer {
