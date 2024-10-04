@@ -1,3 +1,2 @@
 To Do's:
 1. Present the project
-2. Fix bugs in MentorDashboard 
