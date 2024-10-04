@@ -130,13 +130,6 @@ exports.getJobByStartup = async (req, res, next) => {
       "startupName photo email"
     );
 
-    if (!jobs || jobs.length === 0) {
-      return res.status(404).json({
-        status: "fail",
-        message: "No jobs found for this startup",
-      });
-    }
-
     res.status(200).json({
       status: "success",
       data: { jobs },
