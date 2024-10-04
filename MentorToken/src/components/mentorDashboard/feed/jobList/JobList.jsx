@@ -18,7 +18,13 @@ export const JobList = () => {
   if (error) return <p>Error: {error}</p>;
 
   const startIndex = currentPage * jobsPerPage;
-  const displayedJobs = jobs.slice(startIndex, startIndex + jobsPerPage);
+
+  const availableJobs = jobs.filter((job) => job.jobStatus === "available");
+
+  const displayedJobs = availableJobs.slice(
+    startIndex,
+    startIndex + jobsPerPage
+  );
 
   const handleNextPage = () => {
     if (startIndex + jobsPerPage < jobs.length) {

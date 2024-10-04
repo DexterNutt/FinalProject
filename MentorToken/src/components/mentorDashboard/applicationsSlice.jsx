@@ -11,8 +11,8 @@ export const fetchApplications = createAsyncThunk(
   "applications/fetchApplications",
   async (_, { rejectWithValue }) => {
     try {
-      const data = await fetchApplicationsFromApp();
-      return data;
+      const response = await fetchApplicationsFromApp();
+      return response;
     } catch (error) {
       return rejectWithValue(error.message || "Failed to fetch applications");
     }
@@ -24,8 +24,7 @@ export const fetchApplicationsToJob = createAsyncThunk(
   async (jobId, { rejectWithValue }) => {
     try {
       const response = await fetchApplicationsToJobFromApp(jobId);
-      console.log("Response from fetchApplicationsToJobFromApp:", response);
-      return response.data.applications;
+      return response;
     } catch (error) {
       return rejectWithValue(error.message || "Failed to fetch applications");
     }
@@ -86,7 +85,7 @@ const applicationsSlice = createSlice({
       })
       .addCase(fetchApplications.fulfilled, (state, action) => {
         state.loading = false;
-        state.applications = action.payload.data.application;
+        state.applications = action.payload.applications;
       })
       .addCase(fetchApplications.rejected, (state, action) => {
         state.loading = false;
@@ -101,11 +100,11 @@ const applicationsSlice = createSlice({
       .addCase(fetchApplicationsToJob.fulfilled, (state, action) => {
         console.log("Applications payload:", action.payload);
         state.loading = false;
-        state.applicationsToJob = action.payload;
+        state.applicationsToJob = action.payload.data.applications;
       })
       .addCase(fetchApplicationsToJob.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload || "Failed to fetch applications";
+        state.error = action.payload.message || "Failed to fetch applications";
       })
 
       // Submit a New Application

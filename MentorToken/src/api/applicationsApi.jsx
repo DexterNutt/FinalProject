@@ -14,7 +14,7 @@ export const fetchApplicationsFromApp = async () => {
       },
     });
 
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.log("Error fetching applications data:", err.message);
     throw err;
@@ -35,6 +35,8 @@ export const fetchApplicationsToJobFromApp = async (jobId) => {
         },
       }
     );
+
+    console.log(response);
 
     return response.data;
   } catch (err) {
@@ -65,28 +67,6 @@ export const submitApplicationToApp = async (applicationData) => {
     throw err;
   }
 };
-
-// export const getPendingApplications = async (mentorId, applicationType) => {
-//   try {
-//     const token = getToken();
-
-//     const response = await axios.get(
-//       `${api.localRoute}/api/v1/applications/mentor/${mentorId}/pending`,
-//       {
-//         params: { applicationType: applicationType },
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//           Accept: "application/json",
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
-//     return response.data.data.pending.docs;
-//   } catch (err) {
-//     console.error("Error fetching pending applications", err);
-//     throw err;
-//   }
-// };
 
 export const acceptJobOfferInApp = async (applicationId) => {
   try {

@@ -15,9 +15,9 @@ export const ApplicationsSent = () => {
     dispatch(fetchApplications());
   }, [dispatch]);
 
-  const applicationsSent = applications.filter(
-    (application) => application.applicationType === "mentorToCompany"
-  );
+  const applicationsSent = applications
+    .filter((application) => application.applicationType === "mentorToCompany")
+    .filter((sentApp) => sentApp.status === "pending");
 
   return (
     <div className={styles.applicationsSentContainer}>

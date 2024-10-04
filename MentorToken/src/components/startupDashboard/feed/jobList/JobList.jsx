@@ -20,7 +20,6 @@ export const JobList = () => {
   }, [dispatch, startupId]);
 
   const availableJobs = jobs.filter((job) => job.jobStatus === "available");
-  console.log("Available jobs:", availableJobs);
 
   const startIndex = currentPage * jobsPerPage;
 

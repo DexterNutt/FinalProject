@@ -21,10 +21,6 @@ export const PendingJobs = () => {
     dispatch(fetchApplications());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log("Fetched Applications:", applications);
-  }, [applications]);
-
   const pendingJobs = applications.filter(
     (application) =>
       application.status === "pending" &&

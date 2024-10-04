@@ -63,7 +63,7 @@ export const JobModal = ({ job, onClose }) => {
             </h4>
             <div className={styles.mentorsList}>
               {applicationsToJob.length === 0 ? (
-                <p>No applicants yet.</p>
+                <p className={styles.noApplicants}>No applicants yet.</p>
               ) : (
                 applicationsToJob.slice(0, 5).map((applicant) => (
                   <div key={applicant._id} className={styles.mentorCard}>

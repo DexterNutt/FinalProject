@@ -5,30 +5,42 @@ exports.createApplication = async (req, res, next) => {
   const { jobId, mentorId, applicationType, title } = req.body;
 
   if (!jobId || !mentorId || !applicationType || !title) {
-    return res.status(400).json("Failed to apply: Invalid Data");
+    return res.status(400).json({
+      status: "fail",
+      message: "Failed to apply: Invalid Data",
+    });
   }
 
   try {
     const newApplication = await Application.create(req.body);
     res.status(201).json({
-      application: newApplication,
+      status: "success",
+      data: {
+        application: newApplication,
+      },
     });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Error creating the application",
+    });
   }
 };
 
 exports.getAll = async (req, res, next) => {
   try {
-    const application = await Application.find({});
+    const applications = await Application.find({});
     res.status(200).json({
       status: "success",
       data: {
-        application: application,
+        applications,
       },
     });
-  } catch (err) {
-    res.status(500).json("Failed to fetch applications");
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Failed to fetch applications",
+    });
   }
 };
 
@@ -38,7 +50,10 @@ exports.acceptJobOffer = async (req, res, next) => {
     const application = await Application.findById(applicationId);
 
     if (!application) {
-      return res.status(404).json("Application not found");
+      return res.status(404).json({
+        status: "fail",
+        message: "Application not found",
+      });
     }
 
     application.status = "in progress";
@@ -57,8 +72,11 @@ exports.acceptJobOffer = async (req, res, next) => {
         job,
       },
     });
-  } catch (err) {
-    res.status(500).json("Failed to accept the job offer");
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Failed to accept the job offer",
+    });
   }
 };
 
@@ -68,7 +86,10 @@ exports.rejectJobOffer = async (req, res, next) => {
     const application = await Application.findById(applicationId);
 
     if (!application) {
-      return res.status(404).json("Application not found");
+      return res.status(404).json({
+        status: "fail",
+        message: "Application not found",
+      });
     }
 
     application.status = "rejected";
@@ -80,8 +101,11 @@ exports.rejectJobOffer = async (req, res, next) => {
         application: updatedApplication,
       },
     });
-  } catch (err) {
-    res.status(500).json("Failed to reject the job offer");
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Failed to reject the job offer",
+    });
   }
 };
 
@@ -93,17 +117,16 @@ exports.getApplicationsToJob = async (req, res, next) => {
       "name skills photo"
     );
 
-    if (!applications) {
-      return res.status(404).json("No applications found for this job.");
-    }
-
     res.status(200).json({
       status: "success",
       data: {
-        applications,
+        applications: applications || [],
       },
     });
   } catch (error) {
-    res.status(500).json("Failed to fetch applications for the job");
+    res.status(500).json({
+      status: "error",
+      message: "Failed to fetch applications for the job",
+    });
   }
 };
