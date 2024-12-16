@@ -31,19 +31,19 @@ offering invaluable guidance, expertise, and support tailored to your unique nee
 
 ## Installation
 
-To get started with the Mentor Token project, follow these steps (TBA...):
+To get started with the Mentor Token project, follow these steps:
 
-1. **Clone the repository:**
+1. **Clone the repository**
 
-2. **Navigate to the server directory and install dependencies:**
+2. **Navigate to the server directory and install dependencies**
 
-3. **Set up your environment variables:**
+3. **Set up your environment variables**
 
-4. **Start the backend server:**
+4. **Start the backend server**
 
-5. **Navigate to the client directory and install dependencies:**
+5. **Navigate to the client directory and install dependencies**
 
-6. **Start the frontend application:**
+6. **Start the frontend application**
 
 
 ## Usage
