@@ -12,7 +12,6 @@ offering invaluable guidance, expertise, and support tailored to your unique nee
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
 
 ## Features
 
